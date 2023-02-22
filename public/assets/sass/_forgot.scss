@@ -1,0 +1,37 @@
+.content_forgot {
+  text-align: center;
+
+  h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    line-height: 3.3rem;
+    font-family: $fm-nunito;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 1.8rem;
+    line-height: 2.7rem;
+    font-family: $fm-nunito;
+  }
+}
+
+.btn {
+  display: flex;
+  justify-content: space-evenly;
+
+  .btn_close {
+    margin-top: 4rem;
+
+    button {
+      width: 16.2rem;
+      height: 40px;
+      color: $orange-color;
+      border-radius: 8px;
+      background: $background;
+      // box-shadow: 0rem 0rem 6px #e7e9f2;
+      border: 1px solid $orange-color;
+      cursor: pointer;
+    }
+  }
+}

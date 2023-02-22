@@ -1,0 +1,265 @@
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.container {
+  display: flex;
+  max-width: 144rem;
+}
+.container .login {
+  width: 40%;
+  background-color: #F7F7F7;
+}
+.container .login .login_user {
+  display: flex;
+  justify-content: center;
+  padding: 6rem;
+}
+.container .login .hero_login {
+  width: 40rem;
+  position: absolute;
+  top: 32.4rem;
+  left: 9.4rem;
+}
+.container .login .hero_login form .input-group {
+  margin-bottom: 2rem;
+}
+.container .login .hero_login form .input-group small {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0.6rem 0;
+  font-family: "Nunito Sans", sans-serif;
+}
+.container .login .hero_login form a {
+  font-size: 1.4rem;
+  color: #E73F3F;
+  text-decoration: none;
+}
+.container .login .hero_login form h2 {
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 8rem;
+}
+.container .login .hero_login form input {
+  padding: 1rem 20rem 1rem 1.2rem;
+  background: #ffffff;
+  border: 0.1rem solid #D4D4D7;
+  border-radius: 0.8rem;
+  outline: none;
+  margin-top: 0.4rem;
+  gap: 10px;
+}
+.container .login .hero_login form label {
+  display: block;
+  font-size: 1.6rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.container .login .hero_login form .btn_login {
+  text-align: center;
+  margin-top: 4rem;
+}
+.container .login .hero_login form .btn_login button {
+  width: 16.2rem;
+  height: 40px;
+  color: #FFFFFF;
+  border-radius: 8px;
+  background: #FF9138;
+  box-shadow: 0px 0px 6px #e7e9f2;
+  border: #fff;
+  cursor: pointer;
+}
+.container .hero_img {
+  width: 60%;
+  text-align: center;
+  padding: 7rem;
+}
+.container .hero_img .content h2 {
+  position: absolute;
+  width: 43rem;
+  height: 5.4rem;
+  left: 94rem;
+  top: 39.5rem;
+  font-size: 34px;
+  line-height: 18px;
+  color: #FF9138;
+  font-weight: 400;
+  font-family: "Nunito", sans-serif;
+}
+.container .hero_img .content span {
+  position: absolute;
+  width: 36.4rem;
+  height: 54px;
+  left: 105rem;
+  top: 42rem;
+  line-height: 5rem;
+  font-size: 3.4rem;
+  color: #FF9138;
+  font-weight: 900;
+  font-family: "Nunito", sans-serif;
+}
+
+.content_forgot {
+  text-align: center;
+}
+.content_forgot h2 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 3.3rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.content_forgot p {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+.btn .btn_close {
+  margin-top: 4rem;
+}
+.btn .btn_close button {
+  width: 16.2rem;
+  height: 40px;
+  color: #FF9138;
+  border-radius: 8px;
+  background: #F7F7F7;
+  border: 1px solid #FF9138;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=style.css.map */

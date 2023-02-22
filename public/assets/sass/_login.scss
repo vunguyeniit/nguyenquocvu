@@ -1,0 +1,264 @@
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  // font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+
+}
+
+
+
+html {
+  font-size: 62.5%;
+
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.container {
+  display: flex;
+  max-width: 144rem;
+
+
+  .login {
+    width: 40%;
+    background-color: $background;
+
+
+    .login_user {
+      display: flex;
+      justify-content: center;
+      padding: 6rem;
+    }
+
+    .hero_login {
+      width: 40rem;
+      position: absolute;
+      top: 32.4rem;
+      left: 9.4rem;
+
+      form {
+        .input-group {
+          margin-bottom: 2rem;
+
+          small {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin: 0.6rem 0;
+            font-family: $fm-nunito;
+          }
+        }
+
+
+        a {
+          font-size: 1.4rem;
+          color: $red-color;
+          text-decoration: none;
+        }
+
+        h2 {
+          text-align: center;
+          font-family: $fm-nunito;
+          font-weight: 700;
+          font-size: 2.2rem;
+
+          line-height: 8rem;
+        }
+
+        input {
+          padding: 1rem 20rem 1rem 1.2rem;
+          background: $white-color;
+          border: 0.1rem solid $border;
+          border-radius: 0.8rem;
+          outline: none;
+          margin-top: 0.4rem;
+          // margin-bottom: 1.4rem;
+          gap: 10px;
+        }
+
+        label {
+          display: block;
+          font-size: 1.6rem;
+          font-family: $fm-nunito;
+        }
+
+        .btn_login {
+          text-align: center;
+          margin-top: 4rem;
+
+
+          button {
+
+            width: 16.2rem;
+            height: 40px;
+            color: #FFFFFF;
+            border-radius: 8px;
+            background: $orange-color;
+            box-shadow: 0px 0px 6px #e7e9f2;
+            border: #fff;
+            cursor: pointer;
+
+
+          }
+        }
+
+      }
+    }
+  }
+
+  .hero_img {
+    width: 60%;
+    text-align: center;
+    padding: 7rem;
+
+    .content {
+      h2 {
+        position: absolute;
+        width: 43rem;
+        height: 5.4rem;
+        left: 94rem;
+        top: 39.5rem;
+        font-size: 34px;
+        line-height: 18px;
+        color: $orange-color;
+        font-weight: 400;
+        font-family: "Nunito", sans-serif;
+
+      }
+
+      span {
+        position: absolute;
+        width: 36.4rem;
+        height: 54px;
+        left: 105rem;
+        top: 42rem;
+        line-height: 5rem;
+        font-size: 3.4rem;
+        color: $orange-color;
+        font-weight: 900;
+        font-family: "Nunito", sans-serif;
+      }
+    }
+  }
+}
