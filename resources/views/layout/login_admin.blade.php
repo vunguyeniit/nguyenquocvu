@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href={{asset('assets/css/style.css')}}>
-<link rel="stylesheet" href="sha512-L+sMmtHht2t5phORf0xXFdTC0rSlML1XcraLTrABli/0MMMylsJi3XA23ReVQkZ7jLkOEIMicWGItyK4CAt2Xw==">
-  {{-- <link rel="stylesheet" href={{asset('assets/css/bootstrap.min.css')}}> --}}
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
-
+  {{-- <link rel="stylesheet" href="https://kit.fontawesome.com/ef6c647e92.css" crossorigin="anonymous"> --}}
+  
   <title>Login</title>
 </head>
 <body>
@@ -27,6 +26,8 @@
       @yield('image')
     </div>
 </div>
+<script src="https://kit.fontawesome.com/ef6c647e92.js" crossorigin="anonymous"></script>
+<script src={{asset('assets/js/style.js')}}></script>
 </body>
-
+  
 </html>

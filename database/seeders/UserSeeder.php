@@ -17,12 +17,12 @@ class UserSeeder extends Seeder
     {
         //
         $data = [
-            'username' => 'Nguyễn Quốc Vũ',
-            'loginname' => 'nguyenvu2002',
+            'username' => 'Nguyễn Chí Linh',
+            'loginname' => 'nguyenlinh2002',
             'password' => bcrypt('123456'),
-            'phone' => '0125349684',
-            'email' => 'quocvu@gmail.com',
-            'role' => 'Kế Toán',
+            'phone' => '0125349888',
+            'email' => 'nqvgaming@gmail.com',
+            'role' => 'Dev',
         ];
         DB::table('user')->insert($data);
     }

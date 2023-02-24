@@ -7,21 +7,26 @@
   <div class="content_forgot">
     <h2>Đặt Lại Mật Khẩu</h2>
   <p>Vui lòng nhập email để đặt lại mật khẩu của bạn *</p>
-    <input type="email" name="email" >
-    @if(session('error'))
-    
-  <a>{{session('error')}}</a>
+    <input type="email" name="email" value="{{old('email')}}" >
+
+  @if (session('error'))
+  <small style="color:red">{{session('error')}}</small>
+  @elseif(session('success'))
+
+
+  <small style="color:green; margin:1rem 0;">{{session('success')}}</small>
   @endif
   </div>
  
   <div class="btn">
     <div class="btn_close">
-      <button type="submit">Hủy</button>
+  <button ><a href="{{route('admin.login')}}">Hủy</a></button>
     </div>
     <div class="btn_login">
       <button type="submit">Tiếp Tục</button>
     </div>
   </div>
+ 
   @csrf
 
 </form>

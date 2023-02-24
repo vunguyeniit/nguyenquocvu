@@ -10,9 +10,11 @@ class LoginAdmin extends Model
     use HasFactory;
     protected $table = "user";
     protected $fillable = [
+        'code',
         'email',
         'name',
         'password',
+
 
     ];
 }
