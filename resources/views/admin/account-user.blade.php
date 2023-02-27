@@ -68,12 +68,7 @@
             </div>
           </div>
         </div> --}}
-        {{-- <form action="#">
-          <div class="form-group">
-            <input type="text" placeholder="Type...">
-            <button type="submit" class="btn-send"><i class='bx bxs-send'></i></button>
-          </div>
-        </form> --}}
+       
       </div>
     </div>
   </main>
