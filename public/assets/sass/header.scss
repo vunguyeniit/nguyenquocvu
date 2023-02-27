@@ -1,0 +1,26 @@
+nav {
+
+  height: 88px;
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.9rem 2rem;
+
+    .header-left {
+      h2 {
+        font-size: 3rem;
+        color: $orange-color;
+      }
+    }
+
+    nav .profile img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
+}

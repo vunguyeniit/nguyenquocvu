@@ -13115,7 +13115,7 @@ body.sidebar-collapse:not(.sidebar-mini-xs):not(.sidebar-mini-md):not(.sidebar-m
 }
 
 .content-wrapper {
-  background-color: #f4f6f9
+  background-color: #B1B1B1;
 }
 
 .content-wrapper>.content {
@@ -19752,7 +19752,8 @@ body.text-sm .control-sidebar {
 }
 
 .navbar-white {
-  background-color: #fff;
+  background-color: #B1B1B1;
+  ;
   color: #1f2d3d
 }
 
