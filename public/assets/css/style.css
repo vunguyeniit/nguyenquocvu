@@ -179,8 +179,8 @@ table {
   font-weight: 400;
 }
 .container .login .hero_login form a {
-  font-size: 2rem;
-  color: #E73F3F;
+  font-size: 1.5rem;
+  color: #FF9138;
   text-decoration: none;
 }
 .container .login .hero_login form h2 {
@@ -287,12 +287,6 @@ table {
   background: #F7F7F7;
   border: 1px solid #FF9138;
   cursor: pointer;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 :root {
@@ -409,12 +403,13 @@ li {
   padding: 2.5rem 0;
   transition: all 0.3s ease;
   margin: 4px 0;
+  text-decoration: none;
   font-family: "Nunito";
   white-space: nowrap;
 }
 
 #sidebar .side-menu > li > a:hover {
-  background: var(--grey);
+  background: #FF9138;
 }
 
 #sidebar .side-menu > li > a.active .icon-right {
@@ -571,11 +566,70 @@ nav .nav-link .icon {
   color: var(--dark);
 }
 
+nav .divider {
+  width: 1px;
+  background: var(--grey);
+  height: 12px;
+  display: block;
+}
+
+nav .profile {
+  position: relative;
+}
+
+nav .profile .profile-link {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--light);
+  padding: 10px 0;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 160px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+nav .profile .profile-link.show {
+  opacity: 1;
+  pointer-events: visible;
+  top: 100%;
+}
+
+nav .profile .profile-link a {
+  padding: 10px 16px;
+  display: flex;
+  grid-gap: 10px;
+  font-size: 14px;
+  color: var(--dark);
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+nav .profile .profile-link a:hover {
+  background: var(--grey);
+}
+
 /* NAVBAR */
 /* MAIN */
 main {
   width: 100%;
-  padding: 24px 20px 20px 20px;
+  padding: 10rem 9rem 2rem 2rem;
+}
+main .content-data .head .menu {
+  position: relative;
+  margin-right: 3rem;
+}
+main .content-data .head .menu h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-top: 2rem;
+}
+main .content-data .head .menu .camera img {
+  position: absolute;
+  top: 70%;
+  right: 15%;
 }
 
 main .title {
@@ -695,13 +749,6 @@ main .content-data .head {
 main .content-data .head h3 {
   font-size: 20px;
   font-weight: 600;
-}
-
-main .content-data .head .menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 main .content-data .head .menu .icon {
@@ -884,15 +931,51 @@ main .btn-send:hover {
 }
 nav {
   height: 88px;
+  margin-left: 26rem;
+}
+nav .title {
+  padding: 3rem 2rem;
+}
+nav .title h2 {
+  font-size: 3rem;
+  color: #FF9138;
 }
 nav .header-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2.9rem 2rem;
+  padding: 1.9rem 2rem;
+}
+nav .header-right .profile {
+  display: flex;
+  align-items: center;
+}
+nav .header-right .profile .img_content {
+  display: flex;
+  align-items: center;
+}
+nav .header-right .profile .img_content .user-content {
+  margin: 0 1.5rem;
+}
+nav .header-right .profile .img_content .user-content p {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+nav .header-right .profile .img_content .user-content h3 {
+  font-size: 2.5rem;
+}
+nav .header-right .profile .icon-bell .fa-solid {
+  font-size: 2rem;
+  color: #FF9138;
+  background: #FFF2E7;
+  border-radius: 32px;
+  padding: 1.5rem;
+  margin: 0 3rem;
 }
 nav .header-right .header-left h2 {
-  font-size: 3rem;
+  font-family: "Nunito";
+  font-size: 2.5rem;
+  font-weight: 700;
   color: #FF9138;
 }
 nav .header-right nav .profile img {
@@ -901,6 +984,132 @@ nav .header-right nav .profile img {
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+}
+
+body a {
+  text-decoration: none;
+}
+
+.header-left {
+  display: flex;
+}
+
+.form-user {
+  width: 100%;
+}
+.form-user .detail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.form-user .detail p {
+  font-size: 1.5rem;
+}
+.form-user #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.form-user #customers td,
+.form-user #customers th {
+  border: 1px solid #FFF2E7;
+  font-size: 1.6rem;
+  padding: 8px;
+}
+.form-user #customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.form-user #customers tr:hover {
+  background-color: #FFF2E7;
+}
+.form-user #customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #FF9138;
+  color: white;
+}
+
+.select .mx-5 {
+  margin-left: 16rem !important;
+  margin-right: 0 !important;
+}
+.select option {
+  font-size: 2rem;
+}
+.select .search {
+  position: relative;
+}
+.select .fa-solid {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: #FF9138;
+  cursor: pointer;
+}
+
+main .btn {
+  justify-content: center;
+  display: flex;
+  border: none;
+}
+main .btn .btn_login button {
+  width: 16.2rem;
+  height: 4rem;
+  color: #FFFFFF;
+  border-radius: 0.8rem;
+  background: #FF9138;
+  border: #fff;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+main .data .content-add {
+  position: relative;
+}
+main .data .content-add .add {
+  width: 80px;
+  height: 94px;
+  background: #FFF2E7;
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  cursor: pointer;
+}
+main .data .content-add .add a {
+  text-decoration: none;
+}
+main .data .content-add .add .btn-add {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+main .data .content-add .add .btn-add span {
+  font-size: 1.4rem;
+  color: #FF9138;
+}
+
+main .col-md-2 {
+  width: 15.666667%;
+}
+main .check-content {
+  display: flex;
+  align-items: flex-start;
+}
+main .check-content .check-input span {
+  padding: 1rem 1rem;
+  background-color: #fff;
+  border: 1.5px solid #D4D4D7;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+}
+main .check-content .check-input .form-check {
+  padding-left: 3.3rem;
+}
+main .check-content .check-input .form-check-input {
+  font-size: 2rem;
+}
+main .check-content .check-input label {
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

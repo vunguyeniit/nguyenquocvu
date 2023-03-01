@@ -1,6 +1,4 @@
-@extends('layout.login_admin');
-
-
+@extends('Auth.layout.login_admin');
 
 @section('login')
 <form  action={{route('admin.handleforgot')}} method="POST">
@@ -33,6 +31,6 @@
 @endsection
 
 @section('image')
-<img srcset="{{asset('./assets/images/Frame.png 2x')}}">
+<img srcset="{{asset('./assets/images/Frame3.png 2x')}}">
 @endsection
 

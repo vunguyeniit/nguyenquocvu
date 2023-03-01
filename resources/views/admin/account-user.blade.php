@@ -1,77 +1,86 @@
-@extends('layout-admin.admin')
+@extends('layout.Clone-Admin')
 @section('content')
 <section id="content">
-  <!-- NAVBAR -->
-@include('layout-admin.header')
-  <!-- NAVBAR -->
+{{-- @include('admin.header') --}}
+@section('header')
+<nav>
+  <div class="header-right">
+ <div class="header-left">
+  <h2>Thông Tin Cá Nhân</h2>
+ </div>
 
-  <!-- MAIN -->
-  <main>
-   
-    <ul class="breadcrumbs">
-      <li><a href="#">Home</a></li>
-      <li class="divider">/</li>
-      <li><a href="#" class="active">Dashboard</a></li>
-    </ul>
+  <div class="profile">
+    <div class="icon-bell">
+      <i class="fa-solid fa-bell"></i>
+    </div>
+    <div class="img_content">
+      <img src="{{asset('assets/images/user.png')}}">
+      <div class="user-content">
+       <p>Xin Chào</p>
+       <h3>Lê Quỳnh Ái Vân</h3>
+      </div>
+    </div>
  
+  </div>
+  
+  </div>
+</nav>
+@endsection
+  <main>
+
     <div class="data">
-   
       <div class="content-data">
         <div class="head">
-          <h3>Chatbox</h3>
           <div class="menu">
-            <i class='bx bx-dots-horizontal-rounded icon'></i>
-            <ul class="menu-link">
-              <li><a href="#">Edit</a></li>
-              <li><a href="#">Save</a></li>
-              <li><a href="#">Remove</a></li>
-            </ul>
+            <img src="{{asset('assets/images/user2.png')}}">
+            <h2>Lê Quỳnh Ái Vân</h2>
+            <div class="camera">
+              <img src="{{asset('assets/images/camera.png')}}">
+            </div>
+          </div>
+
+          <div class="form-user">
+            <fieldset disabled >
+            <form class="row gx-5 gy-3">
+            
+          
+                  
+            @csrf
+
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label fs-3">Tên người dùng</label>
+                <input type="text"  class="form-control py-3 fs-3  fs-3 opacity-75" id="inputEmail4" value="{{$user->username}}">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label fs-3">Tên đăng nhập</label>
+                <input type="text" class="form-control py-3 fs-3 opacity-75" id="inputPassword4" value="{{$user->loginname}}">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label fs-3">Số điện thoại</label>
+                <input type="text" class="form-control py-3 fs-3 opacity-75" id="inputPassword4"value="{{$user->phone}}">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label fs-3">Mật khẩu</label>
+                @php
+         
+                @endphp
+                <input type="text" class="form-control py-3 fs-3 opacity-75" id="inputPassword4"value="">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label fs-3">Email</label>
+                <input type="text" class="form-control py-3 fs-3 opacity-75" id="inputPassword4"value="{{$user->email}}">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label fs-3">Vai trò</label>
+                <input type="text" class="form-control py-3 fs-3 opacity-75" id="inputPassword4"value="{{$user->role}}">
+              </div>
+           
+            </form>
+          </fieldset>
           </div>
         </div>
-        {{-- <div class="chat-box">
-          <p class="day"><span>Today</span></p>
-          <div class="msg">
-            <img
-              src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-              alt="">
-            <div class="chat">
-              <div class="profile">
-                <span class="username">Alan</span>
-                <span class="time">18:30</span>
-              </div>
-              <p>Hello</p>
-            </div>
-          </div>
-          <div class="msg me">
-            <div class="chat">
-              <div class="profile">
-                <span class="time">18:30</span>
-              </div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque voluptatum eos quam dolores eligendi
-                exercitationem animi nobis reprehenderit laborum! Nulla.</p>
-            </div>
-          </div>
-          <div class="msg me">
-            <div class="chat">
-              <div class="profile">
-                <span class="time">18:30</span>
-              </div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, architecto!</p>
-            </div>
-          </div>
-          <div class="msg me">
-            <div class="chat">
-              <div class="profile">
-                <span class="time">18:30</span>
-              </div>
-              <p>Lorem ipsum, dolor sit amet.</p>
-            </div>
-          </div>
-        </div> --}}
-       
       </div>
     </div>
   </main>
-  <!-- MAIN -->
 </section>
 @endsection

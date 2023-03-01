@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\ControllerAdmin;
+use App\Http\Controllers\Admin\ControllerDevice;
+use App\Http\Controllers\Admin\ControllerNubLevel;
+use App\Http\Controllers\Admin\ControllerService;
 use App\Http\Controllers\AuthLogin\CheckLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +25,8 @@ Route::prefix('/admin')->group(function () {
     Route::post('/forgot', [CheckLogin::class, 'handleforgot'])->name('admin.handleforgot');
     Route::get('/reset-pass', [CheckLogin::class, 'getResPass'])->name('admin.reset');
     Route::post('/reset-pass', [CheckLogin::class, 'handlerestpas'])->name('admin.handlerest');
-
     Route::get('/index', [ControllerAdmin::class, 'index'])->name('admin.account-user');
+    Route::resource('/device', ControllerDevice::class);
+    Route::resource('/service', ControllerService::class);
+    Route::resource('/nublevel', ControllerNubLevel::class);
 });

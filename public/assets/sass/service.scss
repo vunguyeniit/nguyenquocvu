@@ -1,0 +1,33 @@
+main {
+  .col-md-2 {
+    width: 15.666667%
+  }
+
+  .check-content {
+    display: flex;
+    align-items: flex-start;
+
+    .check-input {
+      span {
+        padding: 1rem 1rem;
+        background-color: #fff;
+        border: 1.5px solid #D4D4D7;
+        font-size: 1.6rem;
+        border-radius: 1rem;
+      }
+
+      .form-check {
+        padding-left: 3.3rem;
+      }
+
+      .form-check-input {
+        font-size: 2rem;
+      }
+
+      label {
+        font-size: 1.6rem;
+      }
+    }
+
+  }
+}

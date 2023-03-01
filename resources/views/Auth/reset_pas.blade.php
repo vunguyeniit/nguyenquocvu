@@ -36,7 +36,7 @@
 
 
 
-@extends('layout.login_admin');
+@extends('Auth.layout.login_admin');
 
 @section('login')
 <form  action={{route('admin.handlerest')}} method="POST">
