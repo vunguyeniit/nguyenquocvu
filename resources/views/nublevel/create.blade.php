@@ -49,9 +49,11 @@
                         <div class="col-md-5  d-inline-block">
                             {{-- <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label> --}}
                             <select class="form-select py-2 fs-3" aria-label="Default select example">
-                                <option selected>Tất cả</option>
-                                <option value="2">Hoạt động</option>
-                                <option value="3">Ngưng hoạt động</option>
+                                <option selected>Chọn dịch vụ</option>
+                                <option value="2">Khám tim mạch</option>
+                                <option value="3">Khám sản phụ khoa</option>
+                                <option value="3">Khám răng hàm mặt</option>
+                                <option value="3">Khám tai mũi họng</option>
                             </select>
                         </div>
                         <div class="btn mt-5">

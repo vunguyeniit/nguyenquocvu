@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ControllerNubLevel extends Controller
+class ControllerReport extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ControllerNubLevel extends Controller
     public function index()
     {
         //
-        return view('nublevel.nublevel');
+        return view('report.report');
     }
 
     /**
@@ -26,7 +26,6 @@ class ControllerNubLevel extends Controller
     public function create()
     {
         //
-        return view('nublevel.create');
     }
 
     /**
@@ -49,7 +48,6 @@ class ControllerNubLevel extends Controller
     public function show($id)
     {
         //
-        return view('nublevel.detail');
     }
 
     /**
@@ -61,7 +59,6 @@ class ControllerNubLevel extends Controller
     public function edit($id)
     {
         //
-
     }
 
     /**

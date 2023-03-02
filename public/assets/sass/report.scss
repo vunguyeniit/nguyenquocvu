@@ -1,0 +1,10 @@
+th {
+  position: relative;
+
+  .box-icon {
+    display: inline-grid;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+  }
+}

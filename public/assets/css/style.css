@@ -1002,9 +1002,6 @@ body a {
   align-items: center;
   justify-content: flex-start;
 }
-.form-user .detail p {
-  font-size: 1.5rem;
-}
 .form-user #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -1110,6 +1107,16 @@ main .check-content .check-input .form-check-input {
 }
 main .check-content .check-input label {
   font-size: 1.6rem;
+}
+
+th {
+  position: relative;
+}
+th .box-icon {
+  display: inline-grid;
+  position: absolute;
+  top: 10px;
+  right: 12px;
 }
 
 /*# sourceMappingURL=style.css.map */

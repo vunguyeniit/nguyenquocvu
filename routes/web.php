@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ControllerAdmin;
 use App\Http\Controllers\Admin\ControllerDevice;
 use App\Http\Controllers\Admin\ControllerNubLevel;
+use App\Http\Controllers\Admin\ControllerReport;
 use App\Http\Controllers\Admin\ControllerService;
 use App\Http\Controllers\AuthLogin\CheckLogin;
 use Illuminate\Support\Facades\Route;
@@ -29,4 +30,5 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/device', ControllerDevice::class);
     Route::resource('/service', ControllerService::class);
     Route::resource('/nublevel', ControllerNubLevel::class);
+    Route::resource('/report', ControllerReport::class);
 });

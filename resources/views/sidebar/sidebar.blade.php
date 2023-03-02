@@ -11,7 +11,8 @@
                  vụ</a></li>
          <li><a href="{{ route('nublevel.index') }}"><img
                      srcset="{{ asset('./assets/images/fi_layers.png 1.5x') }}"></i>Cấp số</a></li>
-         <li><a href="#"><img srcset="{{ asset('./assets/images/Frame.png 1.5x') }}"></i>Báo cáo</a></li>
+         <li><a href="{{ route('report.index') }}"><img srcset="{{ asset('./assets/images/Frame.png 1.5x') }}"></i>Báo
+                 cáo</a></li>
          <li>
              <a href="#"><img srcset="{{ asset('./assets/images/setting.png 1.5x') }}">Cài đặt hệ thống<i
                      class='bx bx-chevron-right icon-right'></i></a>
