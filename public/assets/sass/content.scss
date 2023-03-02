@@ -124,6 +124,32 @@ li {
   }
 
   .side-menu {
+    .btn-logout {
+      background: #FFF2E7;
+      border-radius: 8px;
+      display: flex;
+
+      padding-right: 8rem;
+      align-items: center;
+      position: absolute;
+      transform: translate(0%, 12rem);
+      cursor: pointer;
+      color: #FF9138;
+      ;
+
+      i {
+        padding: 0 2rem 0rem 1rem;
+        font-size: 2.5rem;
+
+      }
+
+      li {
+        a {
+          color: #FF9138;
+        }
+      }
+    }
+
     img {
       margin: 0 1rem;
     }
@@ -133,8 +159,8 @@ li {
       align-items: center;
       font-size: 18px;
       color: var(--dark);
-      // padding: 12px 16px 12px 0;
-      padding: 2.5rem 0;
+
+      padding: 1.5rem 0;
       transition: all .3s ease;
       // border-radius: 10px;
       margin: 4px 0;
@@ -771,7 +797,7 @@ nav {
           }
 
           h3 {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
 
           }
         }

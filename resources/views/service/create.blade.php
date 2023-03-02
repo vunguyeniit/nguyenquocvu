@@ -8,7 +8,7 @@
         <nav>
             <div class="header-right">
                 <div class="header-left">
-                    <h2 style="color: #7E7D88;margin-right:1rem">Thiết bị <i class="fa-solid fa-chevron-right fs-4"></i></h2>
+                    <h2 style="color: #7E7D88;margin-right:1rem">Dịch vụ <i class="fa-solid fa-chevron-right fs-4"></i></h2>
                     <h2 style="color: #7E7D88;margin-right:1rem"> Danh sách dịch vụ <i
                             class="fa-solid fa-chevron-right fs-4"></i></h2>
                     <h2> Thêm dịch vụ</h2>

@@ -1,49 +1,5 @@
 @extends('layout.Clone-Admin')
-<style>
-    .dropbtn {
-        background-color: #3498DB;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
 
-    .dropbtn:hover,
-    .dropbtn:focus {
-        background-color: #2980B9;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown a:hover {
-        background-color: #ddd;
-    }
-
-    .show {
-        display: block;
-    }
-</style>
 @section('content')
     <section id="content">
         {{-- @include('admin.header') --}}
@@ -116,98 +72,108 @@
                                         </div>
                                     </div>
                                 </th>
+
+                                <th>
+
+                                    <div class="box-icon">
+                                        <i class="fa-solid fa-caret-up fs-4"></i>
+                                        <i class="fa-solid fa-caret-down fs-4"></i>
+                                    </div>
+                                    <div class="dropdown">
+                                        Tên dịch vụ
+
+                                        <div class="dropdown-content">
+                                            <a href="#home">Home</a>
+                                            <a href="#about">About</a>
+                                            <a href="#contact">Contact</a>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="box-icon">
+                                        <i class="fa-solid fa-caret-up fs-4"></i>
+                                        <i class="fa-solid fa-caret-down fs-4"></i>
+                                    </div>
+                                    <div class="dropdown">
+                                        Thời gian cấp
+
+                                        <div class="dropdown-content">
+                                            <a href="#home">Home</a>
+                                            <a href="#about">About</a>
+                                            <a href="#contact">Contact</a>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="box-icon">
+                                        <i class="fa-solid fa-caret-up fs-4"></i>
+                                        <i class="fa-solid fa-caret-down fs-4"></i>
+                                    </div>
+                                    <div class="dropdown">
+                                        Tình trạng
+
+                                        <div class="dropdown-content">
+                                            <a href="#home">Home</a>
+                                            <a href="#about">About</a>
+                                            <a href="#contact">Contact</a>
+                                        </div>
+                                    </div>
+                                </th>
+
+                                <th>
+                                    <div class="box-icon">
+                                        <i class="fa-solid fa-caret-up fs-4"></i>
+                                        <i class="fa-solid fa-caret-down fs-4"></i>
+                                    </div>
+                                    <div class="dropdown">
+                                        Nguồn cấp
+
+                                        <div class="dropdown-content">
+                                            <a href="#home">Home</a>
+                                            <a href="#about">About</a>
+                                            <a href="#contact">Contact</a>
+                                        </div>
+                                    </div>
+                                </th>
+
+
+
+
+
+
+
+                            </tr>
+                            <tr>
+                                <td>Alfreds Futterkiste</td>
+                                <td>Maria Anders</td>
+                                <td>Germany</td>
+                                <td>Germany</td>
+                                <td>Germany</td>
+
+
+                            </tr>
+
+                        </table>
+
+
+
                     </div>
-                    <th>
-
-                        <div class="box-icon">
-                            <i class="fa-solid fa-caret-up fs-4"></i>
-                            <i class="fa-solid fa-caret-down fs-4"></i>
-                        </div>
-                        <div class="dropdown">
-                            Tên dịch vụ
-
-                            <div class="dropdown-content">
-                                <a href="#home">Home</a>
-                                <a href="#about">About</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="box-icon">
-                            <i class="fa-solid fa-caret-up fs-4"></i>
-                            <i class="fa-solid fa-caret-down fs-4"></i>
-                        </div>
-                        <div class="dropdown">
-                            Thời gian cấp
-
-                            <div class="dropdown-content">
-                                <a href="#home">Home</a>
-                                <a href="#about">About</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="box-icon">
-                            <i class="fa-solid fa-caret-up fs-4"></i>
-                            <i class="fa-solid fa-caret-down fs-4"></i>
-                        </div>
-                        <div class="dropdown">
-                            Tình trạng
-
-                            <div class="dropdown-content">
-                                <a href="#home">Home</a>
-                                <a href="#about">About</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="box-icon">
-                            <i class="fa-solid fa-caret-up fs-4"></i>
-                            <i class="fa-solid fa-caret-down fs-4"></i>
-                        </div>
-                        <div class="dropdown">
-                            Nguồn cấp
-
-                            <div class="dropdown-content">
-                                <a href="#home">Home</a>
-                                <a href="#about">About</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                        </div>
-                    </th>
-                    </tr>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td>Germany</td>
-                        <td>Germany</td>
-                        <td>Germany</td>
-
-
-                    </tr>
-
-                    </table>
-
-
-
                 </div>
             </div>
-        </div>
-        <div class="content-add">
+            <div class="content-add">
 
-            <div class="add">
-                <a href="{{ route('device.create') }}">
-                    <div class="btn-add">
-                        <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                        <span class="d-block">Tải về</span>
-                    </div>
-                </a>
+                <div class="add">
+                    <a href="{{ route('device.create') }}">
+                        <div class="btn-add">
+                            <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
+                            <span class="d-block">Tải về</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
-
-        </div>
         </div>
         </div>
         {{-- <div class="pagination">
