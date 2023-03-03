@@ -80,14 +80,14 @@
                             </div>
                             <div class="form-check mb-5">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label style="margin-right:12.2rem" class="form-check-label" for="flexCheckChecked">
+                                <label style="margin-right:10.4rem" class="form-check-label" for="flexCheckChecked">
                                     Prefix
                                 </label>
                                 <span>0001</span>
                             </div>
                             <div class="form-check mb-5">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label style="margin-right:12.2rem" class="form-check-label" for="flexCheckChecked">
+                                <label style="margin-right:10.4rem" class="form-check-label" for="flexCheckChecked">
                                     Surfix
                                 </label>
                                 <span>0001</span>

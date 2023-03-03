@@ -1,6 +1,8 @@
 @extends('layout.Clone-Admin')
 
-
+<?php
+use Illuminate\Support\Str;
+?>
 
 @section('content')
     <section id="content">
@@ -80,15 +82,37 @@
                                 <th>Trạng thái hoạt động</th>
                                 <th>Trạng thái kết nối</th>
                                 <th>Dich vụ sử dụng</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                                @foreach ($device as $item)
+                                    <td>{{ $item->devicecode }}</td>
+                                    <td>{{ $item->devicename }}</td>
+                                    <td>{{ $item->addressip }}</td>
+                                    @if ($item->activestatus == 0)
+                                        {
+                                        <td>Ngưng hoạt động</td>
+                                        }
+                                    @else{
+                                        <td>Hoạt động</td>
+                                        }
+                                    @endif
 
+                                    @if ($item->connectionstatus == 0)
+                                        {
+                                        <td>Mất kết nối</td>
+                                        }
+                                    @else{
+                                        <td>Kết nối</td>
+                                        }
+                                    @endif
+                                    <td>{{ Str::words($item->deviceuse, 3, '... <a href="http://">Cập nhật</a>') }}</td>
+                                    {{-- <td>{{ Str::limit($item->deviceuse, 10, '... Xem chi tiết') }}</td> --}}
+                                    {{-- Str::words('Perfectly balanced, as all things should be.', 3, ' >>>'); --}}
+                                    <td><a href="http://">Chi tiết</a></td>
+                                    <td><a href="http://">Cập nhật</a></td>
+                                @endforeach
                             </tr>
 
                         </table>

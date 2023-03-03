@@ -28,7 +28,7 @@
             </div>
 
             <div class="title">
-                <h2>Quản lí thiết bị</h2>
+                <h2>Quản lý thiết bị</h2>
             </div>
         </nav>
     @endsection
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label fs-3">Dịch vụ sử dụng</label>
-                                <input type="text" name="noidung" class="form-control py-2 fs-3">
+                                <input type="text" name="noidung" class="form-control py-2 fs-3" value=>
 
                             </div>
 

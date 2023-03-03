@@ -27,7 +27,7 @@
             </div>
 
             <div class="title">
-                <h2>Quản lí thiết bị</h2>
+                <h2>Quản lý thiết bị</h2>
             </div>
         </nav>
     @endsection

@@ -22,8 +22,9 @@ class UserSeeder extends Seeder
             'loginname' => 'nguyenvu2002',
             'password' => bcrypt('123456789'),
             'phone' => '0125349999',
-            'email' => 'quocvu@gmail.com',
+            'email' => 'nguyenquocvu2002814@gmail.com',
             'role' => 'Kế Toán',
+
         ];
         DB::table('user')->insert($data);
     }

@@ -47,11 +47,12 @@
                     </select>
                 </div>
                 <div class="col-md-2">
-                    <label for="inputPassword4" class="form-label fs-3">Trạng thái kết nối</label>
+                    <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
                     <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
                 </div>
                 <div class="col-md-2">
-                    <label for="inputPassword4" class="form-label fs-3">Trạng thái kết nối</label>
+                    <label style="visibility: hidden" for="inputPassword4" class="form-label fs-3">Chọn thời
+                        gian</label>
                     <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
                 </div>
                 <div class="col-md-4"style="margin-left:7rem">
@@ -77,6 +78,8 @@
                                 <th>Trạng thái hoạt động</th>
                                 <th>Trạng thái kết nối</th>
                                 <th>Dich vụ sử dụng</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             <tr>
                                 <td>Alfreds Futterkiste</td>
@@ -85,6 +88,8 @@
                                 <td>Germany</td>
                                 <td>Germany</td>
                                 <td>Germany</td>
+                                <td><a href="http://">Chi tiết</a></td>
+                                <td><a href="http://">Cập nhật</a></td>
 
                             </tr>
 
