@@ -40,7 +40,7 @@ allDropdown.forEach(item => {
     item.classList.toggle('show');
   })
 })
-
+//check Bao Cao
 let caret = document.querySelectorAll('.box-icon');
 let dropd = document.querySelectorAll('.dropdown-content');
 for (let i = 0; i < dropd.length; ++i) {
@@ -53,4 +53,35 @@ for (let i = 0; i < dropd.length; ++i) {
     }
   }
 }
+//Check Danh Sach Thiet Lap
+
+
+let btn_de = document.querySelectorAll('.btn-detail');
+let cont = document.querySelectorAll('.content');
+for (let i = 0; i < cont.length; ++i) {
+  btn_de[i].onclick = function () {
+
+    if (cont[i].style.display == 'block') {
+      cont[i].style.display = 'none';
+    }
+    else {
+      cont[i].style.display = 'block';
+    }
+
+  }
+
+  cont[i].onclick = function () {
+    cont[i].style.display = 'none';
+  }
+}
+
+//   if (btn_de.classList.contains("btn-detail")) {
+//     btn_de.classList.remove("btn-detail");
+//     cont.classList.add("content1");
+//   }
+//   else {
+//     btn_de.classList.add("btn-detail");
+//     cont.classList.remove("content1");
+//   }
+// }
 

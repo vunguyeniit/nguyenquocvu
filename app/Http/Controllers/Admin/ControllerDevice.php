@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AdminModel\ModelDevice;
+use App\Models\AdminModel\TagId;
+use App\Models\AdminModel\TagName;
+use Illuminate\Cache\TagSet;
 
 class ControllerDevice extends Controller
 {
@@ -25,31 +28,55 @@ class ControllerDevice extends Controller
 
     public function store(Request $request)
     {
+        $device = ModelDevice::create([
+            'devicecode' => $request->devicecode,
+            'devicename' => $request->devicename,
+            'devicetype' => $request->devicetype,
+            'username' => $request->username,
+            'addressip' => $request->addressip,
+            'password' => $request->password,
 
-        $input = $request->all();
-        $device = $input['deviceuse'];
-        $input['deviceuse'] = implode(',', $device);
-        ModelDevice::create($input);
-        return redirect()->route('device.index');
+        ]);
+
+        foreach ($request->tags as $tagitem) {
+
+            $tagInstance = TagName::firstOrCreate(
+                [
+                    'devicename' => $tagitem
+                ]
+            );
+
+            // TagId::create([
+            //     'user_id' => $device->id,
+            //     'tag_id' => $tagInstance->id
+            // ]);
+            $tagId[] = $tagInstance->id;
+        }
+
+        $device->tags()->attach($tagId);
     }
 
 
 
     public function show($id)
     {
-
-        return view('device.detail');
+        $devishow = ModelDevice::find($id);
+        // dd($devishow);
+        return view('device.detail', compact('devishow'));
     }
 
     public function edit($id)
     {
-
-        return view('device.edit');
+        $getData =  ModelDevice::find($id);
+        return view('device.edit', compact('getData'));
     }
 
 
     public function update(Request $request, $id)
     {
+        $updateData = ModelDevice::find($id);
+        dd($updateData);
+        $updateData->update($request->all());
     }
 
 

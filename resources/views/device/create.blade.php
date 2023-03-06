@@ -85,26 +85,26 @@
                             <div class="col-md-12 fs-1">
                                 <label for="inputPassword4" class="form-label fs-3">Dịch vụ sử dụng</label>
                                 <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
-                                    aria-label="Default select example" name="deviceuse[]" multiple>
-                                    <option class="fs-1" value="Khám tim mạch">Khám tim mạch</option>
+                                    aria-label="Default select example" name="tags[]" multiple>
+                                    {{-- <option class="fs-1" value="Khám tim mạch">Khám tim mạch</option>
                                     <option value="Khám sản phụ khoa">Khám sản phụ khoa</option>
                                     <option value="Khám răng hàm mặt">Khám răng hàm mặt</option>
                                     <option value="Khám tai mũi họng">Khám tai mũi họng</option>
                                     <option value="Khám hô hấp">Khám hô hấp</option>
-                                    <option value="Khám tổng quát">Khám tổng quát</option>
+                                    <option value="Khám tổng quát">Khám tổng quát</option> --}}
+
                                 </select>
                             </div>
                             <div class="col-md-3">
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
                             </div>
-
                     </div>
                 </div>
             </div>
         </div>
         <div class="btn mt-2">
             <div class="btn_close">
-                <button class="fs-4"><a style="color: #FF9138" href="{{ route('admin.login') }}">Hủy bỏ</a></button>
+                <button class="fs-4"><a style="color: #FF9138" href="#">Hủy bỏ</a></button>
             </div>
             <div class="btn_login">
                 <button type="submit">Thêm thiết bị</button>
@@ -115,4 +115,3 @@
 </section>
 
 @endsection
->

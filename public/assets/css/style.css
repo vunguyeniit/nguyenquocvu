@@ -1025,6 +1025,31 @@ body a {
   border-collapse: collapse;
   width: 100%;
 }
+.form-user #customers .box-container {
+  position: relative;
+}
+.form-user #customers .box-container p {
+  font-size: 1.2rem;
+  color: #4277FF;
+  font-size: 1.6rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.form-user #customers .content {
+  display: none;
+  position: absolute;
+  top: -8px;
+  width: 35rem;
+  background-color: #fff;
+  height: 60px;
+  z-index: 100;
+}
+.form-user #customers .content span {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.3rem;
+  display: inline-block;
+}
 .form-user #customers td,
 .form-user #customers th {
   border: 1px solid #FFF2E7;
@@ -1043,7 +1068,6 @@ body a {
   text-align: left;
   background-color: #FF9138;
   color: white;
-  width: 20rem;
 }
 
 .select .mx-5 {

@@ -1,7 +1,6 @@
 @extends('layout.Clone-Admin')
 @section('content')
     <section id="content">
-        {{-- @include('admin.header') --}}
     @section('header')
         <nav>
             <div class="header-right">
@@ -32,83 +31,92 @@
             </div>
         </nav>
     @endsection
-
-
-
     <main>
-
         <div class="select">
-
-
-
-
         </div>
         <div class="data">
             <div class="content-data">
                 <div class="head">
                     <div class="form-user">
                         <h2 class="mb-5 fs-1" style="color: #FF9138">Thông tin thiết bị</h2>
-                        <form class="row gx-5 gy-3">
-
-
+                        <form class="row gx-5 gy-3"method="POST" action="{{ route('device.update', $getData->id) }}">
 
                             @csrf
-
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label fs-3">Mã thiết bị</label>
-                                <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4">
+                                <input type="text" value="{{ $getData->devicecode }}"
+                                    class="form-control py-2 fs-3  fs-3" id="inputEmail4"name="devicecode">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Loại thiết bị</label>
-                                <select class="form-select py-2 fs-3" aria-label="Default select example">
-                                    <option selected>Kiosk</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select py-2 fs-3 opacity-75" aria-label="Default select example"
+                                    name="devicetype">
+                                    <option>Chọn loại thiết bị </option>
+                                    <option value="Kiosk" {{ $getData->devicetype == 'Kiosk' ? 'selected' : '' }}>Kiosk
+                                    </option>
+                                    <option
+                                        value="Display counter"{{ $getData->devicetype == 'Display counter' ? 'selected' : '' }}>
+                                        Display counter</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Tên thiết bị</label>
-                                <input type="text" class="form-control py-2 fs-3" id="inputPassword4">
+                                <input type="text" value="{{ $getData->devicename }}"class="form-control py-2 fs-3"
+                                    id="inputPassword4"name="devicename">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Tên đăng nhập</label>
-                                @php
-                                    
-                                @endphp
-                                <input type="text" class="form-control py-2 fs-3" id="inputPassword4">
+                                <input type="text" value="{{ $getData->username }}"class="form-control py-2 fs-3"
+                                    id="inputPassword4"name="username">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Địa chỉ IP</label>
-                                <input type="text" class="form-control py-2 fs-3" id="inputPassword4">
+                                <input type="text"value="{{ $getData->addressip }}"class="form-control py-2 fs-3"
+                                    id="inputPassword4" name="addressip">
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Mật khẩu</label>
-                                <input type="text" class="form-control py-2 fs-3" id="inputPassword4">
+                                <input type="text"value="{{ $getData->password }}" class="form-control py-2 fs-3"
+                                    id="inputPassword4"name="password">
                             </div>
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label fs-3">Dịch vụ sử dụng</label>
-                                <input type="text" name="noidung" class="form-control py-2 fs-3" value=>
+
+                                @php
+                                    $device = $getData->deviceuse;
+                                    $deviceuse = $getData->deviceuse = explode(',', $device);
+                                    // dd($deviceuse);
+                                @endphp
+                                <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
+                                    aria-label="Default select example" name="deviceuse[]" multiple>
+                                    @foreach ($deviceuse as $item)
+                                        {
+                                        <option selected class="fs-1" value="{{ $getData->id }}">
+                                            {{ $item }}
+                                        </option>
+                                        }
+                                    @endforeach
+                                </select>
 
                             </div>
 
                             <div class="col-md-3">
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <div class="btn mt-2">
             <div class="btn_close">
-                <button class="fs-4"><a style="color: #FF9138" href="{{ route('admin.login') }}">Hủy bỏ</a></button>
+                <button class="fs-4"><a style="color: #FF9138" href="#">Hủy bỏ</a></button>
             </div>
             <div class="btn_login">
                 <button type="submit">Cập nhật</button>
             </div>
         </div>
-        {{-- <a style="color: #FF9138" href="{{route('device.edit',$id)}}">Hủy bỏ</a> --}}
+        @method('PUT');
+        </form>
     </main>
 
 </section>

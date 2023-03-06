@@ -42,9 +42,14 @@
     <script src="{{ asset('assets/select2/select2/dist/js/select2.min.js') }}"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('#js-select2').select2();
-        });
+        // $(document).ready(function() {
+        //     $('#js-select2').select2();
+        // });
+
+        $("#js-select2").select2({
+            tags: true,
+            tokenSeparators: [',']
+        })
     </script>
 </body>
 

@@ -21,28 +21,16 @@
                             <h3>Lê Quỳnh Ái Vân</h3>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
             <div class="title">
                 <h2>Quản lý thiết bị</h2>
             </div>
         </nav>
     @endsection
-
-    <style>
-
-    </style>
-
     <main>
-
         <div class="select">
-
         </div>
-
-
         <div class="data">
             <div class="content-data"style="height:50rem">
                 <div class="head">
@@ -52,44 +40,38 @@
 
                             <div class="detail col-6">
                                 <div class="col-3">
-                                    <p>Mã thiết bị</p>
-                                    <p>Tên thiết bị</p>
-                                    <p>Địa chỉ</p>
-
-
+                                    <strong class="d-block fs-4 mb-4">Mã thiết bị:</strong>
+                                    <strong class="d-block fs-4 mb-4">Tên thiết bị:</strong>
+                                    <strong class="d-block fs-4 mb-4">Địa chỉ IP:</strong>
                                 </div>
-
                                 <div class="col-3">
-                                    <p>KIO_01</p>
-                                    <p>Kiosk</p>
-                                    <p>128.172.308</p>
+
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->devicecode }}</p>
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->devicename }}</p>
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->addressip }}</p>
 
                                 </div>
                             </div>
                             <div class="detail col-6">
                                 <div class="col-3">
-                                    <p>Loại thiết bị</p>
-                                    <p>Tên đăng nhập</p>
-                                    <p>Mật khẩu</p>
+                                    <strong class="d-block fs-4 mb-4">Loại thiết bị:</strong>
+                                    <strong class="d-block fs-4 mb-4">Tên đăng nhập:</strong>
+                                    <strong class="d-block fs-4 mb-4">Mật khẩu:</strong>
 
                                 </div>
 
                                 <div class="col-3">
-                                    <p>Kiosk</p>
-                                    <p>Linhkyo001</p>
-                                    <p>CMS</p>
-
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->devicetype }}</p>
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->username }}</p>
+                                    <p class="d-block fs-4 mb-4">{{ $devishow->password }}</p>
                                 </div>
                             </div>
                         </div>
 
 
                         <div class="col-12">
-                            <p class="fs-4">Dịch vụ sử dụng :</p>
-                            <p class="fs-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci quod
-                                quibusdam quasi
-
-                            </p>
+                            <strong class="d-block fs-4 mb-4">Dịch vụ sử dụng:</strong>
+                            <p class="d-block fs-4 mb-4">{{ $devishow->deviceuse }}</p>
                         </div>
 
                     </div>
@@ -98,7 +80,6 @@
 
 
             <div class="content-add">
-
                 <div class="add">
                     <a href="{{ route('device.create') }}">
                         <div class="btn-add">

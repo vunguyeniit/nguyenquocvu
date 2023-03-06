@@ -22,4 +22,8 @@ class ModelDevice extends Model
 
     ];
     // public $timestamps = false;
+    public function tags()
+    {
+        return $this->belongsToMany(TagName::class, 'tagid', 'user_id', 'tag_id')->withTimestamps();
+    }
 }

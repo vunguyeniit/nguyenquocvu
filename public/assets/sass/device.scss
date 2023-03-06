@@ -26,6 +26,37 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+
+    .box-container {
+      position: relative;
+
+      p {
+        font-size: 1.2rem;
+        color: #4277FF;
+        font-size: 1.6rem;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    .content {
+      display: none;
+      position: absolute;
+      top: -8px;
+      width: 35rem;
+      background-color: #fff;
+      height: 60px;
+      z-index: 100;
+
+      span {
+        cursor: pointer;
+        padding: 1rem;
+        font-size: 1.3rem;
+        display: inline-block;
+      }
+
+
+    }
   }
 
 
@@ -52,7 +83,7 @@ body {
     text-align: left;
     background-color: #FF9138;
     color: white;
-    width: 20rem;
+    // width: 20rem;
   }
 
 }

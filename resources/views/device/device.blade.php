@@ -1,8 +1,6 @@
 @extends('layout.Clone-Admin')
 
-<?php
-use Illuminate\Support\Str;
-?>
+{{--  --}}
 
 @section('content')
     <section id="content">
@@ -35,7 +33,6 @@ use Illuminate\Support\Str;
             </div>
         </nav>
     @endsection
-
 
 
     <main>
@@ -85,36 +82,39 @@ use Illuminate\Support\Str;
                                 <th></th>
                                 <th></th>
                             </tr>
-                            <tr>
-                                @foreach ($device as $item)
+                            @foreach ($device as $item)
+                                <tr>
+
                                     <td>{{ $item->devicecode }}</td>
                                     <td>{{ $item->devicename }}</td>
                                     <td>{{ $item->addressip }}</td>
                                     @if ($item->activestatus == 0)
-                                        {
-                                        <td>Ngưng hoạt động</td>
-                                        }
-                                    @else{
-                                        <td>Hoạt động</td>
-                                        }
+                                        <td> <i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng hoạt động</td>
+                                    @else
+                                        <td><i class="fa-solid fa-circle text-success fs-6"> </i> Hoạt động</td>
                                     @endif
 
                                     @if ($item->connectionstatus == 0)
-                                        {
-                                        <td>Mất kết nối</td>
-                                        }
-                                    @else{
-                                        <td>Kết nối</td>
-                                        }
+                                        <td> <i class="fa-solid fa-circle text-danger fs-6"></i> Mất kết nối</td>
+                                    @else
+                                        <td><i class="fa-solid fa-circle text-success fs-6"></i> Kết nối</td>
                                     @endif
-                                    <td>{{ Str::words($item->deviceuse, 3, '... <a href="http://">Cập nhật</a>') }}</td>
-                                    {{-- <td>{{ Str::limit($item->deviceuse, 10, '... Xem chi tiết') }}</td> --}}
-                                    {{-- Str::words('Perfectly balanced, as all things should be.', 3, ' >>>'); --}}
-                                    <td><a href="http://">Chi tiết</a></td>
-                                    <td><a href="http://">Cập nhật</a></td>
-                                @endforeach
-                            </tr>
 
+                                    <td>
+                                        <div class="box-container">
+                                            {{ Str::limit($item->deviceuse, 18, '...') }}
+                                            <div class="content">
+                                                <span>{{ $item->deviceuse }}</span>
+                                            </div>
+                                            <p class="btn-detail">Xem thêm</p>
+                                        </div>
+                                    </td>
+                                    <td><a href="{{ route('device.show', $item->id) }}">Chi tiết</a></td>
+                                    <td><a href="{{ route('device.edit', $item->id) }}">Cập
+                                            nhật</a></td>
+
+                                </tr>
+                            @endforeach
                         </table>
 
 
