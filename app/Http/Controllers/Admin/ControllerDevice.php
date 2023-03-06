@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\AdminModel\ModelDevice;
 use App\Models\AdminModel\TagId;
 use App\Models\AdminModel\TagName;
-use Illuminate\Cache\TagSet;
+
 
 class ControllerDevice extends Controller
 {
@@ -15,6 +15,7 @@ class ControllerDevice extends Controller
     public function index()
     {
         $device = ModelDevice::all();
+
         return view('device.device', compact('device'));
     }
 
@@ -53,7 +54,7 @@ class ControllerDevice extends Controller
             $tagId[] = $tagInstance->id;
         }
 
-        $device->tags()->attach($tagId);
+        $device->tags1()->attach($tagId);
     }
 
 
@@ -61,22 +62,50 @@ class ControllerDevice extends Controller
     public function show($id)
     {
         $devishow = ModelDevice::find($id);
-        // dd($devishow);
+
         return view('device.detail', compact('devishow'));
     }
+
+
+
 
     public function edit($id)
     {
         $getData =  ModelDevice::find($id);
-        return view('device.edit', compact('getData'));
+
+        foreach ($getData->tags1 as $role) {
+
+            $name[] = $role;
+        }
+
+        return view('device.edit', compact('getData', 'name'));
     }
 
 
     public function update(Request $request, $id)
     {
         $updateData = ModelDevice::find($id);
-        dd($updateData);
-        $updateData->update($request->all());
+
+        $updateData->update([
+            'devicecode' => $request->devicecode,
+            'devicename' => $request->devicename,
+            'devicetype' => $request->devicetype,
+            'username' => $request->username,
+            'addressip' => $request->addressip,
+            'password' => $request->password,
+        ]);
+        foreach ($request->tags as $tagitem) {
+
+            $tagInstance = TagName::firstOrCreate(
+                [
+                    'devicename' => $tagitem
+                ]
+            );
+
+            $tagId[] = $tagInstance->id;
+        }
+
+        $updateData->tags1()->sync($tagId);;
     }
 
 

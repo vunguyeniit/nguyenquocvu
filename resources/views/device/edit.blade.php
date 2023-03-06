@@ -88,14 +88,12 @@
                                     // dd($deviceuse);
                                 @endphp
                                 <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
-                                    aria-label="Default select example" name="deviceuse[]" multiple>
-                                    @foreach ($deviceuse as $item)
-                                        {
-                                        <option selected class="fs-1" value="{{ $getData->id }}">
-                                            {{ $item }}
+                                    aria-label="Default select example" name="tags[]" multiple>
+                                    @foreach ($name as $tagItem)
+                                        <option value="{{ $tagItem->devicename }}" selected>{{ $tagItem->devicename }}
                                         </option>
-                                        }
                                     @endforeach
+
                                 </select>
 
                             </div>

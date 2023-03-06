@@ -4,12 +4,14 @@ namespace App\Models\AdminModel;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class ModelDevice extends Model
 {
     use HasFactory;
     protected $table = "device";
     protected $fillable = [
+        'id',
         'devicecode',
         'devicename',
         'devicetype',
@@ -21,8 +23,8 @@ class ModelDevice extends Model
         'connection status'
 
     ];
-    // public $timestamps = false;
-    public function tags()
+
+    public function tags1()
     {
         return $this->belongsToMany(TagName::class, 'tagid', 'user_id', 'tag_id')->withTimestamps();
     }

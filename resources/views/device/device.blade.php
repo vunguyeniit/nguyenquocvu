@@ -102,9 +102,15 @@
 
                                     <td>
                                         <div class="box-container">
-                                            {{ Str::limit($item->deviceuse, 18, '...') }}
+                                            {{-- {{ Str::limit($item, 18, '...') }} --}}
+
                                             <div class="content">
-                                                <span>{{ $item->deviceuse }}</span>
+
+                                                @foreach ($item->tags1 as $tagitem)
+                                                    <span>{{ $tagitem->devicename . ' ,' }}</span>
+                                                @endforeach
+
+
                                             </div>
                                             <p class="btn-detail">Xem thêm</p>
                                         </div>
