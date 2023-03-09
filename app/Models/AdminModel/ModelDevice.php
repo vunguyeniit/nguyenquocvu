@@ -19,8 +19,8 @@ class ModelDevice extends Model
         'addressip',
         'password',
         'deviceuse',
-        'active status',
-        'connection status'
+        'activestatus',
+        'connectionstatus'
 
     ];
 

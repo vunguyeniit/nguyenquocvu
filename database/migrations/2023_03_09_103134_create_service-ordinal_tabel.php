@@ -13,16 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('device', function (Blueprint $table) {
+        Schema::create('ordinal', function (Blueprint $table) {
             $table->id();
-            $table->string('devicecode');
-            $table->string('devicename');
-            $table->string('devicetype');
-            $table->string('username');
-            $table->string('addressip');
-            $table->string('password');
-            $table->boolean('activestatus')->default(0);
-            $table->boolean('connectionstatus')->default(0);
+            $table->string('numerical_order');
+            $table->string('service_id');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('device');
+        Schema::dropIfExists('ordinal');
     }
 };

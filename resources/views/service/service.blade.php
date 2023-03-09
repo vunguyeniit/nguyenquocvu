@@ -74,10 +74,9 @@
                             <tr>
                                 <th>Mã thiết bị</th>
                                 <th>Tên thiết bị</th>
-                                <th>Địa chỉ IP</th>
+                                <th>Mô tả</th>
                                 <th>Trạng thái hoạt động</th>
-                                <th>Trạng thái kết nối</th>
-                                <th>Dich vụ sử dụng</th>
+    
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -86,8 +85,7 @@
                                 <td>Maria Anders</td>
                                 <td>Germany</td>
                                 <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                   
                                 <td><a href="http://">Chi tiết</a></td>
                                 <td><a href="http://">Cập nhật</a></td>
 
@@ -103,7 +101,7 @@
             <div class="content-add">
 
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('service.create') }}">
                         <div class="btn-add">
                             <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
                             <span>Thêm thiết bị</span>

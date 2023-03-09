@@ -32,10 +32,10 @@
     {{-- CDN Fontawesome --}}
     <script src="https://kit.fontawesome.com/ef6c647e92.js" crossorigin="anonymous"></script>
     {{-- CDN Ckeditor --}}
-    <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+    {{-- <script src="//cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('ckeditor');
-    </script>
+    </script> --}}
     {{-- CDN Jquery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     {{-- CDN select2 --}}
@@ -49,7 +49,46 @@
         $("#js-select2").select2({
             tags: true,
             tokenSeparators: [',']
-        })
+        });
+    </script>
+
+    <script type="text/javascript">
+        $("#status-device").on('change', function() {
+            var statusid = $(this).val();
+            console.log(statusid);
+            $.ajax({
+                url: "{{ route('device.index') }}",
+                type: "GET",
+                data: {
+                    'statusid': statusid
+                },
+                success: function(data) {
+                    var sta = data.devicestatus;
+                    console.log(sta);
+                    var html = '';
+                    if (sta.length > 0) {
+                        for (let i = 0; i < sta.length; i++) {
+                            html +=
+                         '<tr>\
+                            <td>' + sta[i]['devicecode'] +'</td>\
+                            <td>' + sta[i]['devicename'] +'</td>\
+                            <td>' + sta[i]['addressip'] +'</td>\
+                            </tr>';
+                         
+                        }
+                    } else {
+                        html +=
+                            '<tr>\
+                                                                                                                                                                        <td>Khong Có san pham</td>\
+                                                                                                                                                                        </tr>';
+                    }
+                    $("#tbody")
+
+                        .html(html);
+
+                }
+            })
+        });
     </script>
 </body>
 

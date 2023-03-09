@@ -7,14 +7,29 @@ use Illuminate\Http\Request;
 use App\Models\AdminModel\ModelDevice;
 use App\Models\AdminModel\TagId;
 use App\Models\AdminModel\TagName;
-
+use DB;
 
 class ControllerDevice extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $device = ModelDevice::all();
+        // $device = ModelDevice::all();
+        $query = ModelDevice::query();
+
+        if ($request->ajax()) {
+
+            if (($request->statusid) == "") {
+                $devicestatus = $query->get();
+            } else {
+
+                $devicestatus = $query->where(['connectionstatus' => $request->statusid])->get();
+            }
+
+            return response()->json(['devicestatus' => $devicestatus]);
+        }
+        $device = $query->get();
+
 
         return view('device.device', compact('device'));
     }
@@ -110,6 +125,11 @@ class ControllerDevice extends Controller
 
 
     public function destroy($id)
+    {
+    }
+
+
+    public function HandleStatus(Request $request)
     {
     }
 }

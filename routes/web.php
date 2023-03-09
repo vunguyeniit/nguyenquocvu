@@ -38,4 +38,5 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/role', ControllerRole::class);
     Route::resource('/account', ControllerAccount::class);
     Route::resource('/diary', ControllerDiary::class);
+    // Route::get('/status', [ControllerDevice::class, 'HandleStatus'])->name('status');
 });
