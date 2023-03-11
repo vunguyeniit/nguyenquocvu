@@ -15,4 +15,8 @@ class TagName extends Model
         'devicename'
 
     ];
+    public function tagdevice()
+    {
+        return $this->belongsToMany(ModelDevice::class, 'tagid', 'tag_id', 'user_id')->withTimestamps();
+    }
 }

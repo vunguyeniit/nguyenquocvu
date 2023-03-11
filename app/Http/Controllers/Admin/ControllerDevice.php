@@ -6,17 +6,36 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AdminModel\ModelDevice;
 use App\Models\AdminModel\TagId;
+use Illuminate\Support\Facades\Session;
 use App\Models\AdminModel\TagName;
 use DB;
+use Illuminate\Cache\TagSet;
+use Illuminate\Database\Eloquent\Model;
 
 class ControllerDevice extends Controller
 {
 
     public function index(Request $request)
     {
-        // $device = ModelDevice::all();
+
+
         $query = ModelDevice::query();
 
+        $device = $query->get();
+        //  $tagname = TagName::find($id);
+
+        foreach ($device as $item) {
+            $tag[] = $item->tags1;
+            // $id[] = $tag->id;
+            // foreach ($item->tags1 as $i) {
+            //     $name[] = $i;
+            // }
+        }
+        // dd($tag);
+        // if ($name == $tag->id) {
+        //     $tag[] = $item->tags1;
+        // }
+        // dd($tag);
         if ($request->ajax()) {
 
             if (($request->statusid) == "") {
@@ -25,11 +44,18 @@ class ControllerDevice extends Controller
 
                 $devicestatus = $query->where(['connectionstatus' => $request->statusid])->get();
             }
-
-            return response()->json(['devicestatus' => $devicestatus]);
+            return response()->json([
+                'devicestatus' => $devicestatus,
+                'device' => $tag,
+            ]);
         }
-        $device = $query->get();
 
+        if ($keyword = $request->search) {
+            $device = ModelDevice::where('devicename', 'like', '%' . $keyword . '%')
+                ->orWhere('devicecode', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('addressip', 'LIKE', '%' . $keyword . '%')
+                ->get();
+        }
 
         return view('device.device', compact('device'));
     }
@@ -125,11 +151,6 @@ class ControllerDevice extends Controller
 
 
     public function destroy($id)
-    {
-    }
-
-
-    public function HandleStatus(Request $request)
     {
     }
 }

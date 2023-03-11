@@ -55,8 +55,10 @@
                                 <label class="form-check-label"style="margin-right:5rem" for="flexCheckDefault">
                                     Mã dịch vụ
                                 </label>
-                                <p class="fs-4 d-inline">201</p>
-
+                         
+                                    
+                            
+                                <p class="fs-4 d-inline">{{$ordinal->servicecode}}</p>
 
                             </div>
                             <div class="form-check mb-5 p-0">
@@ -64,7 +66,7 @@
                                 <label style="margin-right:4rem" class="form-check-label" for="flexCheckChecked">
                                     Tên dịch vụ
                                 </label>
-                                <p class="fs-4 d-inline">Khám tim mạch</p>
+                                <p class="fs-4 d-inline">{{$ordinal->servicename}}</p>
 
                             </div>
 
@@ -72,8 +74,8 @@
                                 <label style="margin-right:7rem" class="form-check-label" for="flexCheckChecked">
                                     Mô tả
                                 </label>
-                                <p class="fs-4 d-inline">Chuyên các bệnh tâm lí về</p>
-
+                                <p class="fs-4 d-inline">{{$ordinal->description}}</p>
+                              
                             </div>
 
                         </div>
@@ -160,13 +162,25 @@
                     <div class="form-user">
                         <table id="customers">
                             <tr>
-                                <th>Mã thiết bị</th>
-                                <th>Tên thiết bị</th>
+                              
+                                    
+                            
+                                <th>Số thứ tự</th>
+                                <th>Trạng thái</th>
                             </tr>
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
+                                @foreach ($name as $item)
+                                <td>{{$item->numerical_order}}</td>
+                               @if ($item->status==0)
+                               <td><i class="fa-solid fa-circle text-success fs-6"></i> Đã hoàn thành</td>
+                               @elseif($item->status==1)
+                               <td><i class="fa-solid fa-circle text-primary fs-6"></i> Đang thực hiện</td>
+                               @else
+                               <td><i class="fa-solid fa-circle text-secondary fs-6"></i> Vắng</td>
+                               @endif
+                                <td></td>
                             </tr>
+                            @endforeach
                         </table>
                     </div>
                 </div>

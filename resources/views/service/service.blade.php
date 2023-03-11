@@ -40,10 +40,10 @@
             <form action="" class="row">
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Trạng thái hoạt động</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="2">Hoạt động</option>
-                        <option value="3">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example"id='status-service'>
+                        <option value="" selected>Tất cả</option>
+                        <option value="0">Hoạt động</option>
+                        <option value="1">Ngưng hoạt động</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -71,26 +71,33 @@
                     <div class="form-user">
 
                         <table id="customers">
+                          
+                                
+
                             <tr>
-                                <th>Mã thiết bị</th>
-                                <th>Tên thiết bị</th>
+                                <th>Mã dịch vụ</th>
+                                <th>Tên dịch vụ</th>
                                 <th>Mô tả</th>
                                 <th>Trạng thái hoạt động</th>
-    
                                 <th></th>
                                 <th></th>
                             </tr>
+                            <tbody id="tbody-service">
+                            @foreach ($service as $item)
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                   
-                                <td><a href="http://">Chi tiết</a></td>
-                                <td><a href="http://">Cập nhật</a></td>
-
+                                <td>{{$item->servicecode}}</td>
+                                <td>{{$item->servicename}}</td>
+                                <td>{{$item->description}}</td>
+                                @if ($item->status==0)
+                                <td><i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động</td>
+                                @else
+                                <td><i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng Hoạt động</td>
+                                @endif
+                                <td><a href="{{route('service.show',$item->id)}}">Chi tiết</a></td>
+                                <td><a href="{{route('service.edit',$item->id)}}">Cập nhật</a></td>
                             </tr>
-
+                            @endforeach
+                        </tbody>
                         </table>
 
 

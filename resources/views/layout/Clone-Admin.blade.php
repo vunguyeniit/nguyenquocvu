@@ -51,45 +51,107 @@
             tokenSeparators: [',']
         });
     </script>
-
-    <script type="text/javascript">
-        $("#status-device").on('change', function() {
-            var statusid = $(this).val();
-            console.log(statusid);
-            $.ajax({
-                url: "{{ route('device.index') }}",
-                type: "GET",
-                data: {
-                    'statusid': statusid
-                },
-                success: function(data) {
-                    var sta = data.devicestatus;
-                    console.log(sta);
-                    var html = '';
-                    if (sta.length > 0) {
-                        for (let i = 0; i < sta.length; i++) {
-                            html +=
-                         '<tr>\
-                            <td>' + sta[i]['devicecode'] +'</td>\
-                            <td>' + sta[i]['devicename'] +'</td>\
-                            <td>' + sta[i]['addressip'] +'</td>\
-                            </tr>';
-                         
-                        }
-                    } else {
-                        html +=
-                            '<tr>\
-                                                                                                                                                                        <td>Khong Có san pham</td>\
-                                                                                                                                                                        </tr>';
-                    }
-                    $("#tbody")
-
-                        .html(html);
-
-                }
-            })
-        });
+ <script  type="text/javascript">
+    $("#status-device").on('change', function () {
+      var statusid = $(this).val();
+      console.log(statusid);
+      $.ajax({
+          url: "{{ route('device.index') }}",
+          type: "GET",
+          data: {
+              'statusid': statusid
+          },
+          success: function (data) {
+              var sta = data.devicestatus;
+              var man = data.device;
+     
+              console.log(man);
+              var html = '';
+              if (sta.length > 0) {
+                  for (let i = 0; i < sta.length; i++) {
+                 
+                    html +='<tr>'     
+                        html += '<td>'+ sta[i]['devicecode'] + '</td>'
+                        html +='<td>' + sta[i]['devicename'] + '</td>'
+                        html +='<td>' + sta[i]['addressip'] + '</td>'
+                        html +='<td>' + (sta[i]['activestatus'] == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng hoạt động') + '</td>'
+                        html +='<td>' + (sta[i]['connectionstatus'] == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Kết nối' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Mất kết nối') + '</td>'
+                        html += '<td>';
+                //    html += '<span>' + man.devicename+ '</span>';          
+                   html += '</td>';
+                 html +='</tr>';     
+                  }
+              } else {
+                  html +=
+                      '<tr>\                                                                                                                                                        <td>Khong Có san pham</td>\
+                                                                                                                                                                          </tr>';
+              }
+              $("#tbody")
+    
+                  .html(html);
+    
+          }
+      })
+    }); 
     </script>
+{{--  --}}
+
+<script  type="text/javascript">
+    $("#status-service").on('change', function () {
+      var statusid = $(this).val();
+      console.log(statusid);
+      $.ajax({
+          url: "{{ route('service.index') }}",
+          type: "GET",
+          data: {
+              'statusid': statusid
+          },
+          success: function (data) {
+              var sta = data.servicestatus;
+                console.log(sta);
+              var html = '';
+              if (sta.length > 0) {
+                    sta.forEach(element => {
+                        console
+                    html +='<tr>'     
+                        html += '<td>'+ element.servicecode + '</td>'
+                        html +='<td>' + element.servicename + '</td>'
+                        html +='<td>' + element.description+ '</td>'
+                        html +='<td>' + (element.status == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng hoạt động') + '</td>'
+                        let i = element.id;
+                        console.log(i);
+                        html += '<td>';
+                            html += '<a href="{{ route('service.show', ['service' => ':id']) }}">Chi tiết</a>'
+                                        .replace(':id', element.id);
+                    
+                            html += '</td>';
+
+                            html += '<td>';
+
+                            html += '<a href="{{ route('service.edit', ['service' => ':id']) }}">Cập nhật</a>'
+                                        .replace(':id', element.id);
+                            html += '</td>';
+                  
+                        html +='</tr>'     
+                
+                })
+              } else {
+                  html +=
+                      '<tr>\                                                                                                                                                        <td>Khong Có san pham</td>\
+                                                                                                                                                                          </tr>';
+              }
+              $("#tbody-service")
+    
+                  .html(html)
+    
+          }
+      })
+    }); 
+    </script>
+
+
+
+
 </body>
 
 </html>

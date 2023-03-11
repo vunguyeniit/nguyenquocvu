@@ -117,10 +117,10 @@
             <div class="content-add">
 
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
-                        <div class="btn-add">
+                    <a href="{{ route('nublevel.create') }}">
+                        <div class="btn-add" style="padding: 2rem 1.4rem">
                             <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                            <span>Thêm thiết bị</span>
+                            <span>Cấp số mới</span>
                         </div>
                     </a>
                 </div>

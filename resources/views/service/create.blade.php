@@ -43,22 +43,22 @@
                 <div class="head d-block">
                     <div class="form-user">
                         <h2 class="mb-5 fs-1" style="color: #FF9138">Thông tin thiết bị</h2>
-                        <form class="row gx-5 gy-3">
+                        <form class="row gx-5 gy-3" action="{{route('service.store')}}"method="POST">
                             @csrf
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label fs-3">Mã dịch vụ</label>
                                 <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4"
-                                    placeholder="Nhập mã thiết bị">
+                                    placeholder="Nhập mã thiết bị" name='servicecode'>
 
                                 <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label>
                                 <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4"
-                                    placeholder="Nhập mã thiết bị">
+                                    placeholder="Nhập mã thiết bị"name='servicename'>
 
                             </div>
                             <div class="col-md-6">
                                 <div class="col-md-3">
                                     <label for="inputPassword4" class="form-label fs-3 d-block ">Mô tả</label>
-                                    <textarea style=" resize: none;" id="w3review" name="w3review" rows="7" cols="92"> </textarea>
+                                    <textarea style=" resize: none; outline: none;font-size:2rem" id="w3review"  rows="5" cols="50"  name='description'> </textarea>
                                 </div>
                             </div>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="check-content">
                         <div class="check-input">
                             <div class="form-check mb-5">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" name="checkbox" id="flexCheckDefault">
                                 <label class="form-check-label me-5" for="flexCheckDefault">
                                     Tăng tự động từ
                                 </label>
@@ -104,7 +104,7 @@
                     <div class="col-md-3">
                         <p class="fs-4">* Là trường thông tin bắt buộc</p>
                     </div>
-                    </form>
+                 
                 </div>
             </div>
         </div>
@@ -116,6 +116,7 @@
                 <button type="submit">Thêm dịch vụ</button>
             </div>
         </div>
+    </form>
     </main>
 </section>
 @endsection

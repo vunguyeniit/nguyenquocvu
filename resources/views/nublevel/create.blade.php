@@ -50,9 +50,9 @@
                             {{-- <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label> --}}
                             <select class="form-select py-2 fs-3" aria-label="Default select example">
                                 <option selected>Chọn dịch vụ</option>
-                                <option value="2">Khám tim mạch</option>
-                                <option value="3">Khám sản phụ khoa</option>
-                                <option value="3">Khám răng hàm mặt</option>
+                                <option value="0">Khám tim mạch</option>
+                                <option value="1">Khám sản phụ khoa</option>
+                                <option value="2">Khám răng hàm mặt</option>
                                 <option value="3">Khám tai mũi họng</option>
                             </select>
                         </div>

@@ -38,32 +38,41 @@
     <main>
 
         <div class="select">
-            <form action="" class="row">
+            <form action="{{route('device.index')}}" method="GET"  class="row">
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Trạng thái hoạt động</label>
+                   
                     <select class="form-select py-2 fs-3" aria-label="Default select example">
-
                         <option selected>Tất cả</option>
                         <option value="1">Hoạt động</option>
                         <option value="2">Ngưng hoạt động</option>
                     </select>
+
                 </div>
                 <div class="col-md-3">
                     <label for="inputPassword4" class="form-label fs-3">Trạng thái kết nối</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example" id="status-device">
+                    {{-- <form action="{{route('device.index')}}" method="GET"> --}}
+                    <select name="status" class="form-select py-2 fs-3" aria-label="Default select example" id="status-device">
                         <option value="" selected>Tất cả</option>
                         {{-- <option selected>Tất cả</option> --}}
                         <option value="1">Mất Kết nối</option>
                         <option value="0">Kết nối</option>
 
                     </select>
+                    {{-- <button type="submit">Filter</button>
+                </form> --}}
                 </div>
                 <div class="col-md-4 mx-5">
                     <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
                     <div class="search">
-                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        {{-- <form action=> --}}
+                            @csrf
+                        <input type="text" class="form-control py-1 fs-2 "name="search" >
+                       
+                        <button style="border: none;background-color: #ddd9d9;" type="submit"><i  class="fa-solid fa-magnifying-glass"></i></button>
+                    {{-- </form> --}}
                     </div>
+
                 </div>
             </form>
         </div>
