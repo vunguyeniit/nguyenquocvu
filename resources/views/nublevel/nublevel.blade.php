@@ -94,9 +94,11 @@
                                 <th>Hạn sử dụng</th>
                                 <th>Trạng thái</th>
                                 <th>Nguồn cấp</th>
-                                <th>Nguồn cấp</th>
+                                <th></th>
                             </tr>
                             <tr>
+                           @foreach ($number as $item)
+                            
                                 <td>Alfreds Futterkiste</td>
                                 <td>Maria Anders</td>
                                 <td>Germany</td>
@@ -104,13 +106,10 @@
                                 <td>Germany</td>
                                 <td>Germany</td>
                                 <td>Germany</td>
-
+                                <td><a href="{{route('nublevel.show',$item->id)}}">Chi tiết</a></td>
                             </tr>
-
+                            @endforeach
                         </table>
-
-
-
                     </div>
                 </div>
             </div>

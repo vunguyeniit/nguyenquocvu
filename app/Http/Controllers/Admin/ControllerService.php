@@ -6,14 +6,17 @@ use App\Models\ServiceMode\Service;
 use App\Models\ServiceMode\Ordinal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
+
+
 
 class ControllerService extends Controller
 {
     public function index(Request $request)
     {
         $query = Service::query();
-        $service = $query->get();
+
+
+        $service = $query->paginate(2);
         if ($request->ajax()) {
 
             if (($request->statusid) == "") {
@@ -28,7 +31,8 @@ class ControllerService extends Controller
             ]);
         }
 
-        return view('service.service', compact('service'));
+
+        return view('service.service', compact('service',));
     }
 
     public function create()
@@ -37,9 +41,6 @@ class ControllerService extends Controller
     }
     public function store(Request $request)
     {
-
-
-
         if ($request->checkbox == true) {
             $service = Service::create([
                 'servicecode' => $request->servicecode,
@@ -55,9 +56,10 @@ class ControllerService extends Controller
                 }
                 $ran = rand(0, 2);
                 Ordinal::create([
-                    'numerical_order' =>  $id,
+                    'number' =>  $id,
                     'service_id' => $service->id,
                     'status' => $ran,
+                    'is_printed' => 0
                 ]);
             }
         } else {
@@ -66,18 +68,19 @@ class ControllerService extends Controller
     }
     public function show($id)
     {
-        $ordinal = Service::find($id);
-        foreach ($ordinal->getService as $role) {
 
-            $name[] = $role;
-        }
-        return view('service.detail', compact('name', 'ordinal'));
-        //
+        $ordinal = Service::find($id);
+
+        $paginate = $ordinal->getService()->paginate(2);
+
+
+
+        return view('service.detail', compact('ordinal', 'paginate'));
     }
 
     public function edit($id)
     {
-        //
+
 
         $service = Service::find($id);
 

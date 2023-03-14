@@ -43,17 +43,18 @@
             <div class="content-data">
                 <div class="head">
                     <div class="form-user text-center" style="height:60vh; padding:2rem 0">
+                    <form action="{{route('nublevel.store')}}" method="POST">
+                    @csrf
 
                         <h2 style="color: #FF9138; font-size:3rem">Cấp số mới</h2>
                         <p class="fs-2">Dịch vụ khách hàng lựa chọn</p>
                         <div class="col-md-5  d-inline-block">
-                            {{-- <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label> --}}
-                            <select class="form-select py-2 fs-3" aria-label="Default select example">
+                          
+                            <select name="select-service" class="form-select py-2 fs-3" aria-label="Default select example">
                                 <option selected>Chọn dịch vụ</option>
-                                <option value="0">Khám tim mạch</option>
-                                <option value="1">Khám sản phụ khoa</option>
-                                <option value="2">Khám răng hàm mặt</option>
-                                <option value="3">Khám tai mũi họng</option>
+                                @foreach ($nub as $item)
+                                <option value="{{$item->id}}">{{$item->servicename}}</option>     
+                                @endforeach
                             </select>
                         </div>
                         <div class="btn mt-5">
@@ -62,11 +63,50 @@
                                         href="http://127.0.0.1:8000/admin/login">Hủy</a></button>
                             </div>
                             <div class="btn_login">
-                                <button type="submit">In số</button>
+                                
+                              
+                                 <button type="submit">In số</button> 
+
                             </div>
                         </div>
+                    </form>
+                        {{-- model --}}
+
+                        @if(session('success'))
+                      
+                      
+                          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="false">
+                            <div class="modal-dialog modal-dialog-centered">
+                              <div class="modal-content">
+                                <div class="modal-header" style="border-bottom:none">
+                                  {{-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> --}}
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <h1>Số thứ tự được cấp</h1>
+                                  <h3>{{$number->number_print}}</h3>
+                                        <p>DV: {{$number->servicename}} (<b>tại quầy số 1</b>)</p> 
+                                </div>
+                                <div class="modal-footer d-block">
+                                    <span class="d-block">Thời gian cấp: {{$number->grant_time}}</span>
+                                    <span class="d-block">Hạn sử dụng: {{$number->expired}}</span>
+                                  </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+                 
+                  
+                          @endif
+                    
+    
+    
+
+                      
+                        {{-- endmodel --}}
 
                     </div>
+
                 </div>
             </div>
 

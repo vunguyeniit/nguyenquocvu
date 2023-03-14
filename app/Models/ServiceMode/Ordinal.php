@@ -10,8 +10,9 @@ class Ordinal extends Model
     use HasFactory;
     protected $table = 'ordinal';
     protected $fillable = [
-        'numerical_order',
+        'number',
         'service_id',
+        'is_printed',
         'status'
 
     ];

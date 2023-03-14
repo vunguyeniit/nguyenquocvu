@@ -99,9 +99,8 @@
                             @endforeach
                         </tbody>
                         </table>
-
-
-
+                      
+                      
                     </div>
                 </div>
             </div>
@@ -118,10 +117,13 @@
 
             </div>
         </div>
+        <div class="pagination">
+           
+            {{ $service->links()}}
+ 
+         </div>
         </div>
-        {{-- <div class="pagination">
-
-        </div> --}}
+        
     </main>
 </section>
 @endsection

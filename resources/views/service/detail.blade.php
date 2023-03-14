@@ -39,7 +39,7 @@
     <main>
 
 
-        <div class="data">
+        <div class="data" style="grid-gap: 0px">
 
             <div class="content-data"style="flex-basis: 140px">
                 <div class="head d-block">
@@ -162,15 +162,12 @@
                     <div class="form-user">
                         <table id="customers">
                             <tr>
-                              
-                                    
-                            
                                 <th>Số thứ tự</th>
                                 <th>Trạng thái</th>
                             </tr>
                             <tr>
-                                @foreach ($name as $item)
-                                <td>{{$item->numerical_order}}</td>
+                                @foreach ($paginate as $item)
+                                <td>{{$item->number}}</td>
                                @if ($item->status==0)
                                <td><i class="fa-solid fa-circle text-success fs-6"></i> Đã hoàn thành</td>
                                @elseif($item->status==1)
@@ -182,6 +179,9 @@
                             </tr>
                             @endforeach
                         </table>
+                   
+                            {{ $paginate->links()}}
+                      
                     </div>
                 </div>
             </div>
@@ -207,35 +207,9 @@
                     </a>
                 </div>
             </div>
-
-
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
-        {{-- <div class="pagination">
-
-        </div> --}}
     </main>
+    
 </section>
 @endsection

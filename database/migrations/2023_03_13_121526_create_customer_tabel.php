@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ordinal', function (Blueprint $table) {
+        Schema::create('customer', function (Blueprint $table) {
             $table->id();
-            $table->string('numerical_order');
-            $table->string('service_id');
-            $table->integer('status')->default(0);
+            $table->string('fullname');
+            $table->string('phone');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordinal');
+        Schema::dropIfExists('customer');
     }
 };
