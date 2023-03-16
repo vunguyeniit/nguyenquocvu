@@ -1058,6 +1058,34 @@ main .content-data .head h3 {
   margin: 1.2rem 0;
 }
 
+.input-group-text {
+  font-size: 2rem !important;
+  color: #FF9138 !important;
+}
+
+.datepicker-days {
+  font-size: 1.4rem !important;
+}
+.datepicker-days .table-condensed tbody,
+.datepicker-days .table-condensed td,
+.datepicker-days .table-condensed tfoot,
+.datepicker-days .table-condensed th,
+.datepicker-days .table-condensed thead,
+.datepicker-days .table-condensed tr {
+  padding: 1.4rem;
+}
+.datepicker-days tr:last-child {
+  display: none;
+}
+
+.datepicker table tr td.today,
+.datepicker table tr td.today.disabled,
+.datepicker table tr td.today.disabled:hover,
+.datepicker table tr td.today:hover {
+  background-image: none !important;
+  background-color: none !important;
+}
+
 body a {
   text-decoration: none;
 }

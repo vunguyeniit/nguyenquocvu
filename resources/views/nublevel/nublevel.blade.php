@@ -39,10 +39,11 @@
             <form action="" class="row">
                 <div class="col-md-2">
                     <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="2">Hoạt động</option>
-                        <option value="3">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example" id="servicename">
+                        <option value="" selected>Tất cả</option>
+                        @foreach ($service as $item)
+                        <option value="{{$item->id}}">{{$item->servicename}}</option>
+                       @endforeach
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -63,12 +64,30 @@
                 </div>
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                    <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
+                    <div class="input-group date" id="datepicker">
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            </span>
+                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                
+                        
+                    </div>
                 </div>
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3" style=" visibility: hidden;">Chọn thời
                         gian</label>
-                    <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
+                        <div class="input-group date" id="datepicker">
+                            <span class="input-group-append">
+                                <span class="input-group-text bg-light d-block">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                </span>
+                             <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                    
+                            
+                        </div>
                 </div>
                 <div class="col-md-3"style="width:21.2%">
                     <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
@@ -96,19 +115,21 @@
                                 <th>Nguồn cấp</th>
                                 <th></th>
                             </tr>
+                            <tbody id='tbody-nublevel'>
                             <tr>
                            @foreach ($number as $item)
                             
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                                <td>{{$item->number_print}}</td>
+                                <td>{{$item->fullname}}</td>
+                                <td>{{$item->servicename}}</td>
+                                <td>{{$item->grant_time}}</td>
+                                <td>{{$item->expired}}</td>
                                 <td>Germany</td>
                                 <td>Germany</td>
                                 <td><a href="{{route('nublevel.show',$item->id)}}">Chi tiết</a></td>
                             </tr>
                             @endforeach
+                        </tbody>
                         </table>
                     </div>
                 </div>

@@ -56,21 +56,21 @@
                                     chức năng *</label>
                             </div>
                         </div>
-                        <form class="row gx-5 gy-3">
+                        <form class="row gx-5 gy-3" action="{{route('role.store')}}" method="POST">
 
                             @csrf
 
                             <div class="col-md-6">
                                 {{-- <label for="inputEmail4" class="form-label fs-3">Thông tin vai trò</label> --}}
                                 <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4"
-                                    placeholder="Nhập mã thiết bị">
+                                    placeholder="Nhập mã thiết bị"name="rolename">
 
                                 <label for="inputPassword4"
                                     class="form-label fs-3 d-block mt-4 "style="font-weight: 600;">Mô
                                     tả</label>
                                 <textarea style=" resize: none;ouline:none;outline: none;
                                 border: 1.5px solid #D4D4D7;"
-                                    id="w3review" name="w3review" rows="7" cols="92"> </textarea>
+                                    id="w3review" name="description" rows="7" cols="92"> </textarea>
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
 
                             </div>
@@ -80,10 +80,10 @@
 
                                 <div class="check-content">
                                     <div class="check-input">
-                                        <h3 class="pb-3" style="color: #FF9138">Nhóm chức năng A</h3>
+                                        <h3 class="pb-3 fs-2" style="color: #FF9138">Nhóm chức năng A</h3>
                                         <div class="form-check mb-4">
 
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" name="checkbox_a" type="checkbox" 
                                                 id="flexCheckDefault">
 
                                             <label class="form-check-label " for="flexCheckDefault">
@@ -92,7 +92,7 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" name="checkbox_a" type="checkbox" 
                                                 id="flexCheckChecked">
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
@@ -101,7 +101,7 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox" name="checkbox_a"
                                                 id="flexCheckChecked">
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
@@ -110,7 +110,7 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox"name="checkbox_a" 
                                                 id="flexCheckChecked">
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 Chức năng z
@@ -123,19 +123,19 @@
 
 
 
-                                <h3 class="pb-3 pt-5" style="color: #FF9138">Nhóm chức năng B</h3>
+                                <h3 class="pb-3 pt-5 fs-2" style="color: #FF9138">Nhóm chức năng B</h3>
                                 <div class="check-content">
                                     <div class="check-input">
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox" name="checkbox_b"
                                                 id="flexCheckDefault">
-                                            <label class="form-check-label " for="flexCheckDefault">
+                                            <label class="form-check-label " for="flexCheckDefault" >
                                                 Tất cả
                                             </label>
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
                                                 id="flexCheckChecked">
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
@@ -144,7 +144,7 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
                                                 id="flexCheckChecked">
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
@@ -153,7 +153,7 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
                                                 id="flexCheckChecked">
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 Chức năng z
@@ -165,11 +165,7 @@
                                 </div>
 
                             </div>
-                    </div>
-
-
-
-                    </form>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -182,6 +178,7 @@
                 <button type="submit">Thêm</button>
             </div>
         </div>
+    </form>
     </main>
 </section>
 @endsection

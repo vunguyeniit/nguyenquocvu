@@ -82,11 +82,11 @@
                             <div class="col-md-12">
                                 <label for="inputPassword4" class="form-label fs-3">Dịch vụ sử dụng</label>
 
-                                @php
+                                {{-- @php
                                     $device = $getData->deviceuse;
                                     $deviceuse = $getData->deviceuse = explode(',', $device);
                                     // dd($deviceuse);
-                                @endphp
+                                @endphp --}}
                                 <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
                                     aria-label="Default select example" name="tags[]" multiple>
                                     @foreach ($name as $tagItem)

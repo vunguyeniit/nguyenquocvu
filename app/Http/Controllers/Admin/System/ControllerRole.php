@@ -3,82 +3,88 @@
 namespace App\Http\Controllers\Admin\System;
 
 use App\Http\Controllers\Controller;
+use App\Models\System\role;
 use Illuminate\Http\Request;
 
 class ControllerRole extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
+
     {
-        return view('system.role.role');
+        $role = role::all();
+        return view('system.role.role', compact('role'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         return view('system.role.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        if ($key = $request->checkbox_a == true) {
+            //Nhóm Chức năng A
+            $key = 0;
+        } else if ($key = $request->checkbox_b == true) {
+            //Nhóm Chức năng B
+            $key = 1;
+        }
+        role::create([
+            'rolename' => $request->rolename,
+            'member' => 6,
+            'description' => $request->description,
+            'permission' => $key,
+
+
+        ]);
+        return redirect()->route('role.create');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
-        return view('system.role.edit');
+        $role = role::find($id);
+        return view('system.role.edit', compact('role'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
+        $role =  role::find($id);
+        if ($key = $request->checkbox_a == true) {
+            //Nhóm Chức năng A
+            $key = 0;
+        } else if ($key = $request->checkbox_b == true) {
+            //Nhóm Chức năng B
+            $key = 1;
+        }
+
+        $role->update([
+            'rolename' => $request->rolename,
+            'member' => 6,
+            'description' => $request->description,
+            'permission' => $key,
+        ]);
+
+
+
+
+
+        return redirect()->route('role.create');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

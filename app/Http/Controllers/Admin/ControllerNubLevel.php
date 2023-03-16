@@ -14,10 +14,55 @@ use DB;
 
 class ControllerNubLevel extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $number = Number_Print::all();
-        return view('nublevel.nublevel', compact('number'));
+        $number =  DB::table('number_print')
+            ->join('ordinal', 'ordinal.service_id', '=', 'number_print.id_print')
+            ->join('service', 'service.id', '=', 'ordinal.service_id')
+            ->join('customer', 'customer.id', '=', 'number_print.user_id')
+            ->where('ordinal.is_printed', 1)
+            ->select(
+                'number_print.number_print',
+                'customer.fullname',
+                'service.servicename',
+                'number_print.grant_time',
+                'number_print.expired',
+                'number_print.id',
+                'service.id'
+            )
+            ->distinct()
+            ->get();
+
+        if ($request->ajax()) {
+            if ($request->servicename == "") {
+                $servicename = $number;
+            } else {
+                $servicename = DB::table('number_print')
+                    ->join('ordinal', 'ordinal.service_id', '=', 'number_print.id_print')
+                    ->join('service', 'service.id', '=', 'ordinal.service_id')
+                    ->join('customer', 'customer.id', '=', 'number_print.user_id')
+                    ->where('ordinal.is_printed', 1)
+                    ->where('service.id', '=', $request->servicename)
+                    ->select(
+                        'number_print.number_print',
+                        'customer.fullname',
+                        'service.servicename',
+                        'number_print.grant_time',
+                        'number_print.expired',
+                        'number_print.id',
+                    )
+                    ->distinct()
+                    ->get();
+            }
+
+            return response()->json([
+                'servicename' => $servicename
+            ]);
+        }
+
+        $query = Service::query();
+        $service = $query->get();
+        return view('nublevel.nublevel', compact('number', 'service'));
     }
     public function create()
     {
@@ -28,7 +73,7 @@ class ControllerNubLevel extends Controller
             ->select('*')
             ->orderBy('number_print.id', 'DESC')
             ->first();
-         return view('nublevel.create', compact('nub', 'number'));
+        return view('nublevel.create', compact('nub', 'number'));
     }
     public function store(Request $request)
     {
@@ -77,14 +122,29 @@ class ControllerNubLevel extends Controller
             'expired' => $expired
         ]);
 
-        return redirect()->back()->with('success', 'Product added successfully');
+        return redirect()->back()->with('success', 'successfully');
     }
 
 
     public function show($id)
     {
-
-        return view('nublevel.detail');
+        $number =  DB::table('number_print')
+            ->join('ordinal', 'ordinal.service_id', '=', 'number_print.id_print')
+            ->join('service', 'service.id', '=', 'ordinal.service_id')
+            ->join('customer', 'customer.id', '=', 'number_print.user_id')
+            ->where('ordinal.is_printed', 1)
+            ->where('number_print.id', $id)
+            ->select(
+                'number_print.number_print',
+                'customer.fullname',
+                'customer.phone',
+                'customer.email',
+                'service.servicename',
+                'number_print.grant_time',
+                'number_print.expired',
+            )
+            ->first();
+        return view('nublevel.detail', compact('number'));
     }
 
 

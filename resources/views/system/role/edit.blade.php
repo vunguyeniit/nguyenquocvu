@@ -13,7 +13,7 @@
                     <h2 style="color: #7E7D88;margin-right:1rem"> Quản lý vai trò <i
                             class="fa-solid fa-chevron-right fs-4"></i></h2>
 
-                    <h2>Thêm vai trò</h2>
+                    <h2>Cập nhật vai trò</h2>
                 </div>
                 <div class="profile">
                     <div class="icon-bell">
@@ -56,21 +56,21 @@
                                     chức năng *</label>
                             </div>
                         </div>
-                        <form class="row gx-5 gy-3">
+                        <form class="row gx-5 gy-3" action="{{route('role.update',$role->id)}}" method="POST">
 
                             @csrf
 
                             <div class="col-md-6">
                                 {{-- <label for="inputEmail4" class="form-label fs-3">Thông tin vai trò</label> --}}
                                 <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4"
-                                    placeholder="Nhập mã thiết bị">
+                                    placeholder="Nhập mã thiết bị"name="rolename" value="{{$role->rolename}}">
 
                                 <label for="inputPassword4"
                                     class="form-label fs-3 d-block mt-4 "style="font-weight: 600;">Mô
                                     tả</label>
                                 <textarea style=" resize: none;ouline:none;outline: none;
                                 border: 1.5px solid #D4D4D7;"
-                                    id="w3review" name="w3review" rows="7" cols="92"> </textarea>
+                                    id="w3review" name="description" rows="7" cols="92">{{$role->description}} </textarea>
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
 
                             </div>
@@ -80,11 +80,11 @@
 
                                 <div class="check-content">
                                     <div class="check-input">
-                                        <h3 class="pb-3" style="color: #FF9138">Nhóm chức năng A</h3>
+                                        <h3 class="pb-3 fs-2" style="color: #FF9138">Nhóm chức năng A</h3>
                                         <div class="form-check mb-4">
 
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
+                                            <input class="form-check-input" name="checkbox_a" type="checkbox" 
+                                                id="flexCheckDefault"{{$role->permission==0 ? 'checked':''}}>
 
                                             <label class="form-check-label " for="flexCheckDefault">
                                                 Tất cả
@@ -92,8 +92,8 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" name="checkbox_a" type="checkbox" 
+                                                id="flexCheckChecked"{{$role->permission==0 ? 'checked':''}}>
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
                                                 Chức năng x
@@ -101,8 +101,8 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" type="checkbox" name="checkbox_a"
+                                                id="flexCheckChecked"{{$role->permission==0 ? 'checked':''}}>
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
                                                 Chức năng y
@@ -110,8 +110,8 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" type="checkbox"name="checkbox_a" 
+                                                id="flexCheckChecked"{{$role->permission==0 ? 'checked':''}}>
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 Chức năng z
                                             </label>
@@ -123,20 +123,20 @@
 
 
 
-                                <h3 class="pb-3 pt-5" style="color: #FF9138">Nhóm chức năng B</h3>
+                                <h3 class="pb-3 pt-5 fs-2" style="color: #FF9138">Nhóm chức năng B</h3>
                                 <div class="check-content">
                                     <div class="check-input">
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
-                                            <label class="form-check-label " for="flexCheckDefault">
+                                            <input class="form-check-input" type="checkbox" name="checkbox_b"
+                                                id="flexCheckDefault"{{$role->permission==1 ? 'checked':''}}>
+                                            <label class="form-check-label " for="flexCheckDefault" >
                                                 Tất cả
                                             </label>
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
+                                                id="flexCheckChecked"{{$role->permission==1 ? 'checked':''}}>
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
                                                 Chức năng x
@@ -144,8 +144,8 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
+                                                id="flexCheckChecked"{{$role->permission==1 ? 'checked':''}}>
                                             <label style="margin-right:12.2rem" class="form-check-label"
                                                 for="flexCheckChecked">
                                                 Chức năng y
@@ -153,8 +153,8 @@
 
                                         </div>
                                         <div class="form-check mb-4">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked">
+                                            <input class="form-check-input" type="checkbox"name="checkbox_b" 
+                                                id="flexCheckChecked"{{$role->permission==1 ? 'checked':''}}>
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 Chức năng z
                                             </label>
@@ -165,11 +165,7 @@
                                 </div>
 
                             </div>
-                    </div>
-
-
-
-                    </form>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -179,9 +175,11 @@
                         bỏ</a></button>
             </div>
             <div class="btn_login">
-                <button type="submit">Cập nhật</button>
+                <button type="submit">Thêm</button>
             </div>
         </div>
+        @method("PUT");
+    </form>
     </main>
 </section>
 @endsection

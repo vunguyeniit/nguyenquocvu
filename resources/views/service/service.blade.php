@@ -37,29 +37,54 @@
     <main>
 
         <div class="select">
-            <form action="" class="row">
+            <form  class="row" action="{{route('service.index')}}" method="GET">
+               @csrf
+               
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Trạng thái hoạt động</label>
                     <select class="form-select py-2 fs-3" aria-label="Default select example"id='status-service'>
                         <option value="" selected>Tất cả</option>
-                        <option value="0">Hoạt động</option>
-                        <option value="1">Ngưng hoạt động</option>
+                        <option value="0"> Ngưng Hoạt động</option>
+                        <option value="1"> hoạt động</option>
                     </select>
                 </div>
+           
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                    <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
-                </div>
+                    
+                    <div class="input-group date" id="startdate">
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            </span>
+                         <input type="text" class="form-control py-1 fs-2 datepicker"id="startdate"  name= 'startdate'>
+                        
+                        </div>
+               
+                        </div>
                 <div class="col-md-2">
                     <label style="visibility: hidden" for="inputPassword4" class="form-label fs-3">Chọn thời
                         gian</label>
-                    <input type="date" class="form-control py-1 fs-2 " id="inputPassword4">
+                  
+                    <div class="input-group date" id="enddate">
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-light d-block">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                            </span>
+                         <input type="text" class="form-control py-1 fs-2 datepicker" id="enddate" name= 'enddate'>
+                
+                        
+                    </div>
                 </div>
+
+           
                 <div class="col-md-4"style="margin-left:7rem">
                     <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
                     <div class="search">
-                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4"name="search">
+                        <button style="border: none;background-color: #ddd9d9;" type="submit"><i  class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
             </form>
@@ -89,9 +114,9 @@
                                 <td>{{$item->servicename}}</td>
                                 <td>{{$item->description}}</td>
                                 @if ($item->status==0)
-                                <td><i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động</td>
-                                @else
                                 <td><i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng Hoạt động</td>
+                                @else
+                                <td><i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động</td>
                                 @endif
                                 <td><a href="{{route('service.show',$item->id)}}">Chi tiết</a></td>
                                 <td><a href="{{route('service.edit',$item->id)}}">Cập nhật</a></td>
@@ -119,7 +144,7 @@
         </div>
         <div class="pagination">
            
-            {{ $service->links()}}
+            {{-- {{ $service->links()}} --}}
  
          </div>
         </div>

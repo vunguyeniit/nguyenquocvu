@@ -61,13 +61,14 @@
 
 
                                 </div>
-
-                                <div class="col-3">
-                                    <p class="d-block fs-4 mb-4">Nguyễn thị dung</p>
-                                    <p class="d-block fs-4 mb-4">Khám tim mạch</p>
-                                    <p class="d-block fs-4 mb-4">2001201</p>
-                                    <p class="d-block fs-4 mb-4">14:35-07/11/2021</p>
-                                    <p class="d-block fs-4 mb-4">18:00-07/11/2021</p>
+f
+                                <div class="col-4">
+                                    
+                                    <p class="d-block fs-4 mb-4">{{$number->fullname}}</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->servicename}}</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->number_print}}</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->grant_time}}</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->expired}}</p>
 
                                 </div>
                             </div>
@@ -81,12 +82,12 @@
 
                                 </div>
 
-                                <div class="col-3">
+                                <div class="col-4">
 
                                     <p class="d-block fs-4 mb-4">Kiosk</p>
                                     <p class="d-block fs-4 mb-4">Đang chờ</p>
-                                    <p class="d-block fs-4 mb-4">0948374442</p>
-                                    <p class="d-block fs-4 mb-4">nguyendung@gmail.com</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->phone}}</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->email}}</p>
 
 
                                 </div>

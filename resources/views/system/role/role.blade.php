@@ -59,21 +59,24 @@
 
                         <table id="customers">
                             <tr>
-                                <th>Mã thiết bị</th>
-                                <th>Tên thiết bị</th>
-                                <th>Địa chỉ IP</th>
-                                <th>Trạng thái hoạt động</th>
+                                <th>Tên vai trò</th>
+                                <th>Số người dùng</th>
+                                <th>Mô tả</th>
+                                <th></th>
 
                             </tr>
+                            @foreach ($role as $item)
+                                
+                          
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                                <td>{{$item->rolename}}</td>
+                                <td>{{$item->member}}</td>
+                                <td>{{$item->description}}</td>
+                                <td><a href="{{route('role.edit',$item->id)}}">Cập nhật</a></td>
 
 
                             </tr>
-
+                            @endforeach
                         </table>
 
 
@@ -84,7 +87,7 @@
             <div class="content-add">
 
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('role.create') }}">
                         <div class="btn-add">
                             <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
                             <span>Thêm vai trò</span>

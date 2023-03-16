@@ -44,66 +44,62 @@
                 <div class="head">
                     <div class="form-user">
                         <h2 class="mb-5 fs-1" style="color: #FF9138">Thông tin tài khoản</h2>
-                        <form class="row gx-5 gy-3">
+                        <form class="row gx-5 gy-3" method="POST" action="{{route('account.store')}}">
 
                             @csrf
 
                             <div class="col-md-6">
                                 <label for="inputEmail4" class="form-label fs-3">Họ và tên</label>
                                 <input type="text" class="form-control py-2 fs-3  fs-3" id="inputEmail4"
-                                    placeholder="Nhập họ và tên">
+                                    placeholder="Nhập họ và tên"name='fullname'>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3 ">Tên đăng nhập</label>
                                 <input type="text" class="form-control py-2 fs-3" id="inputPassword4"
-                                    placeholder="Nhập tên đăng nhập">
+                                    placeholder="Nhập tên đăng nhập"name='username'>
 
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Số điện thoại</label>
                                 <input type="text" class="form-control py-2 fs-3" id="inputPassword4"
-                                    placeholder="Nhập số điện thoại">
+                                    placeholder="Nhập số điện thoại"name='phone'>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Mật khẩu</label>
 
-                                <input type="text" class="form-control py-2 fs-3" id="inputPassword4"
-                                    placeholder="Nhập mật khẩu">
+                                <input type="password" class="form-control py-2 fs-3" id="inputPassword4"
+                                    placeholder="Nhập mật khẩu"name='password'>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Email</label>
                                 <input type="text" class="form-control py-2 fs-3" id="inputPassword4"
-                                    placeholder="Nhập email">
+                                    placeholder="Nhập email"name='email'>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Nhập lại mật khẩu</label>
                                 <input type="text" class="form-control py-2 fs-3" id="inputPassword4"
-                                    placeholder="Nhập lại mật khẩu">
+                                    placeholder="Nhập lại mật khẩu"name='confirm_password'>
                             </div>
                             <div class="col-md-6">
                                 <label for="inputPassword4" class="form-label fs-3">Vai trò</label>
-                                <select class="form-select py-2 fs-3 opacity-75" aria-label="Default select example">
-
+                                <select class="form-select py-2 fs-3 opacity-75" aria-label="Default select example" name='role'>
                                     <option selected>Chọn vai trò </option>
-
-                                    <option value="2">Kế toán</option>
-                                    <option value="3">Quản lý</option>
-                                    <option value="3">Admin</option>
+                                    <option value="Kế toán">Kế toán</option>
+                                    <option value="Quản lý">Quản lý</option>
+                                    <option value="Admin">Admin</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="inputPassword4" class="form-label fs-3">Tình trạng</label>
-                                <select class="form-select py-2 fs-3 opacity-75" aria-label="Default select example">
-                                    <option selected>Hoạt động </option>
-                                    <option value="2">Ngưng hoạt đọng</option>
-                                    <option value="3">Hoạt động</option>
+                                <label for="inputPassword4" class="form-label fs-3" >Tình trạng</label>
+                                <select class="form-select py-2 fs-3 opacity-75" aria-label="Default select example"name='status'>
+                                    <option selected>Hoạt động</option>
+                                    <option value="0">Ngưng hoạt động</option>
+                                    <option value="1">Hoạt động</option>
                                 </select>
                             </div>
-
                             <div class="col-md-3">
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -116,6 +112,7 @@
                 <button type="submit">Thêm</button>
             </div>
         </div>
+    </form>
     </main>
 </section>
 @endsection

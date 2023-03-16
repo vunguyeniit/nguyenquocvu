@@ -65,33 +65,31 @@
 
                         <table id="customers">
                             <tr>
-                                <th>Mã thiết bị</th>
-                                <th>Tên thiết bị</th>
-                                <th>Địa chỉ IP</th>
-                                <th>Trạng thái hoạt động</th>
-                                <th>Trạng thái kết nối</th>
-                                <th>Dich vụ sử dụng</th>
+                                <th>Tên đăng nhập</th>
+                                <th>Họ tên</th>
+                                <th>Số điện thoại</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái hoạt đọng</th>
+                                <th></th>
+
                             </tr>
+                            @foreach ($account as $item)
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-
+                             
+                                    
+                             
+                                <td>{{$item->username}}</td>
+                                <td>{{$item->fullname}}</td>
+                                <td>{{$item->phone}}</td>
+                                <td>{{$item->email}}</td>
+                                <td>{{$item->role}}</td>
+                                <td>{{$item->status}}</td>
+                                <td><a href="{{route('account.edit',$item->id)}}">Cập nhật</a></td>
+                              
                             </tr>
-
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-
-                            </tr>
-
+                            @endforeach
+                       
                         </table>
 
 
@@ -102,10 +100,10 @@
             <div class="content-add">
 
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('account.create') }}">
                         <div class="btn-add">
                             <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                            <span>Thêm thiết bị</span>
+                            <span>Thêm tài khoản</span>
                         </div>
                     </a>
                 </div>

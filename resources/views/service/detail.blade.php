@@ -140,7 +140,16 @@
                             </div>
                             <div class="col-md-3">
                                 <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                                <input type="date" class="form-control py-1 fs-3 " id="inputPassword4">
+                                <div class="input-group date" id="datepicker">
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-light d-block">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        </span>
+                                     <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                            
+                                    
+                                </div>
 
 
                             </div>
@@ -148,7 +157,16 @@
                                 <label style=" visibility: hidden;"type="" for="inputPassword4"
                                     class="form-label fs-3">Chọn thời
                                     gian</label>
-                                <input type="date" class="form-control py-1 fs-3 " id="inputPassword4">
+                                    <div class="input-group date" id="datepicker">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text bg-light d-block">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                            </span>
+                                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                                
+                                        
+                                    </div>
                             </div>
                             <div class="col-md-3"style="">
                                 <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>

@@ -38,15 +38,22 @@ class ControllerDevice extends Controller
         // dd($tag);
         if ($request->ajax()) {
 
+            if (($request->connection) == "") {
+                $devicestatus = $query->get();
+            } else {
+
+                $devicestatus = $query->where(['connectionstatus' => $request->connection])->get();
+            }
             if (($request->statusid) == "") {
                 $devicestatus = $query->get();
             } else {
 
-                $devicestatus = $query->where(['connectionstatus' => $request->statusid])->get();
+
+                $devicestatus = $query->where(['activestatus' => $request->statusid])->get();
             }
             return response()->json([
                 'devicestatus' => $devicestatus,
-                'device' => $tag,
+                // 'device' => $tag,
             ]);
         }
 

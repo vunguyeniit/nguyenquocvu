@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\ServiceMode\Service;
 use App\Models\ServiceMode\Ordinal;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -13,10 +14,9 @@ class ControllerService extends Controller
 {
     public function index(Request $request)
     {
+
         $query = Service::query();
-
-
-        $service = $query->paginate(2);
+        $service = $query->paginate(4);
         if ($request->ajax()) {
 
             if (($request->statusid) == "") {
@@ -30,6 +30,16 @@ class ControllerService extends Controller
 
             ]);
         }
+
+
+
+        if ($keyword = $request->search) {
+            $service = Service::where('servicename', 'like', '%' . $keyword . '%')
+
+                ->orWhere('description', 'LIKE', '%' . $keyword . '%')
+                ->get();
+        }
+
 
 
         return view('service.service', compact('service',));

@@ -14,6 +14,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     {{-- CDN select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+   
     <title>Login</title>
 </head>
 
@@ -28,6 +30,7 @@
     </div>
     <script src={{ asset('assets/js/style.js') }}></script>
     {{-- CDN Bootstrap --}}
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     {{-- CDN Fontawesome --}}
     <script src="https://kit.fontawesome.com/ef6c647e92.js" crossorigin="anonymous"></script>
@@ -42,64 +45,63 @@
     <script src="{{ asset('assets/select2/select2/dist/js/select2.min.js') }}"></script>
 
     <script type="text/javascript">
-        // $(document).ready(function() {
-        //     $('#js-select2').select2();
-        // });
+      
 
         $("#js-select2").select2({
             tags: true,
             tokenSeparators: [',']
         });
     </script>
+ 
+
  <script  type="text/javascript">
-    $("#status-device").on('change', function () {
-      var statusid = $(this).val();
-      console.log(statusid);
+    function fetchData(params) {
       $.ajax({
           url: "{{ route('device.index') }}",
           type: "GET",
-          data: {
-              'statusid': statusid
-          },
+          data: params,
           success: function (data) {
               var sta = data.devicestatus;
-              var man = data.device;
-     
-              console.log(man);
               var html = '';
               if (sta.length > 0) {
                   for (let i = 0; i < sta.length; i++) {
-                 
-                    html +='<tr>'     
-                        html += '<td>'+ sta[i]['devicecode'] + '</td>'
-                        html +='<td>' + sta[i]['devicename'] + '</td>'
-                        html +='<td>' + sta[i]['addressip'] + '</td>'
-                        html +='<td>' + (sta[i]['activestatus'] == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng hoạt động') + '</td>'
-                        html +='<td>' + (sta[i]['connectionstatus'] == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Kết nối' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Mất kết nối') + '</td>'
-                        html += '<td>';
-                //    html += '<span>' + man.devicename+ '</span>';          
-                   html += '</td>';
-                 html +='</tr>';     
+                      html += '<tr>';
+                      html += '<td>' + sta[i]['devicecode'] + '</td>';
+                      html += '<td>' + sta[i]['devicename'] + '</td>';
+                      html += '<td>' + sta[i]['addressip'] + '</td>';
+                      html += '<td>' + (sta[i]['activestatus'] == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Ngưng hoạt động' : '<i class="fa-solid fa-circle text-success fs-6"></i> hoạt động') + '</td>';
+                      html += '<td>' + (sta[i]['connectionstatus'] == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Mất kết nối' : '<i class="fa-solid fa-circle text-success fs-6"></i> kết nối') + '</td>';
+                      html += '<td></td>';
+                      html += '</tr>';
                   }
               } else {
-                  html +=
-                      '<tr>\                                                                                                                                                        <td>Khong Có san pham</td>\
-                                                                                                                                                                          </tr>';
+                  html += '<tr><td>Không có sản phẩm</td></tr>';
               }
-              $("#tbody")
-    
-                  .html(html);
-    
+              $("#tbody").html(html);
           }
-      })
-    }); 
-    </script>
-{{--  --}}
+      });
+  }
+  
+  $("#connection-device").on('change', function () {
+      var connection = $(this).val();
+      fetchData({ 'connection': connection });
+  });
+  
+  $("#status-device").on('change', function () {
+      var statusid = $(this).val();
+      fetchData({ 'statusid': statusid });
+  });
+  </script>
+
+
+  
+
+
 
 <script  type="text/javascript">
     $("#status-service").on('change', function () {
       var statusid = $(this).val();
-      console.log(statusid);
+  
       $.ajax({
           url: "{{ route('service.index') }}",
           type: "GET",
@@ -108,7 +110,7 @@
           },
           success: function (data) {
               var sta = data.servicestatus;
-                console.log(sta);
+              
               var html = '';
               if (sta.length > 0) {
                     sta.forEach(element => {
@@ -117,21 +119,15 @@
                         html += '<td>'+ element.servicecode + '</td>'
                         html +='<td>' + element.servicename + '</td>'
                         html +='<td>' + element.description+ '</td>'
-                        html +='<td>' + (element.status == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động' : '<i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng hoạt động') + '</td>'
-                        let i = element.id;
-                        console.log(i);
+                        html +='<td>' + (element.status == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i> Ngưng Hoạt động' : '<i class="fa-solid fa-circle text-success fs-6"></i>  hoạt động') + '</td>'
                         html += '<td>';
                             html += '<a href="{{ route('service.show', ['service' => ':id']) }}">Chi tiết</a>'
                                         .replace(':id', element.id);
-                    
                             html += '</td>';
-
                             html += '<td>';
-
                             html += '<a href="{{ route('service.edit', ['service' => ':id']) }}">Cập nhật</a>'
                                         .replace(':id', element.id);
                             html += '</td>';
-                  
                         html +='</tr>'     
                 
                 })
@@ -153,7 +149,66 @@
     $(document).ready(function() {
         $('.modal').modal('show');
     });
+
+
 </script>
+
+
+
+<script  type="text/javascript">
+    function fetchData(params) {
+      $.ajax({
+          url: "{{ route('nublevel.index') }}",
+          type: "GET",
+          data: params,
+          success: function (data) {
+              var sta = data.servicename;
+              console.log(sta)
+              var html = '';
+              if (sta.length > 0) {
+                  for (let i = 0; i < sta.length; i++) {
+                      html += '<tr>';
+                      html += '<td>' + sta[i]['number_print'] + '</td>';
+                      html += '<td>' + sta[i]['fullname'] + '</td>';
+                      html += '<td>' + sta[i]['servicename'] + '</td>';
+                      html += '<td>' + sta[i]['grant_time'] + '</td>';
+                      html += '<td>' + sta[i]['expired'] + '</td>';
+                      html += '</tr>';
+                  }
+              } else {
+                  html += '<tr><td>Không có sản phẩm</td></tr>';
+              }
+              $("#tbody-nublevel").html(html);
+          }
+      });
+  }
+  
+  $("#servicename").on('change', function () {
+      var servicename = $(this).val();
+      console.log(servicename);
+      fetchData({ 'servicename': servicename });
+  });
+  
+
+  </script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script  type="text/javascript">
+$(document).ready(function() {
+  // Initialize datepicker
+  $('#startdate,#enddate').datepicker({
+    autoclose: true,
+     format: 'yyyy-mm-dd',
+    todayHighlight: true
+  });
+  
+
+
+});
+</script>
+
 
 
 </body>

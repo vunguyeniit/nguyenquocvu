@@ -42,21 +42,21 @@
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Trạng thái hoạt động</label>
                    
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="1">Hoạt động</option>
-                        <option value="2">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example"id="status-device">
+                        <option value="" selected>Tất cả</option>
+                        <option value="0">Ngưng hoạt động</option>
+                        <option value="1">hoạt động</option>
                     </select>
 
                 </div>
                 <div class="col-md-3">
                     <label for="inputPassword4" class="form-label fs-3">Trạng thái kết nối</label>
                     {{-- <form action="{{route('device.index')}}" method="GET"> --}}
-                    <select name="status" class="form-select py-2 fs-3" aria-label="Default select example" id="status-device">
+                    <select name="status" class="form-select py-2 fs-3" aria-label="Default select example" id="connection-device">
                         <option value="" selected>Tất cả</option>
                         {{-- <option selected>Tất cả</option> --}}
-                        <option value="1">Mất Kết nối</option>
-                        <option value="0">Kết nối</option>
+                        <option value="0">Mất Kết nối</option>
+                        <option value="1">Kết nối</option>
 
                     </select>
                     {{-- <button type="submit">Filter</button>
