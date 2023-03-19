@@ -56,7 +56,7 @@
                                     Mã dịch vụ
                                 </label>
                          
-                                    
+                          
                             
                                 <p class="fs-4 d-inline">{{$ordinal->servicecode}}</p>
 
@@ -129,13 +129,15 @@
                 <div class="head d-block">
 
                     <div class="select">
-                        <form action="" class="row mb-4" style="flex-wrap: nowrap;">
+                        <form action="{{route('service.show', $ordinal->id)}}" method="GET" class="row mb-4" style="flex-wrap: nowrap;">
+                            @csrf
                             <div class="col-md-3">
                                 <label for="inputEmail4" class="form-label fs-3">Trạng thái</label>
-                                <select class="form-select py-2 fs-4" aria-label="Default select example">
-                                    <option selected>Tất cả</option>
-                                    <option value="2">Hoạt động</option>
-                                    <option value="3">Ngưng hoạt động</option>
+                                <select class="form-select py-2 fs-4" aria-label="Default select example"id="status-detail">
+                                    <option value="" selected>Tất cả</option>
+                                    <option value="0"> Đã hoàn thành</option>
+                                    <option value="1"> Đang thực hiện</option>
+                                    <option value="2"> Vắng</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -171,8 +173,8 @@
                             <div class="col-md-3"style="">
                                 <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
                                 <div class="search">
-                                    <input type="text" class="form-control py-1 fs-2 " id="inputPassword4">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" class="form-control py-1 fs-2 " id="inputPassword4"name="search_deatil">
+                                    <button style="border: none;background-color: #ddd9d9;" type="submit"><i  class="fa-solid fa-magnifying-glass"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -183,19 +185,21 @@
                                 <th>Số thứ tự</th>
                                 <th>Trạng thái</th>
                             </tr>
-                            <tr>
+                            <tbody id="tbody-detail">
                                 @foreach ($paginate as $item)
-                                <td>{{$item->number}}</td>
-                               @if ($item->status==0)
+                            <tr>
+                               <td>{{$item->number}}</td>
+                                @if ($item->status==0) 
                                <td><i class="fa-solid fa-circle text-success fs-6"></i> Đã hoàn thành</td>
                                @elseif($item->status==1)
                                <td><i class="fa-solid fa-circle text-primary fs-6"></i> Đang thực hiện</td>
-                               @else
-                               <td><i class="fa-solid fa-circle text-secondary fs-6"></i> Vắng</td>
-                               @endif
-                                <td></td>
+                               @else 
+                                <td><i class="fa-solid fa-circle text-secondary fs-6"></i> Vắng</td>
                             </tr>
-                            @endforeach
+    
+                                @endif 
+                               @endforeach
+                        </tbody>
                         </table>
                    
                             {{ $paginate->links()}}

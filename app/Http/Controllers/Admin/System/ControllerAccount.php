@@ -9,9 +9,18 @@ use Illuminate\Http\Request;
 class ControllerAccount extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $account = account::all();
+        $query = account::query();
+        $account = $query->get();
+
+        if ($request->ajax()) {
+            $account_status = $query->where(['status' => $request->statusid])->get();
+
+            return response()->json([
+                'account' => $account_status
+            ]);
+        }
         return view('system.account.account', compact('account'));
     }
 
@@ -26,6 +35,7 @@ class ControllerAccount extends Controller
     {
 
         account::create($request->all());
+        return redirect()->route('account.index');
     }
 
 
@@ -45,6 +55,7 @@ class ControllerAccount extends Controller
     {
         $update = account::find($id);
         $update->update($request->all());
+        return redirect()->route('account.index');
     }
 
 

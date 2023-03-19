@@ -4,7 +4,7 @@
          <img srcset="{{ asset('./assets/images/Logo_alta.png 3x') }}">
      </div>
      <ul class="side-menu">
-         <li><a href="#"><img srcset="{{ asset('./assets/images/element-4.png 1.5x') }}">Dashboard</a></li>
+         <li><a href="{{ route('das.index') }}"><img srcset="{{ asset('./assets/images/element-4.png 1.5x') }}">Dashboard</a></li>
          <li><a href="{{ route('device.index') }}"><img srcset="{{ asset('./assets/images/monitor.png 1.5x') }}">Thiết
                  bị</a></li>
          <li><a href="{{ route('service.index') }}"><img srcset="{{ asset('./assets/images/Frame-2.png 1.5x') }}">Dịch

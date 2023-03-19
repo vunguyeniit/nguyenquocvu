@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tagname', function (Blueprint $table) {
             $table->id();
-            $table->string('devicename');
+            $table->string('device_service');
             $table->timestamps();
         });
     }

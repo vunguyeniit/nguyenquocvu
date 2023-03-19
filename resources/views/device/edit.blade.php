@@ -89,8 +89,8 @@
                                 @endphp --}}
                                 <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
                                     aria-label="Default select example" name="tags[]" multiple>
-                                    @foreach ($name as $tagItem)
-                                        <option value="{{ $tagItem->devicename }}" selected>{{ $tagItem->devicename }}
+                                    @foreach ($getData->tags1 as $tagItem)
+                                        <option value="{{ $tagItem->device_service }}" selected>{{ $tagItem->device_service }}
                                         </option>
                                     @endforeach
 

@@ -12,7 +12,7 @@ class TagName extends Model
     protected $table = "tagname";
     protected $fillable = [
         'id',
-        'devicename'
+        'device_service'
 
     ];
     public function tagdevice()

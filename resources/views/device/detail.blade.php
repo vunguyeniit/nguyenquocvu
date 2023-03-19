@@ -72,7 +72,7 @@
                         <div class="col-12">
                             <strong class="d-block fs-4 mb-4">Dịch vụ sử dụng:</strong>
                             @foreach ($devishow->tags1 as $tagItem)
-                                <p class="d-inline-block fs-4 mb-4">{{ $tagItem->devicename . ',' }}</p>
+                                <p class="d-inline-block fs-4 mb-4">{{ $tagItem->device_service . ',' }}</p>
                             @endforeach
 
 

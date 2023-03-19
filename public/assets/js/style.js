@@ -56,24 +56,24 @@ for (let i = 0; i < dropd.length; ++i) {
 //Check Danh Sach Thiet Lap
 
 
-let btn_de = document.querySelectorAll('.btn-detail');
-let cont = document.querySelectorAll('.content');
-for (let i = 0; i < cont.length; ++i) {
-  btn_de[i].onclick = function () {
 
-    if (cont[i].style.display == 'block') {
-      cont[i].style.display = 'none';
-    }
-    else {
-      cont[i].style.display = 'block';
-    }
+// console.log(btn_de)
+// for (let i = 0; i < cont.length; ++i) {
+//   btn_de[i].onclick = function () {
 
-  }
+//     if (cont[i].style.display == 'block') {
+//       cont[i].style.display = 'none';
+//     }
+//     else {
+//       cont[i].style.display = 'block';
+//     }
 
-  cont[i].onclick = function () {
-    cont[i].style.display = 'none';
-  }
-}
+//   }
+
+//   cont[i].onclick = function () {
+//     cont[i].style.display = 'none';
+//   }
+// }
 
 //   if (btn_de.classList.contains("btn-detail")) {
 //     btn_de.classList.remove("btn-detail");

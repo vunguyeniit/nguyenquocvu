@@ -28,7 +28,7 @@ class ControllerNubLevel extends Controller
                 'number_print.grant_time',
                 'number_print.expired',
                 'number_print.id',
-                'service.id'
+
             )
             ->distinct()
             ->get();
@@ -60,8 +60,8 @@ class ControllerNubLevel extends Controller
             ]);
         }
 
-        $query = Service::query();
-        $service = $query->get();
+        $service = Service::all();
+
         return view('nublevel.nublevel', compact('number', 'service'));
     }
     public function create()

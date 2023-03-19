@@ -1,8 +1,6 @@
 @extends('layout.Clone-Admin')
-
 @section('content')
     <section id="content">
-        {{-- @include('admin.header') --}}
     @section('header')
         <nav>
             <div class="header-right">

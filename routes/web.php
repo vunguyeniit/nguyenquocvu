@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ControllerAdmin;
+use App\Http\Controllers\Admin\ControllerDashboard;
 use App\Http\Controllers\Admin\ControllerDevice;
 use App\Http\Controllers\Admin\ControllerNubLevel;
 use App\Http\Controllers\Admin\ControllerReport;
@@ -31,6 +32,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/reset-pass', [CheckLogin::class, 'getResPass'])->name('admin.reset');
     Route::post('/reset-pass', [CheckLogin::class, 'handlerestpas'])->name('admin.handlerest');
     Route::get('/index', [ControllerAdmin::class, 'index'])->name('admin.account-user');
+    Route::resource('/das', ControllerDashboard::class);
     Route::resource('/device', ControllerDevice::class);
     Route::resource('/service', ControllerService::class);
     Route::resource('/nublevel', ControllerNubLevel::class);
@@ -38,5 +40,4 @@ Route::prefix('/admin')->group(function () {
     Route::resource('/role', ControllerRole::class);
     Route::resource('/account', ControllerAccount::class);
     Route::resource('/diary', ControllerDiary::class);
-    // Route::get('/status', [ControllerDevice::class, 'HandleStatus'])->name('status');
 });

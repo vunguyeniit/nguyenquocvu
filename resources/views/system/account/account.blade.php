@@ -41,10 +41,11 @@
             <form action="" class="row me-3" style="    justify-content: space-between;">
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Tên vai trò</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="2">Hoạt động</option>
-                        <option value="3">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example" id="status-account">
+                        <option value="" selected>Tất cả</option>
+                        <option value="0">Ngưng hoạt động</option>
+                        <option value="1">Hoạt động</option>
+                     
                     </select>
                 </div>
 
@@ -74,22 +75,25 @@
                                 <th></th>
 
                             </tr>
+                            <tbody id="tbody-account">
                             @foreach ($account as $item)
                             <tr>
-                             
-                                    
-                             
                                 <td>{{$item->username}}</td>
                                 <td>{{$item->fullname}}</td>
                                 <td>{{$item->phone}}</td>
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->role}}</td>
-                                <td>{{$item->status}}</td>
+                                @if ($item->status==0)
+                                <td><i class="fa-solid fa-circle text-danger fs-6"></i>Ngưng hoạt động</td>
+                                @else
+                                <td><i class="fa-solid fa-circle text-success fs-6"> </i>hoạt động</td>
+                                @endif
+                               
                                 <td><a href="{{route('account.edit',$item->id)}}">Cập nhật</a></td>
                               
                             </tr>
                             @endforeach
-                       
+                        </tbody>
                         </table>
 
 

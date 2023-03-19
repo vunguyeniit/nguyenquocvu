@@ -42,7 +42,7 @@
                 <div class="col-md-3">
                     <label for="inputEmail4" class="form-label fs-3">Trạng thái hoạt động</label>
                    
-                    <select class="form-select py-2 fs-3" aria-label="Default select example"id="status-device">
+                    <select class="form-select py-2 fs-3" aria-label="Default select example" id="status-device">
                         <option value="" selected>Tất cả</option>
                         <option value="0">Ngưng hoạt động</option>
                         <option value="1">hoạt động</option>
@@ -124,7 +124,7 @@
                                                     <div class="content">
 
                                                         @foreach ($item->tags1 as $tagitem)
-                                                            <span>{{ $tagitem->devicename . ' ,' }}</span>
+                                                            <span id="device-status">{{ $tagitem->device_service . ' ,' }}</span>
                                                         @endforeach
 
 

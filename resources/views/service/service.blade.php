@@ -118,8 +118,8 @@
                                 @else
                                 <td><i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động</td>
                                 @endif
-                                <td><a href="{{route('service.show',$item->id)}}">Chi tiết</a></td>
-                                <td><a href="{{route('service.edit',$item->id)}}">Cập nhật</a></td>
+                                <td><a id="status-id" href="{{route('service.show',$item->id)}}">Chi tiết</a></td>
+                                <td><a href="{{route('service.show',$item->id)}}">Cập nhật</a></td>
                             </tr>
                             @endforeach
                         </tbody>

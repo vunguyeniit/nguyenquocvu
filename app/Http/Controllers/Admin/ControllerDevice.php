@@ -14,56 +14,48 @@ use Illuminate\Database\Eloquent\Model;
 
 class ControllerDevice extends Controller
 {
-
     public function index(Request $request)
     {
-
-
-        $query = ModelDevice::query();
-
-        $device = $query->get();
-        //  $tagname = TagName::find($id);
-
-        foreach ($device as $item) {
-            $tag[] = $item->tags1;
-            // $id[] = $tag->id;
-            // foreach ($item->tags1 as $i) {
-            //     $name[] = $i;
-            // }
-        }
-        // dd($tag);
-        // if ($name == $tag->id) {
-        //     $tag[] = $item->tags1;
-        // }
-        // dd($tag);
+        $device = ModelDevice::all();
         if ($request->ajax()) {
-
-            if (($request->connection) == "") {
-                $devicestatus = $query->get();
-            } else {
-
-                $devicestatus = $query->where(['connectionstatus' => $request->connection])->get();
+            $devicestatus = DB::table('device')
+                ->join('tagid', 'device.id', '=',  DB::raw('CAST(tagid.user_id AS CHAR)'))
+                ->join('tagname', 'tagname.id', '=', 'tagid.tag_id')
+                ->select(
+                    'device.id',
+                    'device.devicecode',
+                    'device.devicename',
+                    'device.addressip',
+                    'device.activestatus',
+                    'device.connectionstatus',
+                    DB::raw("GROUP_CONCAT(tagname.device_service SEPARATOR  ',') as device_service")
+                )
+                ->groupBy(
+                    'device.id',
+                    'device.devicecode',
+                    'device.devicename',
+                    'device.addressip',
+                    'device.activestatus',
+                    'device.connectionstatus'
+                )
+                ->distinct();
+            if (isset($request->connection)) {
+                $devicestatus->where('device.connectionstatus', '=', $request->connection);
             }
-            if (($request->statusid) == "") {
-                $devicestatus = $query->get();
-            } else {
-
-
-                $devicestatus = $query->where(['activestatus' => $request->statusid])->get();
+            if (isset($request->statusid)) {
+                $devicestatus->where('device.activestatus', '=', $request->statusid);
             }
+            $devicestatus = $devicestatus->get();
             return response()->json([
                 'devicestatus' => $devicestatus,
-                // 'device' => $tag,
             ]);
         }
-
         if ($keyword = $request->search) {
             $device = ModelDevice::where('devicename', 'like', '%' . $keyword . '%')
                 ->orWhere('devicecode', 'LIKE', '%' . $keyword . '%')
                 ->orWhere('addressip', 'LIKE', '%' . $keyword . '%')
                 ->get();
         }
-
         return view('device.device', compact('device'));
     }
 
@@ -91,7 +83,7 @@ class ControllerDevice extends Controller
 
             $tagInstance = TagName::firstOrCreate(
                 [
-                    'devicename' => $tagitem
+                    'device_service' => $tagitem
                 ]
             );
 
@@ -103,6 +95,8 @@ class ControllerDevice extends Controller
         }
 
         $device->tags1()->attach($tagId);
+
+        return redirect()->route('device.index');
     }
 
 
@@ -121,12 +115,12 @@ class ControllerDevice extends Controller
     {
         $getData =  ModelDevice::find($id);
 
-        foreach ($getData->tags1 as $role) {
+        // foreach ($getData->tags1 as $role) {
 
-            $name[] = $role;
-        }
+        //     $name[] = $role;
+        // }
 
-        return view('device.edit', compact('getData', 'name'));
+        return view('device.edit', compact('getData',));
     }
 
 
@@ -146,14 +140,15 @@ class ControllerDevice extends Controller
 
             $tagInstance = TagName::firstOrCreate(
                 [
-                    'devicename' => $tagitem
+                    'device_service' => $tagitem
                 ]
             );
 
             $tagId[] = $tagInstance->id;
         }
 
-        $updateData->tags1()->sync($tagId);;
+        $updateData->tags1()->sync($tagId);
+        return redirect()->route('device.index');
     }
 
 

@@ -15,16 +15,18 @@
     {{-- CDN select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-   
+
     <title>Login</title>
+ <style>
+      .content{
+    display: block;
+    }
+ </style>
 </head>
 
 <body style="background-color: #ddd9d9;overflow-x:unset">
     <div class="wrapper">
-
         @include('sidebar.sidebar')
-
-
         @yield('header');
         @yield('content')
     </div>
@@ -43,61 +45,90 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     {{-- CDN select2 --}}
     <script src="{{ asset('assets/select2/select2/dist/js/select2.min.js') }}"></script>
-
-    <script type="text/javascript">
-      
-
+{{-- Xử lí trang select2 --}}
+<script type="text/javascript">
         $("#js-select2").select2({
             tags: true,
             tokenSeparators: [',']
         });
     </script>
- 
-
+{{-- Xử lí trang device --}}
  <script  type="text/javascript">
+
+  $(document).ready(function() {
+    bindBtnDetailClickEvent();
+
+  });
+     function bindBtnDetailClickEvent() {
+        let btn_de = document.querySelectorAll('.btn-detail');
+        let cont = document.querySelectorAll('.content');
+        btn_de.forEach((button, index) => {
+            $(button).on("click", function() {
+            $(cont[index]).show();
+            });
+            $(cont[index]).on("click", function() {
+            $(this).hide();
+            });
+        });
+           
+         }
     function fetchData(params) {
       $.ajax({
           url: "{{ route('device.index') }}",
           type: "GET",
           data: params,
           success: function (data) {
-              var sta = data.devicestatus;
+              var item = data.devicestatus;
               var html = '';
-              if (sta.length > 0) {
-                  for (let i = 0; i < sta.length; i++) {
-                      html += '<tr>';
-                      html += '<td>' + sta[i]['devicecode'] + '</td>';
-                      html += '<td>' + sta[i]['devicename'] + '</td>';
-                      html += '<td>' + sta[i]['addressip'] + '</td>';
-                      html += '<td>' + (sta[i]['activestatus'] == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Ngưng hoạt động' : '<i class="fa-solid fa-circle text-success fs-6"></i> hoạt động') + '</td>';
-                      html += '<td>' + (sta[i]['connectionstatus'] == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Mất kết nối' : '<i class="fa-solid fa-circle text-success fs-6"></i> kết nối') + '</td>';
-                      html += '<td></td>';
+              if (data.devicestatus.length > 0) {
+                item.forEach(element => {
+                    html += '<tr>';
+                      html += '<td>' + element.devicecode + '</td>';
+                      html += '<td>' + element.devicename + '</td>';
+                      html += '<td>' + element.addressip + '</td>';
+                      html += '<td>' + (element.activestatus == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Ngưng hoạt động' : '<i class="fa-solid fa-circle text-success fs-6"></i> hoạt động') + '</td>';
+                      html += '<td>' + (element.connectionstatus == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Mất kết nối' : '<i class="fa-solid fa-circle text-success fs-6"></i> kết nối') + '</td>';
+                      html += '<td>';
+                        html += '<div class="box-container">'
+                        html += '<div class="content">';
+                        html += '<span>' + element.device_service  + ', </span>';
+                        html += '</div>'
+                        html += '<p class="btn-detail">Xem thêm</p>'
+                        html += '</div>'
+                        html += '</td>'
+                        html += '<td>';
+                            html += '<a href="{{ route('device.show', ['device' => ':id']) }}">Chi tiết</a>'
+                                        .replace(':id', element.id);
+                            html += '</td>';
+                            html += '<td>';
+                            html += '<a href="{{ route('device.edit', ['device' => ':id']) }}">Cập nhật</a>'
+                                        .replace(':id', element.id);
+                            html += '</td>';
                       html += '</tr>';
-                  }
+                        
+                });
               } else {
                   html += '<tr><td>Không có sản phẩm</td></tr>';
               }
               $("#tbody").html(html);
+              bindBtnDetailClickEvent();
           }
       });
   }
-  
-  $("#connection-device").on('change', function () {
+  $("#connection-device,#status-device",).on('change', function () {
       var connection = $(this).val();
-      fetchData({ 'connection': connection });
+      var statusid = $(this).val();
+      fetchData({ 'connection': connection,
+      });
   });
   
   $("#status-device").on('change', function () {
       var statusid = $(this).val();
       fetchData({ 'statusid': statusid });
   });
+
   </script>
-
-
-  
-
-
-
+{{-- Xử lí trang service --}}
 <script  type="text/javascript">
     $("#status-service").on('change', function () {
       var statusid = $(this).val();
@@ -144,19 +175,96 @@
       })
     }); 
     </script>
-
+{{-- Xử lí trang service-detail --}}
+<script  type="text/javascript">
+    $("#status-detail,#status-id").on('change', function () {
+          var statusid = $(this).val();
+          var url = $(this).attr('href');
+          $.ajax({
+              url: url,
+              type: "GET",
+              data: {
+                  'statusid': statusid
+              },
+              success: function (data) {
+                  var sta = data.servicestatus;
+                  console.log(sta)
+                  var html = '';
+                  if (sta.length > 0) {
+                        sta.forEach(element => {
+                            
+                            html +='<tr>'     
+                            html += '<td>'+ element.number + '</td>'
+                            html += '<td>' +
+                                        (element.status == 0 ? '<i class="fa-solid fa-circle text-success fs-6"></i> Đã hoàn thành' : '') +
+                                        (element.status == 1 ? '<i class="fa-solid fa-circle text-primary fs-6"></i> Đang thực hiện' : '') +
+                                        (element.status == 2 ? '<i class="fa-solid fa-circle text-secondary fs-6"></i> Vắng' : '') + '</td>';
+                            html +='</tr>'  
+                        });
+                  } else {
+                      html +=
+                          '<tr>\       <td>Khong Có san pham</td>\
+                            </tr>';
+                  }
+                  $("#tbody-detail")
+        
+                      .html(html)
+        
+              }
+          })
+        }); 
+    </script>
+{{-- Xử lí trang status-account --}}
+<script  type="text/javascript">
+    $("#status-account").on('change', function () {
+          var statusid = $(this).val();
+          console.log(statusid)
+          $.ajax({
+              url: "{{route('account.index')}}",
+              type: "GET",
+              data: {
+                  'statusid': statusid
+              },
+              success: function (data) {
+                  var sta = data.account;
+                  var html = '';
+                  if (sta.length > 0) {
+                     sta.forEach(element => {
+                            html +='<tr>'     
+                            html += '<td>'+ element.username + '</td>'
+                            html += '<td>'+ element.fullname + '</td>'
+                            html += '<td>'+ element.phone + '</td>'
+                            html += '<td>'+ element.email + '</td>'
+                            html += '<td>'+ element.role + '</td>'
+                            html += '<td>' + (element.status == 0 ? '<i class="fa-solid fa-circle text-danger fs-6"></i>Ngưng hoạt động' : '<i class="fa-solid fa-circle text-success fs-6"></i> hoạt động') + '</td>';
+                            html += '<td>';
+                            html += '<a href="{{ route('account.edit', ['account' => ':id']) }}">Cập nhật</a>'
+                                        .replace(':id', element.id);
+                            html += '</td>';
+                            html +='</tr>'  
+                         });
+                  } else {
+                      html +=
+                          '<tr>\       <td>Khong Có san pham</td>\
+                            </tr>';
+                  }
+                  $("#tbody-account")
+        
+                      .html(html)
+        
+              }
+          })
+        }); 
+    </script>
+{{-- Xử lí trang Modal --}}
 <script>
     $(document).ready(function() {
         $('.modal').modal('show');
     });
-
-
 </script>
-
-
-
+{{-- Xử lí trang Nublevel --}}
 <script  type="text/javascript">
-    function fetchData(params) {
+    function fetchNumber(params) {
       $.ajax({
           url: "{{ route('nublevel.index') }}",
           type: "GET",
@@ -173,12 +281,14 @@
                       html += '<td>' + sta[i]['servicename'] + '</td>';
                       html += '<td>' + sta[i]['grant_time'] + '</td>';
                       html += '<td>' + sta[i]['expired'] + '</td>';
+                     
                       html += '</tr>';
                   }
               } else {
                   html += '<tr><td>Không có sản phẩm</td></tr>';
               }
               $("#tbody-nublevel").html(html);
+            
           }
       });
   }
@@ -186,11 +296,14 @@
   $("#servicename").on('change', function () {
       var servicename = $(this).val();
       console.log(servicename);
-      fetchData({ 'servicename': servicename });
+      fetchNumber({ 'servicename': servicename });
   });
   
 
   </script>
+
+
+
 
 
 
@@ -203,14 +316,9 @@ $(document).ready(function() {
      format: 'yyyy-mm-dd',
     todayHighlight: true
   });
-  
-
-
 });
 </script>
 
 
-
 </body>
-
 </html>

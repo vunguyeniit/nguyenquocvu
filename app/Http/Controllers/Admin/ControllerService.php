@@ -7,6 +7,7 @@ use App\Models\ServiceMode\Ordinal;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use DB;
 
 
 
@@ -31,11 +32,8 @@ class ControllerService extends Controller
             ]);
         }
 
-
-
         if ($keyword = $request->search) {
             $service = Service::where('servicename', 'like', '%' . $keyword . '%')
-
                 ->orWhere('description', 'LIKE', '%' . $keyword . '%')
                 ->get();
         }
@@ -73,16 +71,42 @@ class ControllerService extends Controller
                 ]);
             }
         } else {
-            return redirect()->route('service.create');
+            return redirect()->route('service.index');
         }
     }
-    public function show($id)
+    public function show(Request $request, $id)
     {
-
         $ordinal = Service::find($id);
+        $paginate = $ordinal->getService()->paginate(5);
 
-        $paginate = $ordinal->getService()->paginate(2);
+        if ($request->ajax()) {
 
+            if (($request->statusid) == "") {
+                $detail =  DB::table('ordinal')
+                    ->where('service_id', $id)
+                    ->select('*')
+                    ->get();
+            } else {
+                $detail =  DB::table('ordinal')
+                    ->where('service_id', $id)
+                    ->where('status', $request->statusid)
+                    ->select(
+                        '*',
+                    )
+                    ->get();
+            }
+            return response()->json([
+                'servicestatus' => $detail,
+            ]);
+        }
+
+        //Tìm Kiếm
+        if ($keyword = $request->search_deatil) {
+            $paginate =  DB::table('ordinal')
+                ->where('number', 'like', '%' . $keyword . '%')
+                ->where('service_id', $id)
+                ->paginate(5);
+        }
 
 
         return view('service.detail', compact('ordinal', 'paginate'));
@@ -90,10 +114,7 @@ class ControllerService extends Controller
 
     public function edit($id)
     {
-
-
         $service = Service::find($id);
-
         return view('service.edit', compact("service"));
     }
 
