@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\System;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class ControllerDiary extends Controller
 {
@@ -14,8 +15,11 @@ class ControllerDiary extends Controller
      */
     public function index()
     {
-        //
-        return view('system.diary.diary');
+        $diary = DB::table('diary')
+            ->select('*')
+            ->get();
+
+        return view('system.diary.diary', compact('diary'));
     }
 
     /**

@@ -80,11 +80,12 @@
                                     </div>
                                     <div class="dropdown">
                                         Số thứ tự
-
+                                    
+                            
                                         <div class="dropdown-content">
-                                            <a href="#home">Home</a>
-                                            <a href="#about">About</a>
-                                            <a href="#contact">Contact</a>
+                                            @forEach($report as $item)
+                                            <a href="#home">{{$item->number_print}}</a>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </th>
@@ -99,9 +100,14 @@
                                         Tên dịch vụ
 
                                         <div class="dropdown-content">
-                                            <a href="#home">Home</a>
-                                            <a href="#about">About</a>
-                                            <a href="#contact">Contact</a>
+                                           
+                                            <a href="#home">Khám tim mạch</a>
+                                            <a href="#home">Khám tổng quát</a>
+                                            <a href="#home">Khám mắt</a>
+                                            <a href="#home">Khám hô hấp</a>
+                                          
+                                           
+                                        
                                         </div>
                                     </div>
                                 </th>
@@ -115,9 +121,10 @@
                                         Thời gian cấp
 
                                         <div class="dropdown-content">
-                                            <a href="#home">Home</a>
-                                            <a href="#about">About</a>
-                                            <a href="#contact">Contact</a>
+                                            @forEach($report as $item)
+                                            <a href="#home">{{$item->grant_time}}</a>
+                                            @endforeach
+                                           
                                         </div>
                                     </div>
                                 </th>
@@ -131,9 +138,15 @@
                                         Tình trạng
 
                                         <div class="dropdown-content">
-                                            <a href="#home">Home</a>
-                                            <a href="#about">About</a>
-                                            <a href="#contact">Contact</a>
+                                          
+                                          
+                                            
+                                            <a href="#home">Đang sử dụng</a>
+                                            <a href="#home">Đang chờ</a>
+                                            <a href="#home">Bỏ qua</a>
+                                            
+                                                
+                                   
                                         </div>
                                     </div>
                                 </th>
@@ -147,10 +160,14 @@
                                         Nguồn cấp
 
                                         <div class="dropdown-content">
-                                            <a href="#home">Home</a>
-                                            <a href="#about">About</a>
-                                            <a href="#contact">Contact</a>
+                                           
+                                            <a href="#home">Kiosk</a>
+                                            <a href="#home">Hệ thống</a>
+                                       
+                                           
                                         </div>
+                                   
+                            
                                     </div>
                                 </th>
 
@@ -161,16 +178,26 @@
 
 
                             </tr>
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
-
-
-                            </tr>
-
+                            @forEach($report as $item)
+                            
+                                <tr>
+                                    <td>{{$item->number_print}}</td>
+                                    <td>{{$item->servicename}}</td>
+                                    <td>{{$item->grant_time}}</td>
+                                    @if ($item->status==0) 
+                                    <td><i class="fa-solid fa-circle text-secondary fs-6"></i> Đã sử dụng</td>
+                                    @elseif($item->status==1)
+                                    <td><i class="fa-solid fa-circle text-primary fs-6"></i> Đang chờ</td>
+                                    @else 
+                                     <td><i class="fa-solid fa-circle text-danger fs-6"></i> Bỏ qua</td>
+                                     @endif 
+                                    <td>{{$item->supply}}</td>
+    
+    
+                                </tr>
+                             @endforeach
+                            
+                           
                         </table>
 
 

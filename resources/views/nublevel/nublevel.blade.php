@@ -36,7 +36,8 @@
     <main>
 
         <div class="select">
-            <form action="" class="row">
+            <form action="{{route('nublevel.index')}}" method="GET" class="row">
+                @csrf
                 <div class="col-md-2">
                     <label for="inputEmail4" class="form-label fs-3">Tên dịch vụ</label>
                     <select class="form-select py-2 fs-3" aria-label="Default select example" id="servicename">
@@ -48,18 +49,21 @@
                 </div>
                 <div class="col-md-2">
                     <label for="inputEmail4" class="form-label fs-3">Tình trạng</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="2">Hoạt động</option>
-                        <option value="3">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example"id="nub-status">
+                       
+                        <option  value="" selected>Tất cả</option>
+                        <option value="0">Đã sử dụng</option>
+                        <option value="1">Đang chờ </option>
+                        <option value="2">Bỏ qua</option>
+
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="inputEmail4" class="form-label fs-3">Nguồn cáp</label>
-                    <select class="form-select py-2 fs-3" aria-label="Default select example">
-                        <option selected>Tất cả</option>
-                        <option value="2">Hoạt động</option>
-                        <option value="3">Ngưng hoạt động</option>
+                    <select class="form-select py-2 fs-3" aria-label="Default select example"id="nub-supply">
+                        <option value="" selected>Tất cả</option>
+                        <option value="Kiosk">Kiosk</option>
+                        <option value="Hệ thống">Hệ thống </option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -92,8 +96,8 @@
                 <div class="col-md-3"style="width:21.2%">
                     <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
                     <div class="search">
-                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4"name="search">
+                        <button style="border: none;background-color: #ddd9d9;" type="submit"><i  class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
             </form>
@@ -124,10 +128,20 @@
                                 <td>{{$item->servicename}}</td>
                                 <td>{{$item->grant_time}}</td>
                                 <td>{{$item->expired}}</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                              
+            
+
+                                @if ($item->status==0) 
+                                <td><i class="fa-solid fa-circle text-secondary fs-6"></i> Đã sử dụng</td>
+                                @elseif($item->status==1)
+                                <td><i class="fa-solid fa-circle text-primary fs-6"></i> Đang chờ</td>
+                                @else 
+                                 <td><i class="fa-solid fa-circle text-danger fs-6"></i> Bỏ qua</td>
+                                 @endif 
+                                 <td>{{$item->supply}}</td>
                                 <td><a href="{{route('nublevel.show',$item->id)}}">Chi tiết</a></td>
                             </tr>
+                        
                             @endforeach
                         </tbody>
                         </table>

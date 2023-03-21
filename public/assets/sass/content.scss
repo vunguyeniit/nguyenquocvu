@@ -181,7 +181,7 @@ li {
 
 #sidebar .side-menu>li>a.active,
 #sidebar .side-menu>li>a.active:hover {
-  background: var(--blue);
+  background: #FF9138;
   color: var(--light);
 }
 
@@ -880,7 +880,7 @@ main .data {
 main .content-data .head h3 {
   color: #FF9138;
   font-size: 4rem;
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .modal-body {
@@ -924,6 +924,12 @@ main .content-data .head h3 {
     display: none;
   }
 }
+.table-condensed{
+  width: 100% !important;
+}
+.datepicker-inline {
+  width: 100% !important;
+}
 
 .datepicker table tr td.today,
 .datepicker table tr td.today.disabled,
@@ -931,4 +937,81 @@ main .content-data .head h3 {
 .datepicker table tr td.today:hover {
   background-image: none !important;
   background-color: none !important;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+justify-content: space-between;
+padding: 0 1rem;
+  height: 83px;
+
+  margin: 0.6rem 0;
+  box-shadow: 2px 2px 15px rgba(70, 64, 67, 0.1);
+  .box-content {
+    min-width: 38%;
+     justify-content: space-between;
+    display: flex;
+    align-items: center;
+    .list-status{
+      p {
+        font-size: 1.1rem;
+        font-weight: 700;
+        font-family: 'Nunito';
+        margin: 0.6rem 0 0.6rem 0rem;
+      }
+    }
+
+    .list-content {
+      
+      strong {
+        font-size: 2.5rem;
+        margin: 1.2rem 0rem;
+      }
+
+      p {
+        font-size: 1rem;
+       
+      }
+
+      a {
+        font-size: 2rem;
+        color: #FF9138;
+      }
+
+    }
+  }
+  .box-container {
+    display: flex;
+    align-items: center;
+
+    .box-percent {
+      img {
+         margin-right: 1.4rem;
+      }
+    }
+    .list-nub{
+      strong{
+        color: #535261 ;
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: 'Nunito';
+       
+        
+      }
+    }
+
+    
+    
+    }
+  }
+
+#usa_map{
+  h2{
+    color:#ff7505;
+    font-size:3rem;
+    margin:3rem 0;
+    font-weight: 700;
+  font-family: 'Nunito';
+  }
 }

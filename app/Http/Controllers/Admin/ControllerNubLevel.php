@@ -28,37 +28,54 @@ class ControllerNubLevel extends Controller
                 'number_print.grant_time',
                 'number_print.expired',
                 'number_print.id',
+                'number_print.status',
+                'number_print.supply',
 
             )
-            ->distinct()
-            ->get();
+            ->distinct();
+        if ($keyword = $request->search) {
+            $number->where('customer.fullname', 'like', '%' . $keyword . '%')
+                ->orwhere('service.servicename', 'like', '%' . $keyword . '%');
+        }
+        $number = $number->get();
 
         if ($request->ajax()) {
-            if ($request->servicename == "") {
-                $servicename = $number;
-            } else {
-                $servicename = DB::table('number_print')
-                    ->join('ordinal', 'ordinal.service_id', '=', 'number_print.id_print')
-                    ->join('service', 'service.id', '=', 'ordinal.service_id')
-                    ->join('customer', 'customer.id', '=', 'number_print.user_id')
-                    ->where('ordinal.is_printed', 1)
-                    ->where('service.id', '=', $request->servicename)
-                    ->select(
-                        'number_print.number_print',
-                        'customer.fullname',
-                        'service.servicename',
-                        'number_print.grant_time',
-                        'number_print.expired',
-                        'number_print.id',
-                    )
-                    ->distinct()
-                    ->get();
+            $servicename = DB::table('number_print')
+                ->join('ordinal', 'ordinal.service_id', '=', 'number_print.id_print')
+                ->join('service', 'service.id', '=', 'ordinal.service_id')
+                ->join('customer', 'customer.id', '=', 'number_print.user_id')
+                ->where('ordinal.is_printed', 1)
+
+                ->select(
+                    'number_print.number_print',
+                    'customer.fullname',
+                    'service.servicename',
+                    'number_print.grant_time',
+                    'number_print.expired',
+                    'number_print.id',
+                    'number_print.status',
+                    'number_print.supply',
+                )
+                ->distinct();
+            if (isset($request->servicename)) {
+                $servicename->where('service.id', '=', $request->servicename);
             }
+            if (isset($request->nubstatus)) {
+                $servicename->where('number_print.status', '=', $request->nubstatus);
+            }
+            if (isset($request->nubsupply)) {
+                $servicename->where('number_print.supply', '=', $request->nubsupply);
+            }
+            $servicename = $servicename->get();
+            // }
 
             return response()->json([
                 'servicename' => $servicename
             ]);
+            //chức năng tìm kiếm
+
         }
+
 
         $service = Service::all();
 
@@ -114,12 +131,16 @@ class ControllerNubLevel extends Controller
             ->where('user_id', $user->user_id)
             ->update(['user_print' => true]);
         //Tạo ra bản   Number_Print
+        $ran = rand(0, 2);
+        $supply = "Kiosk";
         Number_Print::create([
             'number_print' => $numbers->number,
             'id_print' => $numbers->id,
             'user_id' => $user->user_id,
             'grant_time' => $startOfDayFormatted,
-            'expired' => $expired
+            'expired' => $expired,
+            'status' => $ran,
+            'supply' =>  $supply
         ]);
 
         return redirect()->back()->with('success', 'successfully');
@@ -135,6 +156,7 @@ class ControllerNubLevel extends Controller
             ->where('ordinal.is_printed', 1)
             ->where('number_print.id', $id)
             ->select(
+
                 'number_print.number_print',
                 'customer.fullname',
                 'customer.phone',
@@ -142,6 +164,8 @@ class ControllerNubLevel extends Controller
                 'service.servicename',
                 'number_print.grant_time',
                 'number_print.expired',
+                'number_print.status',
+                'number_print.supply',
             )
             ->first();
         return view('nublevel.detail', compact('number'));

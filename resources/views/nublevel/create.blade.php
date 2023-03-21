@@ -1,7 +1,6 @@
 @extends('layout.Clone-Admin')
 @section('content')
     <section id="content">
-        {{-- @include('admin.header') --}}
     @section('header')
         <nav>
             <div class="header-right">
@@ -30,14 +29,7 @@
             </div>
         </nav>
     @endsection
-
-
-
-    <main>
-
-        {{-- <div class="select">
-
-        </div> --}}
+    <main style="pad: 0">
 
         <div class="data " style="grid-gap:0">
             <div class="content-data">

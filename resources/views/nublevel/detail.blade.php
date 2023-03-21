@@ -84,8 +84,18 @@ f
 
                                 <div class="col-4">
 
-                                    <p class="d-block fs-4 mb-4">Kiosk</p>
-                                    <p class="d-block fs-4 mb-4">Đang chờ</p>
+                                    <p class="d-block fs-4 mb-4">{{$number->supply}}</p>
+                                    @if ($number->status==0) 
+                                    <p class="d-block fs-4 mb-4"><i class="fa-solid fa-circle text-secondary fs-6"></i> Đã sử dụng</p>
+
+                                    @elseif($number->status==1)
+       
+                                    <p class="d-block fs-4 mb-4"><i class="fa-solid fa-circle text-primary fs-6"></i> Đang chờ</p>
+                                    @else 
+                                  
+                                     <p class="d-block fs-4 mb-4"><i class="fa-solid fa-circle text-danger fs-6"></i> Bỏ qua</p>
+                                     @endif 
+                                  
                                     <p class="d-block fs-4 mb-4">{{$number->phone}}</p>
                                     <p class="d-block fs-4 mb-4">{{$number->email}}</p>
 

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href={{ asset('assets/css/style.css') }}>
+
+
     {{-- CDN GoogleFont --}}
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
     {{-- CDN Fontawesome --}}
@@ -14,6 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     {{-- CDN select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2/dist/css/select2.min.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     <title>Login</title>
@@ -25,7 +28,7 @@
 </head>
 
 <body style="background-color: #ddd9d9;overflow-x:unset">
-    <div class="wrapper">
+    <div class="wrapper" style="background: none">
         @include('sidebar.sidebar')
         @yield('header');
         @yield('content')
@@ -274,16 +277,25 @@
               console.log(sta)
               var html = '';
               if (sta.length > 0) {
-                  for (let i = 0; i < sta.length; i++) {
+                sta.forEach(element => {
                       html += '<tr>';
-                      html += '<td>' + sta[i]['number_print'] + '</td>';
-                      html += '<td>' + sta[i]['fullname'] + '</td>';
-                      html += '<td>' + sta[i]['servicename'] + '</td>';
-                      html += '<td>' + sta[i]['grant_time'] + '</td>';
-                      html += '<td>' + sta[i]['expired'] + '</td>';
-                     
-                      html += '</tr>';
-                  }
+                      html += '<td>' + element.number_print + '</td>';
+                      html += '<td>' + element.fullname + '</td>';
+                      html += '<td>' + element.servicename + '</td>';
+                      html += '<td>' + element.grant_time + '</td>';
+                      html += '<td>' + element.expired + '</td>';
+                      html += '<td>' +
+                                        (element.status == 0 ? '<i class="fa-solid fa-circle text-secondary fs-6"></i> Đã sử dụng' : '') +
+                                        (element.status == 1 ? '<i class="fa-solid fa-circle text-primary fs-6"></i> Đang chờ' : '') +
+                                        (element.status == 2 ? '<i class="fa-solid fa-circle text-danger fs-6"></i> Bỏ qua' : '') + '</td>';
+                                        html += '<td>' + element.supply + '</td>';
+
+                                        html += '<td>';
+                            html += '<a href="{{ route('nublevel.show', ['nublevel' => ':id']) }}">Chi tiết</a>'
+                                        .replace(':id', element.id);
+                            html += '</td>';
+                                        html += '</tr>';
+                                    }); 
               } else {
                   html += '<tr><td>Không có sản phẩm</td></tr>';
               }
@@ -292,14 +304,22 @@
           }
       });
   }
-  
   $("#servicename").on('change', function () {
       var servicename = $(this).val();
-      console.log(servicename);
       fetchNumber({ 'servicename': servicename });
   });
   
+  $("#nub-status").on('change', function () {
+      var nubstatus = $(this).val();
+      fetchNumber({ 'nubstatus': nubstatus });
+  });
 
+  $("#nub-supply").on('change', function () {
+      var nubsupply = $(this).val();
+      fetchNumber({ 'nubsupply': nubsupply });
+  });
+  
+  
   </script>
 
 
@@ -317,6 +337,21 @@ $(document).ready(function() {
     todayHighlight: true
   });
 });
+
+
+$('#datepicker').datepicker({
+    autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true
+});
+// $('#datepicker').on('changeDate', function() {
+    
+//     $('#my_hidden_input').val(
+//         $('#datepicker').datepicker( 'getFormattedDate'
+//         )
+        
+//     );
+// });
 </script>
 
 

@@ -81,14 +81,17 @@
                                 <th>Thao tác thực hiện</th>
 
                             </tr>
+                            @foreach ($diary as $item)
                             <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Germany</td>
+                                <td>{{ $item->username}}</td>
+                                <td>{{ $item->usetime}}</td>
+                                <td>{{ $item->ip}}</td>
+                                <td>{{ $item->perform}}</td>
 
 
                             </tr>
+                            @endforeach
+                          
 
                         </table>
 
