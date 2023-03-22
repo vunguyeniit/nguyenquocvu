@@ -12,7 +12,7 @@ class ControllerAccount extends Controller
     public function index(Request $request)
     {
         $query = account::query();
-        $account = $query->get();
+        $account = $query->paginate(2);
 
         if ($request->ajax()) {
             $account_status = $query->where(['status' => $request->statusid])->get();

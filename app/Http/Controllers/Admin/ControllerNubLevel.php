@@ -37,7 +37,7 @@ class ControllerNubLevel extends Controller
             $number->where('customer.fullname', 'like', '%' . $keyword . '%')
                 ->orwhere('service.servicename', 'like', '%' . $keyword . '%');
         }
-        $number = $number->get();
+        $number = $number->paginate(2);
 
         if ($request->ajax()) {
             $servicename = DB::table('number_print')
@@ -57,6 +57,7 @@ class ControllerNubLevel extends Controller
                     'number_print.supply',
                 )
                 ->distinct();
+
             if (isset($request->servicename)) {
                 $servicename->where('service.id', '=', $request->servicename);
             }

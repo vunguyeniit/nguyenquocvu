@@ -17,7 +17,8 @@
                         <i class="fa-solid fa-bell"></i>
                     </div>
                     <div class="img_content">
-                        <img src="{{ asset('assets/images/user.png') }}">
+                     
+                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
                         <div class="user-content">
                             <p>Xin Chào</p>
                             <h3>Lê Quỳnh Ái Vân</h3>
@@ -141,14 +142,18 @@
                                 </tbody>
                             @endif
                         </table>
-
+                       
 
 
                     </div>
+                 
                 </div>
+             
             </div>
+           
+              
+           
             <div class="content-add">
-
                 <div class="add">
                     <a href="{{ route('device.create') }}">
                         <div class="btn-add">
@@ -160,10 +165,10 @@
 
             </div>
         </div>
+        {{ $device->links()}}
         </div>
-        {{-- <div class="pagination">
-
-        </div> --}}
+    
+      
     </main>
 </section>
 @endsection

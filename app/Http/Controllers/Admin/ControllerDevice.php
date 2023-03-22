@@ -16,7 +16,7 @@ class ControllerDevice extends Controller
 {
     public function index(Request $request)
     {
-        $device = ModelDevice::all();
+        $device = ModelDevice::paginate(2);
         if ($request->ajax()) {
             $devicestatus = DB::table('device')
                 ->join('tagid', 'device.id', '=',  DB::raw('CAST(tagid.user_id AS CHAR)'))

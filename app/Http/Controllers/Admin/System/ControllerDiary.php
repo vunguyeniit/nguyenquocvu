@@ -17,7 +17,7 @@ class ControllerDiary extends Controller
     {
         $diary = DB::table('diary')
             ->select('*')
-            ->get();
+            ->paginate(2);
 
         return view('system.diary.diary', compact('diary'));
     }

@@ -24,7 +24,7 @@ class ControllerReport extends Controller
                 'number_print.supply'
             )
             ->distinct()
-            ->get();
+            ->paginate(4);
         // dd($report);
         return view('report.report', compact('report'));
     }

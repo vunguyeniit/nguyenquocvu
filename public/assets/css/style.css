@@ -948,7 +948,7 @@ main .btn-send:hover {
   }
 }
 nav {
-  height: 88px;
+  height: 40px;
   margin-left: 26rem;
 }
 nav .title {
@@ -983,12 +983,12 @@ nav .header-right .profile .img_content .user-content h3 {
   font-size: 1.5rem;
 }
 nav .header-right .profile .icon-bell .fa-solid {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #FF9138;
   background: #FFF2E7;
   border-radius: 32px;
-  padding: 1.5rem;
-  margin: 0 3rem;
+  padding: 1.2rem;
+  margin: 0 2rem;
 }
 nav .header-right .header-left h2 {
   font-family: "Nunito";

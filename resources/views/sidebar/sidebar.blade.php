@@ -27,7 +27,7 @@
          <div class="btn-sidebar">
              <div class="btn-logout">
                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                 <li><a href="#">Đăng xuất</a></li>
+                 <li><a href="{{route('admin.logout')}}">Đăng xuất</a></li>
              </div>
 
          </div>

@@ -17,7 +17,7 @@ class ControllerService extends Controller
     {
 
         $query = Service::query();
-        $service = $query->paginate(4);
+        $service = $query->paginate(2);
         if ($request->ajax()) {
 
             if (($request->statusid) == "") {

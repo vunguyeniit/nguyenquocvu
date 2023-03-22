@@ -5,9 +5,11 @@ namespace App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LoginAdmin;
+
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class CheckLogin extends Controller
 {
@@ -32,10 +34,23 @@ class CheckLogin extends Controller
         ];
 
         if (Auth::attempt($arr)) {
-            return redirect()->route('admin.account-user');
+            return redirect()->route('admin.indexLogin');
         } else {
+
             return redirect()->route('admin.login')->with('error', 'Sai mật khẩu hoặc tên đăng nhập');
         }
+    }
+
+    public function indexLogin()
+    {
+        $user = Auth::user();
+
+        return view('admin.account-user', compact('user'));
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('admin.login');
     }
 
     public function getForgot()

@@ -16,15 +16,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     {{-- CDN select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2/dist/css/select2.min.css') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-
     <title>Login</title>
- <style>
+ {{-- <style>
       .content{
     display: block;
     }
- </style>
+ </style> --}}
 </head>
 
 <body style="background-color: #ddd9d9;overflow-x:unset">
@@ -120,7 +118,6 @@
   }
   $("#connection-device,#status-device",).on('change', function () {
       var connection = $(this).val();
-      var statusid = $(this).val();
       fetchData({ 'connection': connection,
       });
   });
