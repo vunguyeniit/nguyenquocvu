@@ -30,7 +30,6 @@ class ControllerNubLevel extends Controller
                 'number_print.id',
                 'number_print.status',
                 'number_print.supply',
-
             )
             ->distinct();
         if ($keyword = $request->search) {
@@ -67,6 +66,11 @@ class ControllerNubLevel extends Controller
             if (isset($request->nubsupply)) {
                 $servicename->where('number_print.supply', '=', $request->nubsupply);
             }
+            if (isset($request->start_date) && isset($request->end_date)) {
+                $start_date = date('Y-m-d H:i:s', strtotime($request->start_date . ' 00:00:00'));
+                $end_date = date('Y-m-d H:i:s', strtotime($request->end_date . ' 23:59:59'));
+                $servicename->whereBetween('number_print.created_at', [$start_date, $end_date]);
+            }
             $servicename = $servicename->get();
             // }
 
@@ -74,10 +78,7 @@ class ControllerNubLevel extends Controller
                 'servicename' => $servicename
             ]);
             //chức năng tìm kiếm
-
         }
-
-
         $service = Service::all();
 
         return view('nublevel.nublevel', compact('number', 'service'));

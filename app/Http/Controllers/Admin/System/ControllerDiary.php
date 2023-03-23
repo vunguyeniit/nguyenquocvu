@@ -13,12 +13,26 @@ class ControllerDiary extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $diary = DB::table('diary')
             ->select('*')
-            ->paginate(2);
+            ->paginate(6);
+        if ($request->ajax()) {
 
+            if ($request->start_date && $request->end_date) {
+                $start_date = date('Y-m-d H:i:s', strtotime($request->start_date . ' 00:00:00'));
+                $end_date = date('Y-m-d H:i:s', strtotime($request->end_date . ' 23:59:59'));
+                $diary = DB::table('diary')
+                    ->select('*')
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->get();
+            }
+
+            return response()->json([
+                'diary' => $diary
+            ]);
+        }
         return view('system.diary.diary', compact('diary'));
     }
 

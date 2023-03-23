@@ -7,7 +7,7 @@
             <div class="header-right">
                 <div class="header-left">
                     <h2 style="color: #7E7D88;margin-right:1rem">Thiết bị <i class="fa-solid fa-chevron-right fs-4"></i></h2>
-                    <h2>Danh sách dịch vụ</h2>
+                    <h2>Danh sách cấp số</h2>
                 </div>
                 <div class="profile">
                     <div class="icon-bell">
@@ -26,7 +26,7 @@
             </div>
 
             <div class="title">
-                <h2>Quản lý dịch vụ</h2>
+                <h2>Quản lý cấp số</h2>
             </div>
         </nav>
     @endsection
@@ -68,13 +68,13 @@
                 </div>
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                    <div class="input-group date" id="datepicker">
+                    <div class="input-group date startdate" id="nub_start-time">
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                         <input type="text" class="form-control py-1 fs-2" id="nub-startdate">
                 
                         
                     </div>
@@ -82,13 +82,13 @@
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3" style=" visibility: hidden;">Chọn thời
                         gian</label>
-                        <div class="input-group date" id="datepicker">
+                        <div class="input-group date enddate" id="nub_end-time">
                             <span class="input-group-append">
                                 <span class="input-group-text bg-light d-block">
                                     <i class="fa fa-calendar"></i>
                                 </span>
                                 </span>
-                             <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                             <input type="text" class="form-control py-1 fs-2 "  id="nub-enddate">
                     
                             
                         </div>

@@ -5,11 +5,12 @@ namespace App\Http\Controllers\AuthLogin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LoginAdmin;
-
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
+
 
 class CheckLogin extends Controller
 {
@@ -43,10 +44,17 @@ class CheckLogin extends Controller
 
     public function indexLogin()
     {
+        // $has = Hash::make("123");
+        // $decrypted = ;
+        // $decrypted1 = Crypt::decryptString($decrypted);
+        // dd($decrypted1);
         $user = Auth::user();
 
         return view('admin.account-user', compact('user'));
     }
+
+
+
     public function logout()
     {
         Auth::logout();

@@ -26,11 +26,23 @@ class ControllerService extends Controller
 
                 $servicestatus = $query->where(['status' => $request->statusid])->get();
             }
+
+
+            if ($request->start_date && $request->end_date) {
+                $start_date = date('Y-m-d H:i:s', strtotime($request->start_date . ' 00:00:00'));
+                $end_date = date('Y-m-d H:i:s', strtotime($request->end_date . ' 23:59:59'));
+
+                $servicestatus = DB::table('service')
+                    ->select('*')
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->get();
+            }
             return response()->json([
                 'servicestatus' => $servicestatus,
 
             ]);
         }
+
 
         if ($keyword = $request->search) {
             $service = Service::where('servicename', 'like', '%' . $keyword . '%')
@@ -78,9 +90,7 @@ class ControllerService extends Controller
     {
         $ordinal = Service::find($id);
         $paginate = $ordinal->getService()->paginate(5);
-
         if ($request->ajax()) {
-
             if (($request->statusid) == "") {
                 $detail =  DB::table('ordinal')
                     ->where('service_id', $id)
@@ -95,8 +105,19 @@ class ControllerService extends Controller
                     )
                     ->get();
             }
+
+            if ($request->start_date && $request->end_date) {
+                $start_date = date('Y-m-d H:i:s', strtotime($request->start_date . ' 00:00:00'));
+                $end_date = date('Y-m-d H:i:s', strtotime($request->end_date . ' 23:59:59'));
+
+                $detail = DB::table('ordinal')
+                    ->select('*')
+                    ->where('service_id', $id)
+                    ->whereBetween('created_at', [$start_date, $end_date])
+                    ->get();
+            }
             return response()->json([
-                'servicestatus' => $detail,
+                'detail' => $detail,
             ]);
         }
 

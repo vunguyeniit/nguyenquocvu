@@ -21,11 +21,8 @@
                             <h3>Lê Quỳnh Ái Vân</h3>
                         </div>
                     </div>
-
                 </div>
-
             </div>
-
             <div class="title">
                 <h2>Quản lý dịch vụ</h2>
             </div>
@@ -52,13 +49,13 @@
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
                     
-                    <div class="input-group date" id="startdate">
+                    <div class="input-group date startdate" id="startdate" >
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 datepicker"id="startdate"  name= 'startdate'>
+                         <input type="text" class="form-control py-1 fs-2 datepicker"id="startdate1">
                         
                         </div>
                
@@ -67,15 +64,13 @@
                     <label style="visibility: hidden" for="inputPassword4" class="form-label fs-3">Chọn thời
                         gian</label>
                   
-                    <div class="input-group date" id="enddate">
+                    <div class="input-group date enddate" id="enddate" >
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 datepicker" id="enddate" name= 'enddate'>
-                
-                        
+                         <input type="text" class="form-control py-1 fs-2 datepicker" id="enddate1">
                     </div>
                 </div>
 
@@ -89,16 +84,11 @@
                 </div>
             </form>
         </div>
-
         <div class="data">
             <div class="content-data p-0">
                 <div class="head">
                     <div class="form-user">
-
                         <table id="customers">
-                          
-                                
-
                             <tr>
                                 <th>Mã dịch vụ</th>
                                 <th>Tên dịch vụ</th>

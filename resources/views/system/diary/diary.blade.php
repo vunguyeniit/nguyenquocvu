@@ -39,13 +39,13 @@
 
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                <div class="input-group date" id="datepicker">
+                <div class="input-group date startdate" id="diary-start">
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                         <input type="text" class="form-control py-1 fs-2 "  id="diary-startdate">
                 
                         
                     </div>
@@ -53,13 +53,13 @@
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3" style="visibility: hidden">Chọn thời
                         gian</label>
-                <div class="input-group date" id="datepicker">
+                <div class="input-group date enddate" id="diary-end">
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                         <input type="text" class="form-control py-1 fs-2 "  id="diary-enddate">
                 
                         
                     </div>
@@ -81,6 +81,7 @@
                                 <th>Thao tác thực hiện</th>
 
                             </tr>
+                            <tbody id="diary-tbody">
                             @foreach ($diary as $item)
                             <tr>
                                 <td>{{ $item->username}}</td>
@@ -91,7 +92,7 @@
 
                             </tr>
                             @endforeach
-                          
+                        </tbody>
 
                         </table>
 
