@@ -17,7 +17,7 @@ class ControllerService extends Controller
     {
 
         $query = Service::query();
-        $service = $query->paginate(2);
+        $service = $query->paginate(3);
         if ($request->ajax()) {
 
             if (($request->statusid) == "") {
@@ -47,7 +47,7 @@ class ControllerService extends Controller
         if ($keyword = $request->search) {
             $service = Service::where('servicename', 'like', '%' . $keyword . '%')
                 ->orWhere('description', 'LIKE', '%' . $keyword . '%')
-                ->get();
+                ->paginate(3);
         }
 
 
@@ -68,7 +68,7 @@ class ControllerService extends Controller
                 'description' => $request->description,
 
             ]);
-            foreach (range(0, 5) as $item) {
+            foreach (range(0, 15) as $item) {
                 if ($item <= 9) {
                     $id = $request->servicecode . '000' . $item;
                 } else {
@@ -83,13 +83,14 @@ class ControllerService extends Controller
                 ]);
             }
         } else {
-            return redirect()->route('service.index');
+            return redirect()->route('service.create');
         }
+        return redirect()->route('service.index');
     }
     public function show(Request $request, $id)
     {
         $ordinal = Service::find($id);
-        $paginate = $ordinal->getService()->paginate(5);
+        $paginate = $ordinal->getService()->paginate(8);
         if ($request->ajax()) {
             if (($request->statusid) == "") {
                 $detail =  DB::table('ordinal')
@@ -160,6 +161,7 @@ class ControllerService extends Controller
         } else {
             return redirect()->route('service.create');
         }
+        return redirect()->route('service.index');
     }
 
     public function destroy($id)

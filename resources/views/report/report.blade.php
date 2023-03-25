@@ -12,14 +12,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
-
+                    @include('admin.user')
                 </div>
 
             </div>
@@ -37,13 +30,13 @@
 
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3">Chọn thời gian</label>
-                  <div class="input-group date" id="datepicker">
+                  <div class="input-group date startdate" id="report-start">
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                         <input type="text" class="form-control py-1 fs-2 "id="report-startdate">
                 
                         
                     </div>
@@ -51,13 +44,13 @@
                 <div class="col-md-2">
                     <label for="inputPassword4" class="form-label fs-3" style="visibility: hidden;">Chọn thời
                         gian</label>
-                  <div class="input-group date" id="datepicker">
+                  <div class="input-group date enddate" id="report-end">
                         <span class="input-group-append">
                             <span class="input-group-text bg-light d-block">
                                 <i class="fa fa-calendar"></i>
                             </span>
                             </span>
-                         <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" id="date">
+                         <input type="text" class="form-control py-1 fs-2 " id="report-enddate">
                 
                         
                     </div>
@@ -178,6 +171,7 @@
 
 
                             </tr>
+                            <tbody id="report-tbody">
                             @forEach($report as $item)
                             
                                 <tr>
@@ -196,7 +190,7 @@
     
                                 </tr>
                              @endforeach
-                            
+                            </tbody>
                            
                         </table>
 
@@ -209,9 +203,9 @@
             <div class="content-add">
 
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('download.generate-pdf') }}">
                         <div class="btn-add">
-                            <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
+                            <img srcset="{{ asset('./assets/images/document-download.png 1x') }}">
                             <span class="d-block">Tải về</span>
                         </div>
                     </a>

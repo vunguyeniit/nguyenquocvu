@@ -42,7 +42,7 @@
 <form  action={{route('admin.handlerest')}} method="POST">
   <h2>Đặt Lại Mật Khẩu Mới</h2>
   <div class="input-group">
-    <label for="">Mật Khẩu* *</label>
+    <label for="">Mật Khẩu *</label>
     <div style="position: relative;" class="icon-eye">
     <input class="showpass" type="password" name="password">
     <i class="fa-regular fa-eye-slash"></i>
@@ -65,15 +65,17 @@
 
 
   <div class="input-group">
+  
   <div class="btn_login">
     <button type="submit">Xác Nhận</button>
   </div>
+
 </div>
 <input type="hidden" value="{{$code}}" name='code'>
   @csrf
 </form>
 @endsection
 @section('image')
-<img srcset="{{asset('./assets/images/Frame.png 2x')}}">
+<img srcset="{{asset('./assets/images/Frame3.png 2x')}}">
 @endsection
 

@@ -36,7 +36,7 @@ class ControllerNubLevel extends Controller
             $number->where('customer.fullname', 'like', '%' . $keyword . '%')
                 ->orwhere('service.servicename', 'like', '%' . $keyword . '%');
         }
-        $number = $number->paginate(2);
+        $number = $number->paginate(8);
 
         if ($request->ajax()) {
             $servicename = DB::table('number_print')

@@ -16,7 +16,7 @@ class ControllerDevice extends Controller
 {
     public function index(Request $request)
     {
-        $device = ModelDevice::paginate(2);
+        $device = ModelDevice::paginate(4);
         if ($request->ajax()) {
             $devicestatus = DB::table('device')
                 ->join('tagid', 'device.id', '=',  DB::raw('CAST(tagid.user_id AS CHAR)'))
@@ -54,8 +54,10 @@ class ControllerDevice extends Controller
             $device = ModelDevice::where('devicename', 'like', '%' . $keyword . '%')
                 ->orWhere('devicecode', 'LIKE', '%' . $keyword . '%')
                 ->orWhere('addressip', 'LIKE', '%' . $keyword . '%')
-                ->get();
+                ->paginate(4);
         }
+
+
         return view('device.device', compact('device'));
     }
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Support\Facades\Session;
 
 class CheckLogin extends Controller
 {
@@ -35,6 +35,8 @@ class CheckLogin extends Controller
         ];
 
         if (Auth::attempt($arr)) {
+            $user = Auth::user();
+            Session::put('key', $user);
             return redirect()->route('admin.indexLogin');
         } else {
 
@@ -44,12 +46,8 @@ class CheckLogin extends Controller
 
     public function indexLogin()
     {
-        // $has = Hash::make("123");
-        // $decrypted = ;
-        // $decrypted1 = Crypt::decryptString($decrypted);
-        // dd($decrypted1);
-        $user = Auth::user();
-
+        // $user = Auth::user();
+        $user = Session::get('key');
         return view('admin.account-user', compact('user'));
     }
 
@@ -58,6 +56,7 @@ class CheckLogin extends Controller
     public function logout()
     {
         Auth::logout();
+        Session::forget('key');
         return redirect()->route('admin.login');
     }
 

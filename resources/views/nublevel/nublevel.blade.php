@@ -13,13 +13,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
+                    @include('admin.user')
 
                 </div>
 

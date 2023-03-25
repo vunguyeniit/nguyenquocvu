@@ -14,7 +14,9 @@ class Number_Print extends Model
         'id_print',
         'user_id',
         'grant_time',
-        'expired'
+        'expired',
+        'status',
+        'supply'
 
     ];
 }

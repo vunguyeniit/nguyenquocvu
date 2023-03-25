@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ControllerDevice;
 use App\Http\Controllers\Admin\ControllerNubLevel;
 use App\Http\Controllers\Admin\ControllerReport;
 use App\Http\Controllers\Admin\ControllerService;
+use App\Http\Controllers\Admin\PDFController;
 use App\Http\Controllers\Admin\System\ControllerAccount;
 use App\Http\Controllers\Admin\System\ControllerDiary;
 use App\Http\Controllers\Admin\System\ControllerRole;
@@ -33,7 +34,7 @@ Route::get('/forgot', [CheckLogin::class, 'getForgot'])->name('admin.forgot');
 Route::post('/forgot', [CheckLogin::class, 'handleforgot'])->name('admin.handleforgot');
 Route::get('/reset-pass', [CheckLogin::class, 'getResPass'])->name('admin.reset');
 Route::post('/reset-pass', [CheckLogin::class, 'handlerestpas'])->name('admin.handlerest');
-
+Route::get('/generate-pdf', [PDFController::class, 'generatePDF'])->name('download.generate-pdf');
 Route::prefix('/admin')->middleware('checkuser')->group(function () {
     Route::resource('/das', ControllerDashboard::class);
     Route::resource('/device', ControllerDevice::class);

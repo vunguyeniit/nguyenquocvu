@@ -19,13 +19,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
+                    @include('admin.user')
 
                 </div>
 
@@ -69,8 +63,8 @@
                                     class="form-label fs-3 d-block mt-4 "style="font-weight: 600;">Mô
                                     tả</label>
                                 <textarea style=" resize: none;ouline:none;outline: none;
-                                border: 1.5px solid #D4D4D7;"
-                                    id="w3review" name="description" rows="7" cols="92"> </textarea>
+                                border: 1.5px solid #D4D4D7; font-size:2rem"
+                                    id="w3review" name="description" rows="7" cols="51"> </textarea>
                                 <p class="fs-4">* Là trường thông tin bắt buộc</p>
 
                             </div>

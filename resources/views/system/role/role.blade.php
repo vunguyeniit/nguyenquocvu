@@ -17,14 +17,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
-
+                    @include('admin.user')
                 </div>
 
             </div>
@@ -40,13 +33,13 @@
     <main>
 
         <div class="select">
-            <form action="" class="row me-3" style="justify-content: flex-end">
-
+            <form action="{{route('role.index')}}" method="GET" class="row me-3" style="justify-content: flex-end">
+@csrf
                 <div class="col-md-3">
                     <label for="inputPassword4" class="form-label fs-3">Từ khóa</label>
                     <div class="search">
-                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" class="form-control py-1 fs-2 " id="inputPassword4" name="search">
+                        <button style="border: none;background-color: #ddd9d9;" type="submit"><i  class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
             </form>

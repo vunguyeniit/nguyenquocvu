@@ -9,10 +9,16 @@ use Illuminate\Http\Request;
 class ControllerRole extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
 
     {
         $role = role::all();
+
+        if ($keyword = $request->search) {
+            $role = role::where('rolename', 'like', '%' . $keyword . '%')
+                ->orWhere('description', 'LIKE', '%' . $keyword . '%')
+                ->get();
+        }
         return view('system.role.role', compact('role'));
     }
 

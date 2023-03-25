@@ -16,14 +16,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
-
+                    @include('admin.user')
                 </div>
 
             </div>
@@ -125,7 +118,7 @@
                 </div>
             </div>
 
-            <div class="content-data">
+            <div class="content-data ms-5">
                 <div class="head d-block">
 
                     <div class="select">
@@ -212,19 +205,19 @@
 
             <div class="content-add">
                 <div class="add">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('service.edit',$ordinal->id) }}">
                         <div class="btn-add">
-                            <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                            <span>Thêm thiết bị</span>
+                            <img srcset="{{ asset('./assets/images/Edit-Square.png 1x') }}">
+                            <span class="d-block">Cập nhật danh sách</span>
                         </div>
                     </a>
                 </div>
 
                 <div class="add" style="top: 9.8rem;">
-                    <a href="{{ route('device.create') }}">
+                    <a href="{{ route('service.index') }}">
                         <div class="btn-add">
-                            <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                            <span>Thêm thiết bị</span>
+                            <img srcset="{{ asset('./assets/images/back-square.png 1x') }}">
+                            <span>Quay lại</span>
                         </div>
                     </a>
                 </div>

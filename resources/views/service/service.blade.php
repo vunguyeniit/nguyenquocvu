@@ -14,13 +14,7 @@
                     <div class="icon-bell">
                         <i class="fa-solid fa-bell"></i>
                     </div>
-                    <div class="img_content">
-                        <img srcset="{{ asset('./assets/images/user.png 2x') }}">
-                        <div class="user-content">
-                            <p>Xin Chào</p>
-                            <h3>Lê Quỳnh Ái Vân</h3>
-                        </div>
-                    </div>
+                    @include('admin.user')
                 </div>
             </div>
             <div class="title">
@@ -109,7 +103,7 @@
                                 <td><i class="fa-solid fa-circle text-success fs-6"></i> Hoạt động</td>
                                 @endif
                                 <td><a id="status-id" href="{{route('service.show',$item->id)}}">Chi tiết</a></td>
-                                <td><a href="{{route('service.show',$item->id)}}">Cập nhật</a></td>
+                                <td><a href="{{route('service.edit',$item->id)}}">Cập nhật</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -127,7 +121,7 @@
                     <a href="{{ route('service.create') }}">
                         <div class="btn-add">
                             <img srcset="{{ asset('./assets/images/add-square.png 1x') }}">
-                            <span>Thêm thiết bị</span>
+                            <span>Thêm dịch vụ</span>
                         </div>
                     </a>
                 </div>

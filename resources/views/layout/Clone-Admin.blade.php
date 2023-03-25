@@ -11,6 +11,7 @@
     {{-- CDN Fontawesome --}}
     <link rel="stylesheet" href="https://kit.fontawesome.com/ef6c647e92.css" crossorigin="anonymous">
     {{-- CDN Bootstrap --}}
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     {{-- CDN select2 --}}
     <link rel="stylesheet" href="{{ asset('assets/select2/select2/dist/css/select2.min.css') }}">
@@ -360,7 +361,7 @@
           },
           success: function (data) {
               var sta = data.diary;
-              console.log(sta)
+         
               var html = '';
               if (sta.length > 0) {
                 sta.forEach(element => {
@@ -383,6 +384,52 @@
     });
 </script>
 
+
+
+<script type="text/javascript">
+
+    $("#report-start,#report-end").on('change', function () {
+        var start_date = $('#report-startdate').val();
+        var end_date = $('#report-enddate').val();
+    
+        if(start_date !=="" && end_date !=="")
+        {
+      $.ajax({
+          url: "{{ route('report.index') }}",
+          type: "GET",
+          data: {
+            start_date:start_date,
+            end_date:end_date
+          },
+          success: function (data) {
+              var sta = data.report;
+              console.log(sta)
+              var html = '';
+              if (sta.length > 0) {
+                sta.forEach(element => {
+                      html += '<tr>';
+                      html += '<td>' + element.number_print + '</td>';
+                      html += '<td>' + element.servicename + '</td>';
+                      html += '<td>' + element.grant_time + '</td>';
+                      html += '<td>' +
+                                        (element.status == 0 ? '<i class="fa-solid fa-circle text-secondary fs-6"></i> Đã sử dụng' : '') +
+                                        (element.status == 1 ? '<i class="fa-solid fa-circle text-primary fs-6"></i> Đang chờ' : '') +
+                                        (element.status == 2 ? '<i class="fa-solid fa-circle text-danger fs-6"></i> Bỏ qua' : '') + '</td>';
+                                     
+                      html += '<td>' + element.supply + '</td>';
+                 
+                                        html += '</tr>';
+                                    }); 
+              } else {
+                  html += '<tr><td>Không có sản phẩm</td></tr>';
+              }
+              $("#report-tbody").html(html);
+            
+          }
+      });
+    }
+});
+</script>
 
 
 

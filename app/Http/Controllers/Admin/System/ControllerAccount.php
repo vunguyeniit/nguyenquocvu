@@ -12,7 +12,7 @@ class ControllerAccount extends Controller
     public function index(Request $request)
     {
         $query = account::query();
-        $account = $query->paginate(2);
+        $account = $query->paginate(4);
 
         if ($request->ajax()) {
             $account_status = $query->where(['status' => $request->statusid])->get();
@@ -20,6 +20,12 @@ class ControllerAccount extends Controller
             return response()->json([
                 'account' => $account_status
             ]);
+        }
+
+        if ($keyword = $request->search) {
+            $account = account::where('username', 'like', '%' . $keyword . '%')
+                ->orWhere('fullname', 'like', '%' . $keyword . '%')
+                ->paginate(4);
         }
         return view('system.account.account', compact('account'));
     }

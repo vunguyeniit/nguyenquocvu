@@ -17,7 +17,7 @@ class ControllerDiary extends Controller
     {
         $diary = DB::table('diary')
             ->select('*')
-            ->paginate(6);
+            ->paginate(8);
         if ($request->ajax()) {
 
             if ($request->start_date && $request->end_date) {
