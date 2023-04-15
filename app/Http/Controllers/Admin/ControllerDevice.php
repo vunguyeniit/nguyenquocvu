@@ -95,7 +95,7 @@ class ControllerDevice extends Controller
             // ]);
             $tagId[] = $tagInstance->id;
         }
-
+        dd($tagId);
         $device->tags1()->attach($tagId);
 
         return redirect()->route('device.index');

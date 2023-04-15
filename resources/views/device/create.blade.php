@@ -80,12 +80,7 @@
                                 <label for="inputPassword4" class="form-label fs-3">Dịch vụ sử dụng</label>
                                 <select id="js-select2" class="form-select py-2 fs-1 opacity-75"
                                     aria-label="Default select example" name="tags[]" multiple>
-                                    {{-- <option class="fs-1" value="Khám tim mạch">Khám tim mạch</option>
-                                    <option value="Khám sản phụ khoa">Khám sản phụ khoa</option>
-                                    <option value="Khám răng hàm mặt">Khám răng hàm mặt</option>
-                                    <option value="Khám tai mũi họng">Khám tai mũi họng</option>
-                                    <option value="Khám hô hấp">Khám hô hấp</option>
-                                    <option value="Khám tổng quát">Khám tổng quát</option> --}}
+                                    
 
                                 </select>
                             </div>

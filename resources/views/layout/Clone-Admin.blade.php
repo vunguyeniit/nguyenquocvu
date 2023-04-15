@@ -449,12 +449,14 @@ $(document).ready(function() {
 </script>
 <script>
     $('#datepicker').datepicker({
-    autoclose: true,
+      
+                autoclose: true,
+   
             format: 'yyyy-mm-dd',
             todayHighlight: true
 });
 </script>
 </body>
 
-<script src="bootstrap-datepicker.XX.js" charset="UTF-8"></script>
+{{-- <script src="bootstrap-datepicker.XX.js" charset="UTF-8"></script> --}}
 </html>
