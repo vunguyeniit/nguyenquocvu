@@ -1,0 +1,200 @@
+.content-pay {
+  .title-pay {
+    padding: 6rem;
+    h2 {
+      font-size: 6rem;
+      text-align: center;
+      padding: 2rem;
+      font-family: "Coiny", cursive;
+      color: #fff;
+    }
+  }
+  .container {
+    padding: 0 3rem 5rem 14rem;
+
+    label {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #23221f;
+      display: block;
+      margin: 0.3rem;
+    }
+    .ticket-pay {
+      img {
+        position: absolute;
+        top: -4%;
+        width: 20%;
+        z-index: 1;
+        &:nth-child(1) {
+          left: 15%;
+        }
+
+        &:nth-child(2) {
+          right: 10%;
+        }
+      }
+    }
+  }
+  .list-content {
+    padding: 5rem 5rem 0rem 12rem !important;
+    .text-form {
+      input {
+        font-size: 1.5rem;
+        padding: 1rem 3rem 1.5rem 1rem;
+        outline: none;
+        background: #ffffff;
+        box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+        border-radius: 16px;
+        border: none;
+        width: 100%;
+      }
+      .form-col-8 {
+        width: 60%;
+      }
+      .form-pay {
+        display: flex;
+
+        .form-col-5 {
+          width: 60%;
+        }
+        .form-col-2 {
+          width: 40%;
+          margin: 0 6rem;
+        }
+      }
+    }
+  }
+  .content-right {
+    .form-control2 {
+      form {
+        margin-top: 2%;
+        .text-form {
+          margin: 0;
+          &:nth-last-child(2) {
+            input {
+              width: 40%;
+              padding: 1rem 5rem 1.5rem 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.content .content-right .form-control2 form .text-form .input-form .input-group {
+  width: 100%;
+}
+
+.content-payment {
+  .title-pay {
+    padding: 4.5rem;
+    h2 {
+      font-size: 6rem;
+      text-align: center;
+      padding: 2rem;
+      font-family: "Coiny", cursive;
+      color: #fff;
+    }
+  }
+  .container {
+    padding: 0 3rem 5rem 14rem;
+
+    .bg-payment {
+      position: relative;
+      .list-ticket {
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        display: flex;
+        position: absolute;
+        top: 0;
+        padding: 3rem 2rem;
+        .list-item {
+          text-align: center;
+
+          .card-event {
+            padding: 2rem 3rem 1rem;
+            border-radius: 1.6rem;
+            background-color: #fff;
+            .item {
+              margin-top: 2rem;
+              h2 {
+                font-weight: 700;
+              }
+              p {
+                &:nth-of-type(1) {
+                  margin-top: 1.5rem;
+                  color: #ffc226;
+                  font-size: 2rem;
+                  font-weight: 700;
+                  margin-bottom: 0;
+                }
+                &:nth-of-type(2) {
+                  font-size: 2rem;
+                  font-weight: 700;
+                }
+                &:nth-of-type(3) {
+                  margin: 1.5rem 0;
+                  font-size: 1.2rem;
+                  font-weight: 500;
+                }
+              }
+              img {
+                width: 30%;
+              }
+            }
+          }
+        }
+      }
+      .count-ticket {
+        position: absolute;
+        bottom: 0;
+        font-size: 1.5rem;
+        left: 10%;
+        font-weight: 500;
+      }
+    }
+  }
+}
+.btn-pay {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 2.5%;
+  text-align: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  a {
+    width: 40%;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-family: "Coiny", cursive;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+    background: #ff000a;
+    border-radius: 0.75em;
+    &:hover {
+      color: #fff;
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: inherit;
+      box-shadow: 0 0 0 0px #93000a, 0 0.5em 0 0 #93000a;
+    }
+  }
+}
