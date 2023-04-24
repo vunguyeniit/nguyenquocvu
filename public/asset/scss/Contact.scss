@@ -20,7 +20,6 @@
     .contact-left {
       position: relative;
       width: 65%;
-      margin-right: 2rem;
 
       .form-contact {
         width: 100%;
@@ -40,7 +39,7 @@
             display: flex;
             margin-bottom: 2rem;
             justify-content: center;
-            a {
+            button {
               width: 40%;
               position: relative;
               display: inline-block;

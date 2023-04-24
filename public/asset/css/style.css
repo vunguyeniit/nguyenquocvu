@@ -248,7 +248,7 @@ header nav ul .nav-list .active {
   width: 8%;
   position: absolute;
   bottom: 0;
-  right: 1%;
+  right: 0;
 }
 .content .container {
   display: flex;
@@ -258,9 +258,6 @@ header nav ul .nav-list .active {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0 10rem;
-}
-.content .container img {
-  width: 100%;
 }
 .content .content-left {
   position: relative;
@@ -294,7 +291,9 @@ header nav ul .nav-list .active {
   left: 38%;
 }
 .content .content-center {
-  margin: 0 -4.4% 0 -2.8%;
+  margin: 0 -4.7% 0 -2.8%;
+  position: relative;
+  z-index: 1;
 }
 .content .content-right {
   position: relative;
@@ -354,7 +353,7 @@ header nav ul .nav-list .active {
   border-radius: 16px;
   border: none;
 }
-.content .content-right .form-control2 form .text-form a {
+.content .content-right .form-control2 form .text-form button {
   width: 80%;
   position: relative;
   display: inline-block;
@@ -370,7 +369,7 @@ header nav ul .nav-list .active {
   background: #ff000a;
   border-radius: 0.75em;
 }
-.content .content-right .form-control2 form .text-form a::before {
+.content .content-right .form-control2 form .text-form button::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -448,46 +447,51 @@ tr:last-child {
 .content-event .container {
   display: flex;
   align-items: center;
+  justify-content: center;
   top: 50%;
   padding: 6rem 0 0 0;
 }
 .content-event .container .btn {
   cursor: pointer;
-  margin: 0 2.5rem 0 0;
+  outline: none;
+  border: none;
 }
-.content-event .container .list-item {
-  margin-right: 2rem;
+.content-event .container .container-event {
+  display: flex;
+}
+.content-event .container .container-event .list-item {
+  margin: 0rem 1rem;
   border-radius: 20px;
   box-shadow: 4px 4px 45px rgba(109, 46, 0, 0.35);
   border-radius: 20px;
   background-color: #fff;
   padding: 0px 0px 25px;
 }
-.content-event .container .list-item img {
+.content-event .container .container-event .list-item img {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-.content-event .container .list-item .card-event .item {
+.content-event .container .container-event .list-item .card-event .item {
   padding: 2rem 0 0 2rem;
 }
-.content-event .container .list-item .card-event .item h2 {
+.content-event .container .container-event .list-item .card-event .item h2 {
   font-weight: 700;
   font-size: 3rem;
 }
-.content-event .container .list-item .card-event .item p:nth-child(-n+2) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(-n+2) {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.content-event .container .list-item .card-event .item p:nth-child(3) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(3) {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.content-event .container .list-item .card-event .item p:nth-child(4) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(4) {
   color: #fa7d09;
   font-weight: 700;
   font-size: 2.5rem;
 }
-.content-event .container .list-item .card-event .item p:nth-child(5) a {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(5) a {
   width: 60%;
   position: relative;
   display: inline-block;
@@ -503,7 +507,7 @@ tr:last-child {
   background: #ff000a;
   border-radius: 0.75em;
 }
-.content-event .container .list-item .card-event .item p:nth-child(5) a::before {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(5) a::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -515,8 +519,62 @@ tr:last-child {
   border-radius: inherit;
   box-shadow: 0 0 0 0px #93000a, 0 0.5rem 0 0 #93000a;
 }
-.content-event .container .list-item .card-event .item img {
+.content-event .container .container-event .list-item .card-event .item img {
   width: 5%;
+}
+
+.content-detail .container {
+  padding: 5rem 5rem 5rem 5rem;
+  top: 60%;
+}
+.content-detail .container .bg-payment .event-detail {
+  font-style: normal;
+  display: flex;
+  padding: 12rem 8rem 0rem 8rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.content-detail .container .bg-payment .event-detail .list-detail {
+  margin: 0 1rem;
+  width: 40%;
+  text-align: justify;
+}
+.content-detail .container .bg-payment .event-detail .list-detail img {
+  border-radius: 1rem;
+}
+.content-detail .container .bg-payment .event-detail .list-detail p img {
+  width: 5%;
+}
+.content-detail .container .bg-payment .event-detail .list-detail p:nth-of-type(1) {
+  margin-top: 2rem;
+  color: #444444;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.content-detail .container .bg-payment .event-detail .list-detail p:nth-of-type(2) {
+  color: #fa7d09;
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+.content-detail .container .bg-payment .event-detail .list-detail h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #6c7272;
+}
+.content-detail .container .bg-payment .event-detail .list-detail h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #000000;
+}
+.content-detail .container .bg-payment .event-detail .list-detail h3 b {
+  color: #fa7d09;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.slick-track {
+  width: 100% !important;
 }
 
 .icon-img {
@@ -542,7 +600,6 @@ tr:last-child {
 .content-contact .container .contact-left {
   position: relative;
   width: 65%;
-  margin-right: 2rem;
 }
 .content-contact .container .contact-left .form-contact {
   width: 100%;
@@ -562,7 +619,7 @@ tr:last-child {
   margin-bottom: 2rem;
   justify-content: center;
 }
-.content-contact .container .contact-left .form-contact form .form-text a {
+.content-contact .container .contact-left .form-contact form .form-text button {
   width: 40%;
   position: relative;
   display: inline-block;
@@ -578,7 +635,7 @@ tr:last-child {
   background: #ff000a;
   border-radius: 0.75em;
 }
-.content-contact .container .contact-left .form-contact form .form-text a::before {
+.content-contact .container .contact-left .form-contact form .form-text button::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -654,7 +711,7 @@ tr:last-child {
   color: #fff;
 }
 .content-pay .container {
-  padding: 0 3rem 5rem 14rem;
+  padding: 0 3rem 5rem 9rem;
 }
 .content-pay .container label {
   font-size: 1.8rem;
@@ -676,7 +733,7 @@ tr:last-child {
   right: 10%;
 }
 .content-pay .list-content {
-  padding: 5rem 5rem 0rem 12rem !important;
+  padding: 5rem 5rem 0rem 8rem !important;
 }
 .content-pay .list-content .text-form input {
   font-size: 1.5rem;
@@ -739,7 +796,7 @@ tr:last-child {
   display: flex;
   position: absolute;
   top: 0;
-  padding: 3rem 2rem;
+  padding: 4.1rem 2rem;
 }
 .content-payment .container .bg-payment .list-ticket .list-item {
   text-align: center;

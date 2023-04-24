@@ -8,7 +8,7 @@
 
             <div class="bg-payment">
 
-                <img src="{{ asset('./asset/images/bg-pay.png') }}" alt="">
+                <img srcset="{{ asset('./asset/images/bg-pay.png 2.7x') }}" alt="">
                 <div class="list-ticket">
                     <div class="previous btn">
                         <img src="" alt="" srcset="{{ asset('./asset/images/previous.png 2.5x') }}">

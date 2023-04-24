@@ -11,7 +11,7 @@
     </div>
     <div class="container">
         <div class="content-left">
-            <img src="{{ asset('./asset/images/Group.png') }}" alt="">
+            <img srcset="{{ asset('./asset/images/Group.png 2.6x') }}" alt="">
             <img src="{{ asset('./asset/images/Converted-04.png') }}">
             <div class="list-content">
                 <div class="content-title">
@@ -35,30 +35,31 @@
             </div>
         </div>
         <div class="content-center">
-            <img src="{{ asset('./asset/images/Vector.png') }}" alt="">
+            <img srcset="{{ asset('./asset/images/Vector.png 2.6x') }}" alt="">
         </div>
 
 
         <div class="content-right">
-            <img src="{{ asset('./asset/images/form.png') }}" alt="">
+            <img srcset="{{ asset('./asset/images/form.png 2.6x') }}" alt="">
             <img src="{{ asset('./asset/images/hair.png') }}">
             <img src="{{ asset('./asset/images/title-ticker.png') }}">
 
             <div class="form-control2">
-                <form action="">
-
+                <form action="{{ route('pay') }}" method="GET">
+                    @csrf
                     <div class="text-form">
                         <div class="select-service">
-                            <input type="text" placeholder="">
+                            <input type="text" value="Gói gia đình" name="name_ticket" placeholder="">
                             <img src="{{ asset('./asset/images/Show.png') }}">
                         </div>
 
                     </div>
                     <div class="text-form">
                         <div class="input-form">
-                            <input type="text" placeholder="Số lượng vé">
+                            <input type="text" placeholder="Số lượng vé" name="price_ticket">
                             <div class="input-group date" id="datepicker">
-                                <input type="text" class="form-control datepicker" placeholder="Ngày sử dụng">
+                                <input type="text" class="form-control datepicker" name="date"
+                                    placeholder="Ngày sử dụng">
                                 <span class="input-group-append">
                                     <span class="input-group-text d-block">
                                         <img srcset="{{ asset('./asset/images/Frame.png 2.5x') }}">
@@ -71,16 +72,17 @@
 
                     </div>
                     <div class="text-form">
-                        <input type="text" placeholder="Họ và tên">
+                        <input type="text" placeholder="Họ và tên" name="username">
                     </div>
                     <div class="text-form">
-                        <input type="text"placeholder="Số điện thoại">
+                        <input type="text"placeholder="Số điện thoại" name="phone">
                     </div>
                     <div class="text-form">
-                        <input type="text"placeholder="Địa chỉ email">
+                        <input type="text"placeholder="Địa chỉ email"name="email">
                     </div>
                     <div class="text-form text-center">
-                        <a href="{{ route('pay') }}" class="learn-more">Đặt Vé</a>
+
+                        <button type="submit">Đặt vé</button>
 
                     </div>
                 </form>

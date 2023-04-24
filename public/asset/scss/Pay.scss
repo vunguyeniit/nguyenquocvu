@@ -10,7 +10,7 @@
     }
   }
   .container {
-    padding: 0 3rem 5rem 14rem;
+    padding: 0 3rem 5rem 9rem;
 
     label {
       font-size: 1.8rem;
@@ -36,7 +36,7 @@
     }
   }
   .list-content {
-    padding: 5rem 5rem 0rem 12rem !important;
+    padding: 5rem 5rem 0rem 8rem !important;
     .text-form {
       input {
         font-size: 1.5rem;
@@ -98,7 +98,6 @@
   }
   .container {
     padding: 0 3rem 5rem 14rem;
-
     .bg-payment {
       position: relative;
       .list-ticket {
@@ -108,10 +107,9 @@
         display: flex;
         position: absolute;
         top: 0;
-        padding: 3rem 2rem;
+        padding: 4.1rem 2rem;
         .list-item {
           text-align: center;
-
           .card-event {
             padding: 2rem 3rem 1rem;
             border-radius: 1.6rem;

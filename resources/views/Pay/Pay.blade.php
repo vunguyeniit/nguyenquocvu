@@ -12,7 +12,7 @@
 
 
             <div class="content-left">
-                <img src="{{ asset('./asset/images/Group.png') }}" alt="">
+                <img srcset="{{ asset('./asset/images/Group.png 2.5x') }}" alt="">
 
                 <div class="list-content">
 
@@ -20,16 +20,16 @@
                         <div class="form-pay">
                             <div class="form-col-5">
                                 <label for="">Số tiền thanh toán</label>
-                                <input type="text">
+                                <input type="text" value="{{ $data['price_ticket'] * 90.0 }}">
                             </div>
                             <div class="form-col-2">
-                                <label for="">Số lượng vé</label>
-                                <input type="text">
+                                <label for="">Số lượng vé </label>
+                                <input type="text" value="{{ $data['price_ticket'] }}">
                             </div>
 
                             <div class="form-col-5">
                                 <label for="">Ngày sử dụng</label>
-                                <input type="text">
+                                <input type="text" value="{{ $data['date'] }}">
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
 
                         <div class="form-col-8">
                             <label for="">Thông tin liên hệ</label>
-                            <input type="text">
+                            <input type="text"value={{ $data['username'] }}>
                         </div>
                     </div>
 
@@ -47,7 +47,7 @@
                     <div class="text-form">
                         <div style="width:30%" class="form-col-5">
                             <label for="">Điện thoại</label>
-                            <input type="text">
+                            <input type="text" value={{ $data['phone'] }}>
                         </div>
                     </div>
 
@@ -55,20 +55,19 @@
                     <div class="text-form">
                         <div class="form-col-8">
                             <label for="">Email</label>
-                            <input type="text">
+                            <input type="text" value={{ $data['email'] }}>
                         </div>
                     </div>
-
 
                 </div>
             </div>
             <div class="content-center">
-                <img src="{{ asset('./asset/images/Vector.png') }}" alt="">
+                <img srcset="{{ asset('./asset/images/Vector.png 2.5x') }}" alt="">
             </div>
 
 
             <div class="content-right">
-                <img src="{{ asset('./asset/images/form.png') }}" alt="">
+                <img srcset="{{ asset('./asset/images/form.png 2.5x') }}" alt="">
                 <div class="form-control2">
                     <form action="">
 
@@ -105,7 +104,7 @@
                             <input type="text">
                         </div>
                         <div class="text-form text-center ">
-                            <a href="{{ route('pay-store') }}" class="learn-more mt-3">Thanh Toán</a>
+                            <button type="submit">Thanh toán</button>
                         </div>
                     </form>
                 </div>
