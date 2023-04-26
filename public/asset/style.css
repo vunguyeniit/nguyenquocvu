@@ -422,7 +422,7 @@ tr:last-child {
   background-image: url(../images/bg-event.png);
   height: 650px;
   background-size: cover;
-  padding: 6rem 7rem;
+  padding: 6rem 0;
   background-repeat: no-repeat;
 }
 .content-event .title-event h2 {
@@ -444,43 +444,54 @@ tr:last-child {
   top: 0;
   right: -3.8rem;
 }
-.content-event .btn {
+.content-event .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  padding: 6rem 0 0 0;
+}
+.content-event .container .btn {
   cursor: pointer;
   outline: none;
   border: none;
 }
-.content-event .container-event .list-slick {
+.content-event .container .container-event {
+  display: flex;
+}
+.content-event .container .container-event .list-item {
+  margin: 0rem 1rem;
   border-radius: 20px;
   box-shadow: 4px 4px 45px rgba(109, 46, 0, 0.35);
   border-radius: 20px;
   background-color: #fff;
   padding: 0px 0px 25px;
 }
-.content-event .container-event .list-slick img {
+.content-event .container .container-event .list-item img {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 }
-.content-event .container-event .list-slick .card-event .item {
+.content-event .container .container-event .list-item .card-event .item {
   padding: 2rem 0 0 2rem;
 }
-.content-event .container-event .list-slick .card-event .item h2 {
+.content-event .container .container-event .list-item .card-event .item h2 {
   font-weight: 700;
   font-size: 3rem;
 }
-.content-event .container-event .list-slick .card-event .item p:nth-child(-n+2) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(-n+2) {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.content-event .container-event .list-slick .card-event .item p:nth-child(3) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(3) {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.content-event .container-event .list-slick .card-event .item p:nth-child(4) {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(4) {
   color: #fa7d09;
   font-weight: 700;
   font-size: 2.5rem;
 }
-.content-event .container-event .list-slick .card-event .item p:nth-child(5) a {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(5) a {
   width: 60%;
   position: relative;
   display: inline-block;
@@ -496,7 +507,7 @@ tr:last-child {
   background: #ff000a;
   border-radius: 0.75em;
 }
-.content-event .container-event .list-slick .card-event .item p:nth-child(5) a::before {
+.content-event .container .container-event .list-item .card-event .item p:nth-child(5) a::before {
   position: absolute;
   content: "";
   width: 100%;
@@ -508,7 +519,7 @@ tr:last-child {
   border-radius: inherit;
   box-shadow: 0 0 0 0px #93000a, 0 0.5rem 0 0 #93000a;
 }
-.content-event .container-event .list-slick .card-event .item img {
+.content-event .container .container-event .list-item .card-event .item img {
   width: 5%;
 }
 
@@ -562,37 +573,8 @@ tr:last-child {
   font-size: 2rem;
 }
 
-.slick-slide {
-  width: 285px !important;
-  margin: 0 1rem;
-}
-
-.slick-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  line-height: 1;
-  z-index: 5;
-  transition: all 0.2s linear;
-}
-
-.slick-prev {
-  left: -55px;
-}
-
-.slick-next {
-  right: -55px;
-}
-
-.slick-list {
-  height: 436px;
+.slick-track {
+  width: 100% !important;
 }
 
 .icon-img {
@@ -729,8 +711,7 @@ tr:last-child {
   color: #fff;
 }
 .content-pay .container {
-  padding: 0 3rem 5rem 9rem;
-  display: block;
+  display: block !important;
 }
 .content-pay .container label {
   font-size: 1.8rem;
@@ -787,49 +768,9 @@ tr:last-child {
 .content-pay .container form .content-right .form-control2 .text-form {
   margin: 0;
 }
-.content-pay .container form .content-right .form-control2 .text-form:last-child button {
-  width: 65%;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  vertical-align: middle;
-  font-size: 1.4rem;
-  font-family: "Coiny", cursive;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 1rem 3rem;
-  background: #ff000a;
-  border-radius: 0.75em;
-}
-.content-pay .container form .content-right .form-control2 .text-form:last-child button:hover {
-  color: #fff;
-}
-.content-pay .container form .content-right .form-control2 .text-form:last-child button::before {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  box-shadow: 0 0 0 0px #93000a, 0 0.5em 0 0 #93000a;
-}
-.content-pay .container form .content-right .form-control2 .text-form input {
-  font-size: 1.5rem;
-  padding: 1rem 3rem 1.5rem 1rem;
-  outline: none;
-  background: #ffffff;
-  box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
-  border-radius: 16px;
-  border: none;
-  width: 100%;
-}
-.content-pay .container form .content-right .form-control2 .text-form input:nth-last-child(2) {
+.content-pay .container form .content-right .form-control2 .text-form:nth-last-child(2) input {
   width: 40%;
+  padding: 1rem 5rem 1.5rem 1rem;
 }
 
 .content .content-right .form-control2 form .text-form .input-form .input-group {
@@ -859,8 +800,7 @@ tr:last-child {
   display: flex;
   position: absolute;
   top: 0;
-  left: 0;
-  padding: 4.1rem 9rem;
+  padding: 4.1rem 2rem;
 }
 .content-payment .container .bg-payment .list-ticket .list-item {
   text-align: center;
@@ -895,42 +835,11 @@ tr:last-child {
 .content-payment .container .bg-payment .list-ticket .list-item .card-event .item img {
   width: 30%;
 }
-.content-payment .container .bg-payment .list-ticket .slick-slide {
-  width: 215px !important;
-  margin: 0 1rem;
-}
-.content-payment .container .bg-payment .list-ticket .slick-slide img {
-  display: inline;
-}
-.content-payment .container .bg-payment .list-ticket .slick-arrow {
+.content-payment .container .bg-payment .count-ticket {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  border: none;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  line-height: 1;
-  z-index: 5;
-  transition: all 0.2s linear;
-}
-.content-payment .container .bg-payment .list-ticket .slick-prev {
-  left: 30px;
-}
-.content-payment .container .bg-payment .list-ticket .slick-next {
-  right: 30px;
-}
-.content-payment .container .bg-payment .list-ticket .slick-list {
-  height: 436px;
-}
-.content-payment .container .count-ticket {
-  position: absolute;
-  bottom: 5%;
+  bottom: 0;
   font-size: 1.5rem;
-  left: 9%;
+  left: 10%;
   font-weight: 500;
 }
 

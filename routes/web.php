@@ -23,4 +23,4 @@ Route::get('/detail', [EventController::class, 'detail'])->name('event-detail');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'handleContact'])->name('handleContact');
 Route::get('/pay', [HomeController::class, 'getPayment'])->name('pay');
-Route::get('/pay-store', [PaymentController::class, 'HandelePayment'])->name('pay-store');
+Route::post('/pay-store', [PaymentController::class, 'HandelePayment'])->name('pay-store');

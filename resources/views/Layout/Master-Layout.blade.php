@@ -43,14 +43,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-{{-- <script type="text/javascript">
-    $(".container-event").slick({
-        dots: true,
-        infinite: false,
-        slidesToShow: 4,
-        slidesToScroll: 2,
-    });
-</script> --}}
+
 {{-- End slick --}}
 
 
@@ -58,7 +51,7 @@
 <script type="text/javascript">
     $('#datepicker').datepicker({
         autoclose: true,
-        format: 'yyyy-mm-dd',
+        format: 'dd/mm/yyyy',
         orientation: 'bottom',
         todayHighlight: true
     });
@@ -67,6 +60,66 @@
 <script>
     $(document).ready(function() {
         $('.modal').modal('show');
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(".list-ticket").slick({
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        infinite: false,
+        arrows: true,
+        draggable: false,
+        prevArrow: `<img class='slick-prev slick-arrow' srcset="{{ asset('./asset/images/previous.png 2.5x') }}">`,
+        nextArrow: `<img class='slick-next slick-arrow' srcset="{{ asset('./asset/images/next.png 2.5x') }}">`,
+        responsive: [{
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    arrows: false,
+                    infinite: false,
+
+                },
+            },
+        ],
+
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(".container-event").slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: false,
+        arrows: true,
+        draggable: false,
+        prevArrow: `<img class='slick-prev slick-arrow' srcset="{{ asset('./asset/images/previous.png 2.5x') }}">`,
+        nextArrow: `<img class='slick-next slick-arrow' srcset="{{ asset('./asset/images/next.png 2.5x') }}">`,
+        responsive: [{
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    arrows: false,
+                    infinite: false,
+
+                },
+            },
+        ],
+
     });
 </script>
 

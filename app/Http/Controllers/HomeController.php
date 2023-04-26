@@ -15,7 +15,8 @@ class HomeController extends Controller
     public function getPayment(Request $request)
     {
         $data  = $request->all();
-        // dd($data);
-        return view('Pay.Pay', compact('data'));
+        $number = 90000;
+        $price =  $data['price_ticket'] * $number;
+        return view('Pay.Pay', compact('data', 'price'));
     }
 }
