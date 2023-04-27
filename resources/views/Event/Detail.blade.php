@@ -10,16 +10,15 @@
             <div class="container">
                 <div class="bg-payment">
                     <img srcset="{{ asset('./asset/images/bg-pay.png 2.5x') }}" alt="">
-
                     <div class="event-detail">
                         <div class="list-detail">
                             <img srcset="{{ asset('./asset/images/event-detail.png 2.8x') }}">
-                            <p><img src="{{ asset('./asset/images/date.png') }}"> 30/05/2021 - 01/06/2021</p>
+                            <p><img src="{{ asset('./asset/images/date.png') }}"> {{ $detailEvent->start_day }} -
+                                {{ $detailEvent->end_day }}
+                            </p>
                             <h2>Đầm sen Park</h2>
-                            <p>50.000 VNĐ</p>
+                            <p>{{ $detailEvent->price_ticket }} VNĐ</p>
                         </div>
-
-
                         <div class="list-detail">
                             <h3> <b>Lorem ipsum </b> dolor sit amet consectetur adipisicing elit. Et, quasi odit voluptatum
                                 ea
@@ -47,8 +46,6 @@
                                 quis. Veniam, quisquam velit! Vitae.</h3>
                             <img srcset="{{ asset('./asset/images/event-1.png 2.8x') }}">
                         </div>
-
-
                     </div>
 
 

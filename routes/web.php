@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/event', [EventController::class, 'index'])->name('event');
-Route::get('/detail', [EventController::class, 'detail'])->name('event-detail');
+Route::get('/detail/{id}', [EventController::class, 'detail'])->name('event-detail');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'handleContact'])->name('handleContact');
 Route::get('/pay', [HomeController::class, 'getPayment'])->name('pay');

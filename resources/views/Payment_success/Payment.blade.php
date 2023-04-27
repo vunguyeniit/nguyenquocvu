@@ -5,9 +5,7 @@
             <h2>Thanh toán thành công</h2>
         </div>
         <div class="container">
-
             <div class="bg-payment">
-
                 <img srcset="{{ asset('./asset/images/bg-pay.png 2.7x') }}" alt="">
                 <div class="list-ticket">
                     {{--  --}}
@@ -25,9 +23,6 @@
                             </div>
                         </div>
                     @endforeach
-
-
-
                 </div>
                 <div class="count-ticket">
                     <span>Số lượng vé 14</span>

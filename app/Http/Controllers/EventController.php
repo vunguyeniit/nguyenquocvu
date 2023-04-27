@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\EventModel;
 
 class EventController extends Controller
 {
     public function index()
     {
-        return view('Event.Event');
+        $getEvent = EventModel::all();
+
+        return view('Event.Event', compact('getEvent'));
     }
-    public function detail()
+    public function detail($id)
     {
-        return view('Event.Detail');
+        $detailEvent = EventModel::find($id);
+        return view('Event.Detail', compact('detailEvent'));
     }
 }

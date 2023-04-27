@@ -6,11 +6,14 @@ use App\Models\Customer_Payment\Customer;
 use App\Models\Customer_Payment\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\HomeFormRequest;
 
 class PaymentController extends Controller
 {
     public function HandelePayment(Request $request)
+
     {
+
         $user = Customer::create([
             "username" => $request->username,
             "phone" => $request->phone,
