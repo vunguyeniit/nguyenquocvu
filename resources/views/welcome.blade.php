@@ -15,7 +15,6 @@
     font-size: 25px;
     color: #000;
     font-weight: bold;
-    padding: 10px;
      white-space: nowrap;
   }
   .content-right a:hover{
