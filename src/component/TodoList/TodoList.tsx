@@ -8,9 +8,12 @@ function TodoList() {
   const [todos, setTodo] = useState<Todo[]>([]);
   const doneTodos = todos.filter((todo) => todo.done);
   console.log("11111111", doneTodos);
-
   const notdoneTodos = todos.filter((todo) => !todo.done);
   console.log("2222222222222", notdoneTodos);
+
+  //========================================================
+  //EDIT
+  const [currentTodo, setCurrentTodo] = useState<Todo | null>(null);
   const addTodo = (name: string) => {
     const todo: Todo = {
       name,
@@ -35,12 +38,37 @@ function TodoList() {
   };
   //==============================================================
   //EDIT
+  const startEditTodo = (id: string) => {
+    const findedTodo = todos.find((todo) => todo.id === id);
+    if (findedTodo) {
+      setCurrentTodo(findedTodo);
+    }
+  };
+  const editTodo = (name: string) => {
+    setCurrentTodo((prev) => {
+      if (prev) {
+        return { ...prev, name };
+      }
+      return null;
+    });
+  };
+  const finishEditTodo = () => {
+    setTodo((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === currentTodo?.id) {
+          return currentTodo;
+        }
+        return todo;
+      });
+    });
+    setCurrentTodo(null);
+  };
   return (
     <div className={styles.todoList}>
       <div className={styles.todoListContainer}>
-        <TaskInput addTodo={addTodo} />
-        <TaskList doneTaskList={false} todos={notdoneTodos} handleDoneTodo={handleDoneTodo} />
-        <TaskList doneTaskList todos={doneTodos} handleDoneTodo={handleDoneTodo} />
+        <TaskInput addTodo={addTodo} currentTodo={currentTodo} editTodo={editTodo} finishEditTodo={finishEditTodo} />
+        <TaskList doneTaskList={false} todos={notdoneTodos} handleDoneTodo={handleDoneTodo} startEditTodo={startEditTodo} />
+        <TaskList doneTaskList todos={doneTodos} handleDoneTodo={handleDoneTodo} startEditTodo={startEditTodo} />
       </div>
     </div>
   );
