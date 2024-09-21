@@ -1,0 +1,14 @@
+.idea
+.vs
+**/bin
+**/obj
+**/Logs
+**/.DS_Store
+.DS_Store
+bin/*
+obj/*
+/SoKHCNVTAPI/Assets/Uploads/*
+SoKHCNVTAPI/Assets/Uploads/*
+SoKHCNVTAPI/tmp/*
+/SoKHCNVTAPI/tmp/*
+/KHCNVT/API/Publish

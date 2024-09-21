@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <LangVersion>12</LangVersion>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+		<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+    <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
+        <PackageReference Include="AutoMapper" Version="12.0.1" />
+        <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
+        <PackageReference Include="ClosedXML" Version="0.102.2" />
+        <PackageReference Include="EasyCaching.InMemory" Version="1.9.2" />
+        <PackageReference Include="FluentEmail.Core" Version="3.0.2" />
+        <PackageReference Include="FluentEmail.Razor" Version="3.0.2" />
+        <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
+        <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="7.3.0.1" />
+        <PackageReference Include="libphonenumber-csharp" Version="8.13.31" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+        <PackageReference Include="RestSharp" Version="111.2.0" />
+        <PackageReference Include="Sentry" Version="4.1.2" />
+        <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+		<PackageReference Include="QuestPDF" Version="2023.12.6" />
+		<PackageReference Include="SkiaSharp" Version="2.88.7" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.7" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Utils\**" />
+      <Content Remove="Upload\**" />
+      <Content Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Utils\**" />
+      <Compile Remove="Upload\**" />
+      <Compile Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Utils\**" />
+      <EmbeddedResource Remove="Upload\**" />
+      <EmbeddedResource Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Utils\**" />
+      <None Remove="Upload\**" />
+      <None Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Controllers\StepController.cs" />
+      <Compile Remove="Entities\Step.cs" />
+      <Compile Remove="Entities\StepAction.cs" />
+      <Compile Remove="Entities\StepHasStatus.cs" />
+      <Compile Remove="Entities\StepStatus.cs" />
+      <Compile Remove="Entities\StepUser.cs" />
+      <Compile Remove="Models\StepActionModel.cs" />
+      <Compile Remove="Models\StepHasStatusModel.cs" />
+      <Compile Remove="Models\StepModel.cs" />
+      <Compile Remove="Models\StepStatusModel.cs" />
+      <Compile Remove="Models\StepUserModel.cs" />
+      <Compile Remove="Repositories\StepRepository.cs" />
+      <Compile Remove="Repositories\StepStatusRepository.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Fonts\" />
+    </ItemGroup>
+
+    <ProjectExtensions><VisualStudio><UserProperties assets_4apikeys_1json__JsonSchema="Jons" /></VisualStudio></ProjectExtensions>
+
+</Project>
